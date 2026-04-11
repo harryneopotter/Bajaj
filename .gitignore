@@ -1,0 +1,42 @@
+# Secrets
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+.venv/
+
+# Data (large, binary, or sensitive)
+data/
+extracted/
+*.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+*.zip
+
+# Temporary env files
+.env.backfill
+.env.*
+
+# Container run artifacts
+bajaj-quotevault-run-*
+
+# Claude/assistant drafts
+.claude/
+
+# Misc
+*.log
