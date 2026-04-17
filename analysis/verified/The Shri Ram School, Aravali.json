@@ -1,0 +1,55 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "The Shri Ram School - Aravali",
+      "address": "Hamilton Court Complex, Phase-IV, DLF City, Gurgaon, Haryana – 122 002.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-01",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Pickle Ball Movable Pole (with weight)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 43000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickle Ball Movable Pole with dismantling and Net (without weight)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 31400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Balls",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 240.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "The Shri Ram School, Aravali.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "The Shri Ram School, Aravali.html"
+}

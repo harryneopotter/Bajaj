@@ -1,0 +1,90 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "SYNCOTTS INTERNATIONAL(MP)",
+      "address": "E2, Arera Colony, Bhopal, Madhya Pradesh, 462016",
+      "phone": "80100 06468",
+      "gstin": null
+    },
+    "date": "2026-01-05",
+    "ref_number": "25-26/IS/622",
+    "items": [
+      {
+        "product": "Pickle Ball Pole Plate Type with Fastner",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 8744.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Pickle Ball Net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 32789.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6600.0,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "B/B Pole(Half) Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 47086.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "B/B Pole Movable with Fixed Height",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 166704.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Volleyball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 35328.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Volleyball Net Garware",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "Pickleball Pole Moveable W/O Weight",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 24104.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Pickle Ball Net",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 2800.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_007101dc8099_915d3a70_b417af50_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_007101dc8099_915d3a70_b417af50_bajajsports.com__1.html"
+}

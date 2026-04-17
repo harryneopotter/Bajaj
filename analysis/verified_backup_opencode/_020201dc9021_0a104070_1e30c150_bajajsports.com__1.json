@@ -1,0 +1,55 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Jindal Realty Ltd.",
+      "address": "Club House, Jindal Global City, Sonepat, Haryana.",
+      "phone": "7060639511",
+      "gstin": null
+    },
+    "date": "2026-01-28",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 63.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 1050.0,
+        "hsn_code": null
+      },
+      {
+        "product": "T/Shirt",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 780.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Track Suit Lower with Cap",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 690.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_020201dc9021_0a104070_1e30c150_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_020201dc9021_0a104070_1e30c150_bajajsports.com__1.html"
+}

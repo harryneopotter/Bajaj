@@ -1,0 +1,102 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "WheelsEye Logistics Pvt Ltd",
+      "address": "5th Floor, Tower-A, Capital Business Park, Sohna Road, Sector 48, Gurugram, Haryana-122018",
+      "phone": "8588001337",
+      "gstin": "06AACCW4880F1Z8"
+    },
+    "date": "2026-01-28",
+    "ref_number": "25-26/IS/667",
+    "items": [
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 56966.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 2504.0,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 179344.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 77942.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 5600.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 48208.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 5600.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 35328.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 166704.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 0,
+        "unit_price": 60000.0,
+        "hsn_code": "996511"
+      }
+    ],
+    "source_file": "_004301dc9047_31603a60_9420af20_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "All line items have generic placeholder product name 'Product Description' instead of actual descriptions.",
+    "One line item has quantity 0, which is invalid/suspicious for an invoice item.",
+    "HSN/SAC code 996511 appears service-related and inconsistent with other sports goods HSN codes; verify classification.",
+    "Brand is missing (null) for all items."
+  ],
+  "source_file": "_004301dc9047_31603a60_9420af20_bajajsports.com__2.html"
+}

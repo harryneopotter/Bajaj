@@ -1,0 +1,65 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Sacred Heart Boys Higher Secondary School",
+      "address": "Mawlai Phudmuri, Lum Roman, Mawlai Mawdatbaki, Shillong, Meghalaya – 793008",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-21",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Movable (With Fixed Height of 10’)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 181200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable – Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_02d301dc8ad0_733731e0_59a595a0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[1].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "client.phone",
+      "value": null,
+      "reason": "Missing phone number"
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "Missing GSTIN"
+    }
+  ],
+  "source_file": "_02d301dc8ad0_733731e0_59a595a0_bajajsports.com__1.html"
+}

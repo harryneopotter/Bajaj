@@ -1,0 +1,82 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "PATHWAYS SCHOOL,NOIDA",
+      "address": "SEC.-100,OFF EXPRESS, NOIDA UP -201301",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-04-21",
+    "ref_number": "25-26/IS/038",
+    "items": [
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 23666.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALES",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 16184.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 5303.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 32874.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 53100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 4248.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 27255.0,
+        "hsn_code": null
+      },
+      {
+        "product": "INTERSTATE SALE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 413.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "PATHWAYS SCHOOL,NOIDA-Ledger.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

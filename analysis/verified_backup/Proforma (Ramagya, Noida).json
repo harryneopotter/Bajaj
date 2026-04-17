@@ -1,0 +1,63 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "The Principal, Ramagya School",
+      "address": "Sector-50, Noida, U.P.",
+      "phone": "9540099570",
+      "gstin": null
+    },
+    "date": "2026-04-04",
+    "ref_number": "26-27/IS/PI/3",
+    "items": [
+      {
+        "product": "Shuttle Cocks Feather Yonex AS-2",
+        "brand": "Yonex",
+        "quantity": 6,
+        "unit_price": 3900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Yonex Mavis 350",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Balls Kimati DX",
+        "brand": "Kimati",
+        "quantity": 18,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4 Cosco Milano",
+        "brand": "Cosco",
+        "quantity": 3,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5 Nivia Dominator",
+        "brand": "Nivia",
+        "quantity": 3,
+        "unit_price": 950.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Proforma (Ramagya, Noida).html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "The Principal, Ramagya School",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Proforma (Ramagya, Noida).html"
+}

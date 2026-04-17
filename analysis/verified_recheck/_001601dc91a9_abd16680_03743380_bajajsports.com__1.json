@@ -1,0 +1,82 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "New Delhi YMCA",
+      "address": "Jai Singh Road, New Delhi-110001.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-29",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Parallel Bar Dips along with Vertical Knee-Ups",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 9990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Jumping Block / Ply Box (Set of 4-6) Foam Plyo Box",
+        "brand": "USI",
+        "quantity": 1,
+        "unit_price": 14800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat Pro",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Seated Rower (Water Resistance Rower)",
+        "brand": "Energizer",
+        "quantity": 1,
+        "unit_price": 70000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Rubber Coated Dumbbells (Small) 2 Kg",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hexa Dumbbells 2.5 Kg",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 590.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Rubber Coated Dumbbells (Small) Cosco Vinayal 2 Kg",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cosco Vinayal 3 Kg",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 460.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Commercial Weighing Scale(Body Weight Scale",
+        "brand": "Goldtech",
+        "quantity": 1,
+        "unit_price": 13500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_001601dc91a9_abd16680_03743380_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

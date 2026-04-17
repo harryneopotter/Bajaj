@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "High Commission of Canada",
+      "address": "7/8, Shantipath, Chanakyapuri, New Delhi - 110021",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-09",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Pickle Racket with Ball",
+        "brand": "Nivia",
+        "quantity": 2,
+        "unit_price": 2975.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickle Ball",
+        "brand": "VictorX",
+        "quantity": 6,
+        "unit_price": 630.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "High Commission of Canada Delhi.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

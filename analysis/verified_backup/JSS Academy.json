@@ -1,0 +1,104 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "JSS Academy of Technical Education",
+      "address": "C-20/1, Sector – 62, Noida, U.P. – 201301",
+      "phone": "9958794419",
+      "gstin": null
+    },
+    "date": "2026-04-06",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "TT Table",
+        "brand": "Stag International",
+        "quantity": 1,
+        "unit_price": 62205.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Height Measurement Stand",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 7100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Discus Throw for Men",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 1990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Discus Throw for Women",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 1220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put for Men",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 1650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put for Women",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin Throw – men",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 1450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin Throw – men",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 6680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin Throw – women",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin Throw – women",
+        "brand": "Nelco",
+        "quantity": 1,
+        "unit_price": 6400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring Tape 30mtr.",
+        "brand": "Freemans",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Arena",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 2500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "JSS Academy.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "JSS Academy.html"
+}

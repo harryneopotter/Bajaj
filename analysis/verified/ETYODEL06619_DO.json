@@ -1,0 +1,55 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "BAJAJ AND CO",
+      "address": "Plot No: 232A, Second Floor, Okhla Phase-3, New Delhi, South East Delhi, 110020",
+      "phone": "01141200100",
+      "gstin": null
+    },
+    "date": "2026-04-03",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Weightlifting Equipments",
+        "brand": "UESAKA",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "ETYODEL06619_DO.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "client.phone",
+      "was": "1141200100",
+      "now": "01141200100",
+      "reason": "Added trunk prefix '0' to conform to standard Indian landline format (area code 11 for Delhi)."
+    }
+  ],
+  "flags": [
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "GSTIN is missing; required for tax compliance if the business is registered."
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Reference number is missing; should be present for traceability."
+    },
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "reason": "Unit price is missing; essential for a quotation to calculate totals."
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "HSN code is missing; required for GST classification and invoicing."
+    }
+  ],
+  "source_file": "ETYODEL06619_DO.html"
+}

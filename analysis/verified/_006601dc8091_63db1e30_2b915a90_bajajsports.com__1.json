@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "NELCO(INDIA) PVT. LTD.",
+      "address": "B-15-16,SPORTS GOODS COMPLEX, DELHI ROAD, MEERUT 250002",
+      "phone": "0121 2511149",
+      "gstin": "09AAACN5716F1ZK"
+    },
+    "date": "2026-01-07",
+    "ref_number": "25-26/IS/627",
+    "items": [
+      {
+        "product": "Hockey Goal Post Back Board Wooden Fibre Coated with 4 Side Aluminium Beading Board Thick 30mm",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 29624.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_006601dc8091_63db1e30_2b915a90_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_006601dc8091_63db1e30_2b915a90_bajajsports.com__1.html"
+}

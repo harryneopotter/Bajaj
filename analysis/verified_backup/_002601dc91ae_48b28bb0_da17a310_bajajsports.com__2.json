@@ -1,0 +1,56 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "APPROVED CONTRACTORS TO THE SPORTS AUTHORITY OF INDIA AND SERVICES SPORTS CONTROL BOARD",
+      "address": "H.No.1-98/85/1, Plot No-29, Ground Floor, Sai Nagar Madhapur, Hayderabad-500081",
+      "phone": "+91-9533210310",
+      "gstin": "36AQQPB6687G1ZD"
+    },
+    "date": "2026-01-30",
+    "ref_number": "25-26/IS/PI/222",
+    "items": [
+      {
+        "product": "Pickle Ball Pole Fix Type",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 7500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickle Ball Net Garware Tournament",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole Fix Type",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 10140.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Net Garware Tournament",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 6675.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_002601dc91ae_48b28bb0_da17a310_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "APPROVED CONTRACTORS TO THE SPORTS AUTHORITY OF INDIA AND SERVICES SPORTS CONTROL BOARD",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_002601dc91ae_48b28bb0_da17a310_bajajsports.com__2.html"
+}

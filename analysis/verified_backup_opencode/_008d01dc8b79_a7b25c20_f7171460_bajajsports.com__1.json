@@ -1,0 +1,160 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "CRY-Child Rights and You",
+      "address": "632, 2nd Floor, Lane No.3, West End Marg, Saiyadulajaib, New Delhi - 110030.",
+      "phone": "9818461301",
+      "gstin": null
+    },
+    "date": "2026-01-22",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Cricket Kit",
+        "brand": "SG",
+        "quantity": 1,
+        "unit_price": 4500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 410.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 62.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Skipping Ropes",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 105.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Soft Cones",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 38.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tug of War Rope",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Frisbee",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 70.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Small Athletics Kit",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Puzzle",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ludo + Snake",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess Board with men",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Brain Games Set",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula Hoops",
+        "brand": "Nippon",
+        "quantity": 1,
+        "unit_price": 110.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Building Blocks",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Monopoly",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Scrabble(Junior)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1050.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mats",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 395.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_008d01dc8b79_a7b25c20_f7171460_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_008d01dc8b79_a7b25c20_f7171460_bajajsports.com__1.html"
+}

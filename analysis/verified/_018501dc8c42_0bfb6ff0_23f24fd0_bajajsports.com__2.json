@@ -1,0 +1,55 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [],
+    "source_file": "_018501dc8c42_0bfb6ff0_23f24fd0_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": null,
+      "reason": "Missing client name"
+    },
+    {
+      "field": "client.address",
+      "value": null,
+      "reason": "Missing client address"
+    },
+    {
+      "field": "client.phone",
+      "value": null,
+      "reason": "Missing client phone"
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "Missing client GSTIN"
+    },
+    {
+      "field": "date",
+      "value": null,
+      "reason": "Missing invoice date"
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "items",
+      "value": [],
+      "reason": "No line items found"
+    }
+  ],
+  "source_file": "_018501dc8c42_0bfb6ff0_23f24fd0_bajajsports.com__2.html"
+}

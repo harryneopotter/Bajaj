@@ -1,0 +1,45 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Aramex India Private Limited",
+      "address": null,
+      "phone": null,
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [],
+    "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__3.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [
+    {
+      "field": "client.address",
+      "from": "null",
+      "to": null
+    },
+    {
+      "field": "client.phone",
+      "from": "null",
+      "to": null
+    },
+    {
+      "field": "date",
+      "from": "null",
+      "to": null
+    },
+    {
+      "field": "ref_number",
+      "from": "null",
+      "to": null
+    }
+  ],
+  "flags": [
+    "No line items extracted for an invoice.",
+    "Invoice date is missing.",
+    "Invoice/reference number is missing.",
+    "Client address and phone are missing; verify from source HTML."
+  ],
+  "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__3.html"
+}

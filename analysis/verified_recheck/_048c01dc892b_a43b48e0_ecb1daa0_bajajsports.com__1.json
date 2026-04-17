@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "SYMBIOSIS",
+      "address": null,
+      "phone": "9623478169",
+      "gstin": null
+    },
+    "date": "2026-01-19",
+    "ref_number": "SQ/SIU:DSRW(Sports)/2025-26/9608/SYMB-01998",
+    "items": [
+      {
+        "product": "Umpire Chair",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 1750.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_048c01dc892b_a43b48e0_ecb1daa0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

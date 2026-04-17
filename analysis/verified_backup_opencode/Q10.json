@@ -1,0 +1,209 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Delhi Public School",
+      "address": "Maruti Kunj, Sohna Alwar Road, Gurgaon – 122 102, Haryana.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-11-04",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Balls",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 215.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Balls",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 315.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Bat",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Bat",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess Mats",
+        "brand": "Rollway",
+        "quantity": 1,
+        "unit_price": 500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickle ball Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 675.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 685.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 695.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Catching Bat",
+        "brand": "SS/SG",
+        "quantity": 1,
+        "unit_price": 1500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Catching Gloves",
+        "brand": "Finding Gloves",
+        "quantity": 1,
+        "unit_price": 990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Rubber Ball",
+        "brand": "Flash",
+        "quantity": 1,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Rubber Ball",
+        "brand": "Flash",
+        "quantity": 1,
+        "unit_price": 110.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hanging Balls",
+        "brand": "Flash",
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Catch up Board",
+        "brand": "Omtex",
+        "quantity": 1,
+        "unit_price": 6700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Single Spring Stump",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 590.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Balls",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 35.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat Grip",
+        "brand": "SG",
+        "quantity": 1,
+        "unit_price": 85.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky Green",
+        "quantity": 1,
+        "unit_price": 58.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Net",
+        "brand": "Metco",
+        "quantity": 1,
+        "unit_price": 1950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cones medium size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 28.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Ground Markers",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 12.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdle Plastic",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdle Plastic",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 125.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdle Plastic",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 135.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Q10.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Q10.html"
+}

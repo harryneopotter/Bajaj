@@ -40,3 +40,10 @@ bajaj-quotevault-run-*
 
 # Misc
 *.log
+env*.txt
+quotegen/env*.txt
+.env-old
+analysis/*.json
+analysis/*.csv
+analysis/extractions/
+invoices.json

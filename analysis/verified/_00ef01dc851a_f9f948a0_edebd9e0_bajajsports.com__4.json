@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Sashastra Seema Bal(SSB)",
+      "address": "O/O The Commandant, 25th Bn SSB Delhi, Ghitorni, SOUTH WEST DELHI, DELHI-110047, India",
+      "phone": "011-26502650-",
+      "gstin": null
+    },
+    "date": "2025-06-19",
+    "ref_number": "GEMC-511687753273994",
+    "items": [
+      {
+        "product": "WILSON Tennis Ball “Type 1( Fast); 6.54 to 6.86 cm",
+        "brand": "WILSON",
+        "quantity": 72,
+        "unit_price": 174.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_00ef01dc851a_f9f948a0_edebd9e0_bajajsports.com__4.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_00ef01dc851a_f9f948a0_edebd9e0_bajajsports.com__4.html"
+}

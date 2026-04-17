@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Jamshedpur Football and Sporting Private Limited",
+      "address": "JRD Tata Sports Complex, Northern Town,Straight Mile Road, Bistupur, Jamshedpur, East Singhbhum, Jharkhand, 831001",
+      "phone": "8709809909",
+      "gstin": null
+    },
+    "date": "2026-02-04",
+    "ref_number": "25-26/IS/PI/226",
+    "items": [
+      {
+        "product": "Football Goal Post Net Fix Type",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 10800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fifa Approved With White Rope Net Clip",
+        "brand": null,
+        "quantity": 400,
+        "unit_price": 23.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_025b01dc95cf_b378a770_1a69f650_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

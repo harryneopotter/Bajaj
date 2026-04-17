@@ -1,0 +1,19 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "M/S BAJAJ & CO",
+      "address": "27 MUNICIPAL MKTCONN/PLACE NEW DELHI PIN- 110001",
+      "phone": "23742070",
+      "gstin": null
+    },
+    "date": "2024-09-07",
+    "ref_number": "MTDL002206369133",
+    "items": [],
+    "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__5.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__5.html"
+}

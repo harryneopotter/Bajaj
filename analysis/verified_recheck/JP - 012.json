@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Bojai & Co.",
+      "address": "Shop Center Bais, Delhi-110006",
+      "phone": "8595683195",
+      "gstin": "09AMDPD3360P1ZU"
+    },
+    "date": "2026-04-03",
+    "ref_number": "012",
+    "items": [
+      {
+        "product": "BB Dunking Ring",
+        "brand": null,
+        "quantity": 5,
+        "unit_price": 7500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "JP - 012.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

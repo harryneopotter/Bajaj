@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Suresh Bajaj",
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with Projection (Made of C Type Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable with Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Poles Height Adjustable Suitable for Practice",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_036c01dc9755_2ee1b330_8ca51990_bajajsports.com__7.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,56 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Fédération Internationale de Football Association",
+      "address": "FIFA-Strasse 20 P.O. Box 8044 Zurich Switzerland",
+      "phone": "+41(0)43 222 7777",
+      "gstin": null
+    },
+    "date": "2017-09-04",
+    "ref_number": "SUPPLY OF SPORTS EQUIPMENTS FOR FIFA U-17 WORLD CUP INDIA 2017",
+    "items": [
+      {
+        "product": "Foot Ball Goal Posts Aluminium Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Foot Ball Goal Posts Aluminium Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Goal Posts Portable / Foldable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_001a01dc8164_ed407750_c7c165f0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "reason": "missing"
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "reason": "missing"
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "reason": "missing"
+    }
+  ]
+}

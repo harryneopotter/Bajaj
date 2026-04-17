@@ -1,0 +1,90 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Infrastructural Development Consortium",
+      "address": "Lakyrsiew Ii, Lumsohphoh, Lower Mawprem, East Khasi Hills, Meghalaya, 793002",
+      "phone": "6909319801",
+      "gstin": null
+    },
+    "date": "2026-01-13",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "TT Table Stag Surround Arena",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 1950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Flooring",
+        "brand": "STAG",
+        "quantity": 1,
+        "unit_price": 208000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table Flooring Flex",
+        "brand": "STAG",
+        "quantity": 1,
+        "unit_price": 2200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stag Championship ROLL-ON",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 32625.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stag International TTFI APP",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 42775.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stag International Deluxe 1000 DX T.T.F.I. APP.",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 47125.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stag Supreme Super Strong Super Deluxe",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 71775.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stag Peter Karlsson High Level Competition",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 79750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "KTR Metco Enigma Blue",
+        "brand": "KTR Metco",
+        "quantity": 1,
+        "unit_price": 38500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "KTR Metco Karbo C25 TTFI App.",
+        "brand": "KTR Metco",
+        "quantity": 1,
+        "unit_price": 30100.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_004b01dc8482_6a416dc0_3ec44940_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_004b01dc8482_6a416dc0_3ec44940_bajajsports.com__1.html"
+}

@@ -1,0 +1,140 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "The Principal, St. Andrew’s World School",
+      "address": "Sector 16A, Vasundhara, Ghaziabad, U.P. - 201012.",
+      "phone": "9289911680",
+      "gstin": null
+    },
+    "date": "2026-04-07",
+    "ref_number": "26-27/IS/PI/05",
+    "items": [
+      {
+        "product": "Shuttle Cocks Nylon Yonex Mavis 350",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball Stag 3 Star 40+",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket GKI Kungfu",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 770.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball Cosco Green",
+        "brand": null,
+        "quantity": 24,
+        "unit_price": 60.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat Cosco Striker No.4",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat Cosco Striker F/Size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Ball Cosco",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Racket Cosco Tango",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7 Nivia Top Grip",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Saucer Cone Plastic 2”",
+        "brand": null,
+        "quantity": 30,
+        "unit_price": 14.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cone Plastic 6”",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 18.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring Tape Freemans 30mtr.",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdles Plastic 6”",
+        "brand": null,
+        "quantity": 12,
+        "unit_price": 112.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 340.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Karate Gloves Hanah White",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fan Pad Hanah Single",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 650.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Proforma (St. Andrew's).html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "The Principal, St. Andrew’s World School",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Proforma (St. Andrew's).html"
+}

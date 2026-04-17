@@ -1,0 +1,27 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Aramex India Private Limited",
+      "address": "null",
+      "phone": "null",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "null",
+    "ref_number": "null",
+    "items": [],
+    "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__3.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "date",
+      "value": "null",
+      "confidence": "low",
+      "reason": "date not in YYYY-MM-DD",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_01a101dc8d2b_e9b00790_bd1016b0_bajajsports.com__3.html"
+}

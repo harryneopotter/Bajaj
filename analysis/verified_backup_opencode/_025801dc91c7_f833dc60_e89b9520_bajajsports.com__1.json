@@ -1,0 +1,60 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with Projection (Made of 'C' Type Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable with Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Poles Height Adjustable Suitable for Practice",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_025801dc91c7_f833dc60_e89b9520_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Document appears to be a product listing/catalog page rather than an invoice (missing client, date, reference number, pricing details).",
+    "All unit_price values are 0.0, likely placeholders due to missing price data.",
+    "Key invoice fields are null: client details, GSTIN, date, and ref_number.",
+    "Quantities all set to 1 may be defaulted, not explicitly extracted."
+  ],
+  "source_file": "_025801dc91c7_f833dc60_e89b9520_bajajsports.com__1.html"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "BALASAI EARTHMOVERS PVT LTD A/C EARTH MOVERS",
+      "address": "52, JAMUNALAL BAJAJ STREET, KOLKATTA-700007",
+      "phone": null,
+      "gstin": "19AAECB4783A1ZS"
+    },
+    "date": "2026-01-30",
+    "ref_number": "25-26/IS/675",
+    "items": [
+      {
+        "product": "HAND BALL NET GARWARE Tourament",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 2800.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_000c01dc927a_8acf5060_a06df120_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_000c01dc927a_8acf5060_a06df120_bajajsports.com__1.html"
+}

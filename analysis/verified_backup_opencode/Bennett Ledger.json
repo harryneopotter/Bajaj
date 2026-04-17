@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "BENNETT UNIVERSITY",
+      "address": "PLOT NO. 8-11, TECH ZONE-II, GREATER NOIDA, U.P-201308",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-07-01",
+    "ref_number": "25-26/IS/184",
+    "items": [
+      {
+        "product": "POLES",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 67271.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Bennett Ledger.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Bennett Ledger.html"
+}

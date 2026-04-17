@@ -1,0 +1,82 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Basketball Federation of India",
+      "address": "C-322, Ground Floor, Defence Colony, New Delhi - 110024",
+      "phone": "011 24337852",
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with 2.2 Meter Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 2.2 Meter Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 3.2 Meter Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 3.2 Meter Projection (Made of 'C' Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable (With Fixed Height of 10')",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable - Height Adjustable",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Poles Height Adjustable Suitable for Practice",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type - Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Missing key invoice fields: date and reference number are null.",
+    "All unit prices are missing; cannot validate invoice totals.",
+    "Potential duplicate line item: 'Basketball Pole Fix Type with 2.2 Meter Projection (MS Round Pipe)' appears twice with quantity 1 each.",
+    "GSTIN missing for client; may be required for invoice compliance.",
+    "Document type marked as invoice, but extracted data resembles a product listing/quotation format without pricing."
+  ],
+  "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__2.html"
+}

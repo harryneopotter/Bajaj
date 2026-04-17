@@ -1,0 +1,140 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Saptagiri Hostel",
+      "address": "Hous Khas New Delhi – 110016",
+      "phone": "8397072946",
+      "gstin": null
+    },
+    "date": "2026-01-03",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 695.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 60.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky",
+        "quantity": 1,
+        "unit_price": 62.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size – 5",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size – 5",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 785.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size – 5",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 698.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size – 5",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 860.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Keeper Gloves",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 1550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock Nylon",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock Nylon",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "GKI",
+        "quantity": 1,
+        "unit_price": 780.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 310.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Ball",
+        "brand": "Dunlop",
+        "quantity": 1,
+        "unit_price": 280.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_00ff01dc7f9a_e148ad80_a3da0880_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[14].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_00ff01dc7f9a_e148ad80_a3da0880_bajajsports.com__1.html"
+}

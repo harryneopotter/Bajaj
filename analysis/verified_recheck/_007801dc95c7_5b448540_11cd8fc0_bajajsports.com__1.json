@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "ASHOKA UNIVERSITY GST",
+      "address": "PLOT NO.2, RAJIV GANDHI EDUCATION RAI, SONEPAT -131029",
+      "phone": "06913019792",
+      "gstin": "06AAAJA2808E1ZV"
+    },
+    "date": "2026-02-04",
+    "ref_number": "25-26/CN/33",
+    "items": [
+      {
+        "product": "CR. BALL LEATHER KIMATI DELUX RED",
+        "brand": null,
+        "quantity": 60,
+        "unit_price": 462.0,
+        "hsn_code": "95066920"
+      }
+    ],
+    "source_file": "_007801dc95c7_5b448540_11cd8fc0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

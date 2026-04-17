@@ -1,0 +1,49 @@
+{
+  "status": "failed",
+  "extraction": {
+    "client": {
+      "name": "Suresh Bajaj",
+      "address": "Bajaj & Co., 27 Municipal Market, Connaught Place, New Delhi 110001, India.",
+      "phone": "+91 910212070",
+      "gstin": null
+    },
+    "date": "2025-03-05",
+    "ref_number": "1.6/2025/SB",
+    "items": [
+      {
+        "product": "Online Training",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 1000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Suresh Bajaj Invoice Previous bill.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "doc_type",
+      "current_value": "quotation",
+      "required_value": "invoice",
+      "reason": "Document is an invoice, not a quotation. Source file clearly indicates 'Invoice'."
+    },
+    {
+      "field": "client.gstin",
+      "current_value": null,
+      "required_value": "Valid GSTIN format (15 characters)",
+      "reason": "GSTIN is required for Indian entities. Cannot extract from current data."
+    },
+    {
+      "field": "items[0].hsn_code",
+      "current_value": null,
+      "required_value": "Valid HSN code",
+      "reason": "HSN code is required for product classification. Cannot extract from current data."
+    }
+  ],
+  "flags": [
+    "Missing GSTIN - required for India address",
+    "Missing HSN code - required for product classification",
+    "Document type 'quotation' appears incorrect for an invoice document"
+  ]
+}

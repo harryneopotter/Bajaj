@@ -1,0 +1,112 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Assam Badminton Association",
+      "address": "Nehru Stadium, Guwahati, Assam",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2017-11-20",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Badminton Pole Fixed Type",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Pole Socket Type",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Pole Fixed Type Stainless Steel",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Pole Socket Type Stainless Steel",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Pole Movable Type",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Referee Chair Movable and Portable",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "Assam Badminton Association",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    },
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[3].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[4].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[5].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__1.html"
+}

@@ -1,0 +1,81 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "M/S BAJAJ & CO.",
+      "address": "27, MUNICIPAL MARKET, OPP. K-BLOCK, CONNAUGHT PLACE, NEW DELHI, INDIA",
+      "phone": "011-23742070, 9910212070",
+      "gstin": null
+    },
+    "date": "2026-03-30",
+    "ref_number": "002025917",
+    "items": [
+      {
+        "product": "Weightlifting Set Training For Women 185 Kg",
+        "brand": "UESAKA",
+        "quantity": 2,
+        "unit_price": 2527,
+        "hsn_code": null
+      },
+      {
+        "product": "Weightlifting Bar 15 Kg with Collar",
+        "brand": "UESAKA",
+        "quantity": 3,
+        "unit_price": 552,
+        "hsn_code": null
+      },
+      {
+        "product": "Weightlifting Disc 0.5 Kg",
+        "brand": "UESAKA",
+        "quantity": 2,
+        "unit_price": 78,
+        "hsn_code": null
+      },
+      {
+        "product": "Weightlifting Disc 2.5 Kg",
+        "brand": "UESAKA",
+        "quantity": 1,
+        "unit_price": 105,
+        "hsn_code": null
+      },
+      {
+        "product": "Weightlifting Competition Platform Size 4M X 4M",
+        "brand": "UESAKA",
+        "quantity": 1,
+        "unit_price": 9828,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "UESAKA WEIGHTLIFTING SET PROFORMA INVOICE.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "doc_type",
+      "issue": "Potential mismatch: source filename indicates 'PROFORMA INVOICE' while doc_type is 'quotation'.",
+      "suggested_fix": "Confirm document classification and set doc_type to 'proforma_invoice' if applicable."
+    },
+    {
+      "field": "client.phone",
+      "issue": "Multiple phone numbers stored as a single comma-separated string.",
+      "suggested_fix": "Normalize to an array format, e.g., [\"011-23742070\", \"9910212070\"]."
+    }
+  ],
+  "flags": [
+    {
+      "severity": "medium",
+      "field": "client.gstin",
+      "issue": "GSTIN is missing (null)."
+    },
+    {
+      "severity": "medium",
+      "field": "items[].hsn_code",
+      "issue": "HSN codes are missing (null) for all line items."
+    },
+    {
+      "severity": "low",
+      "field": "date",
+      "issue": "Future-dated document (2026-03-30) may be valid for quotation/proforma but should be confirmed."
+    }
+  ]
+}

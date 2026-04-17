@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "H R ENTERPRISES",
+      "address": "C/O PINKI GOHAIN OPPOSITE ADARSH JATIYA VIDYALAYA GARBHANGA ROAD LOKHRA, GUWAHATI - 781001, ASSAM",
+      "phone": "7002785768",
+      "gstin": "18AAOFH1896F1ZY"
+    },
+    "date": "2026-04-08",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "SAFETY GOODS",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 888.59,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "BILTY 023.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "BILTY 023.html"
+}

@@ -1,0 +1,41 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Delhi Development Authority",
+      "address": "Dwarka Sports Complex, Sector-11, Dwarka, New Delhi-110075.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-13",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Billiards Table Dismantling & Fitting Charge",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 13800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pool Table Dismantling & Fitting Charges",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 9200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cartage & Unloading Charge",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 16000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_016201dc847b_f1252720_d36f7560_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_016201dc847b_f1252720_d36f7560_bajajsports.com__1.html"
+}

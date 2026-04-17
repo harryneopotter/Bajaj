@@ -1,0 +1,67 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Suresh Bajaj",
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with Projection (Made of 'C' Type Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable with Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Poles Height Adjustable Suitable for Practice",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Trolley and Basketball Pole Padding for Safety of the Player",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_014e01dc90e7_3589ca20_a09d5e60_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Missing key invoice fields: date, ref_number, client address/phone/GSTIN.",
+    "All item unit_price values are 0.0; likely not extracted or document may be catalog/quotation rather than invoice.",
+    "No tax/HSN details extracted for any line item.",
+    "Document type marked as invoice but content appears product-list-like; verify document classification."
+  ],
+  "source_file": "_014e01dc90e7_3589ca20_a09d5e60_bajajsports.com__1.html"
+}

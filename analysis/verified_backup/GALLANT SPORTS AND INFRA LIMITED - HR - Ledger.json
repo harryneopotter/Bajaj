@@ -1,0 +1,34 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "GALLANT SPORTS AND INFRA LIMITED - HR",
+      "address": "Unit No. 424, 4th Floor, Rosewood City, Eros City Square, Sector-49, Gurugram, Haryana 122018",
+      "phone": "011- 23742070,23744789,9910212070,9958007376",
+      "gstin": null
+    },
+    "date": "2026-02-16",
+    "ref_number": "25-26/IS/720",
+    "items": [
+      {
+        "product": "POLES",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 188496.0,
+        "hsn_code": null
+      },
+      {
+        "product": "POLES",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 4200.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "GALLANT SPORTS AND INFRA LIMITED - HR - Ledger.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "GALLANT SPORTS AND INFRA LIMITED - HR - Ledger.html"
+}

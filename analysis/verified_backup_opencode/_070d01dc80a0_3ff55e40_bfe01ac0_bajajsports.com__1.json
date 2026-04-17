@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Kaila Devi Temple Trust",
+      "address": "Karauli, Rajasthan-322243",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-08",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with 3.2 Meter Projection",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 145960.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_070d01dc80a0_3ff55e40_bfe01ac0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_070d01dc80a0_3ff55e40_bfe01ac0_bajajsports.com__1.html"
+}

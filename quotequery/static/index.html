@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>QuoteQuery</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root { --primary: #1a237e; --bg: #f8f9fa; }
+        body { font-family: -apple-system, system-ui; background: var(--bg); margin: 0; padding: 20px; color: #333; }
+        .header { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+        h1 { font-size: 24px; color: var(--primary); margin: 0; }
+        
+        .answer-card { 
+            background: white; border-radius: 16px; padding: 24px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 24px;
+            min-height: 100px; display: flex; align-items: center;
+            font-size: 20px; line-height: 1.4; color: var(--primary); font-weight: 500;
+        }
+
+        .input-group { position: relative; margin-bottom: 24px; }
+        input { 
+            width: 100%; padding: 18px 50px 18px 20px; border-radius: 30px; 
+            border: 2px solid #ddd; font-size: 18px; box-sizing: border-box; outline: none;
+        }
+        .mic-btn {
+            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; font-size: 24px; cursor: pointer;
+        }
+
+        .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .big-btn {
+            background: white; border: 1px solid #eee; padding: 20px 15px; border-radius: 16px;
+            font-size: 16px; font-weight: 600; color: #555; text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03); cursor: pointer;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .big-btn:active { background: #eee; }
+        .big-btn span { font-size: 24px; }
+
+        .loading { color: #888; font-style: italic; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏷️ QuoteQuery</h1>
+    </div>
+
+    <div id="answer" class="answer-card">
+        Welcome back. How can I help you today?
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="query-input" placeholder="Ask anything..." onkeypress="handleKey(event)">
+        <button class="mic-btn" onclick="startVoice()">🎙️</button>
+    </div>
+
+    <div class="button-grid">
+        <div class="big-btn" onclick="ask('Show me recent quotes')">
+            <span>🕒</span> Recent Quotes
+        </div>
+        <div class="big-btn" onclick="ask('How much business this month?')">
+            <span>💰</span> This Month
+        </div>
+        <div class="big-btn" onclick="ask('Who are my best clients?')">
+            <span>👑</span> Top Clients
+        </div>
+        <div class="big-btn" onclick="ask('What products am I quoting most?')">
+            <span>📦</span> Top Products
+        </div>
+        <div class="big-btn" onclick="ask('Which clients have gone quiet?')">
+            <span>🤫</span> Who's Quiet?
+        </div>
+        <div class="big-btn" onclick="ask(prompt('Enter client name:') || 'Last quote to DPS')">
+            <span>🔍</span> Last Quote...
+        </div>
+    </div>
+
+    <script>
+        async function ask(text) {
+            const answerDiv = document.getElementById('answer');
+            answerDiv.innerHTML = '<span class="loading">Looking that up...</span>';
+            
+            try {
+                console.log("Calling API with:", text); const res = await fetch('./api/query', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({text})
+                });
+                const data = await res.json();
+                answerDiv.innerHTML = data.answer;
+            } catch (e) {
+                answerDiv.innerText = "Error: " + e.message + ". Check console.";
+            }
+        }
+
+        function handleKey(e) {
+            if (e.key === 'Enter') {
+                const val = e.target.value;
+                if (val) {
+                    ask(val);
+                    e.target.value = '';
+                }
+            }
+        }
+
+        function startVoice() {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Voice not supported in this browser.");
+                return;
+            }
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-IN';
+            recognition.onresult = (event) => {
+                const text = event.results[0][0].transcript;
+                document.getElementById('query-input').value = text;
+                ask(text);
+            };
+            recognition.start();
+        }
+    </script>
+</body>
+</html>

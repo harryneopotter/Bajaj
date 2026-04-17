@@ -1,0 +1,587 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "JSW Sports",
+      "address": "JSW Centre, Bandra Kurla Complex Near MMRDA Grounds, Bandra East, Mumbai-400051",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-10",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Plastic cones 6 inch",
+        "brand": "Bajaj",
+        "quantity": 25,
+        "unit_price": 19.47,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic cones 15 inch",
+        "brand": "Bajaj",
+        "quantity": 20,
+        "unit_price": 123.9,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic cones 12 inch",
+        "brand": "Bajaj",
+        "quantity": 20,
+        "unit_price": 66.08,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic cones 9 inch",
+        "brand": "Bajaj",
+        "quantity": 25,
+        "unit_price": 37.76,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility premium hurdles 6 inch",
+        "brand": "Baja",
+        "quantity": 10,
+        "unit_price": 90.86,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility premium hurdles 9 inch",
+        "brand": "Baja",
+        "quantity": 10,
+        "unit_price": 106.2,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility ladders Speed 6mts",
+        "brand": "Bajaj",
+        "quantity": 5,
+        "unit_price": 566.4,
+        "hsn_code": null
+      },
+      {
+        "product": "Markers",
+        "brand": "Baja",
+        "quantity": 10,
+        "unit_price": 708.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Air Pump(Leg)",
+        "brand": "John",
+        "quantity": 1,
+        "unit_price": 885.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton cock Feather",
+        "brand": "Sports Master",
+        "quantity": 2,
+        "unit_price": 367.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garwrae",
+        "quantity": 2,
+        "unit_price": 1092.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket graphite",
+        "brand": "Yonex Attack 9",
+        "quantity": 6,
+        "unit_price": 1328.25,
+        "hsn_code": null
+      },
+      {
+        "product": "Bali carrying nets",
+        "brand": "Baja",
+        "quantity": 2,
+        "unit_price": 315.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size 5",
+        "brand": "NIVIA Slamforce",
+        "quantity": 2,
+        "unit_price": 357.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size 6",
+        "brand": "NIVIA Slamforce",
+        "quantity": 2,
+        "unit_price": 477.9,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size 6",
+        "brand": "NIVIA Slamforce",
+        "quantity": 2,
+        "unit_price": 451.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size 7",
+        "brand": "NIVIA Slamforce",
+        "quantity": 2,
+        "unit_price": 451.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball post with net wall mount Size 9.0x8x60.8x2.7 cm",
+        "brand": "NIVIA BB1333D",
+        "quantity": 2,
+        "unit_price": 3990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Ring net",
+        "brand": "Garware",
+        "quantity": 4,
+        "unit_price": 360.15,
+        "hsn_code": null
+      },
+      {
+        "product": "Board games Ludo & Chess",
+        "brand": "Ekta",
+        "quantity": 5,
+        "unit_price": 220.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Card Games Uno Card",
+        "brand": null,
+        "quantity": 5,
+        "unit_price": 89.25,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board stands Precise Easy Folded",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 1102.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board - std size with coins and striker BT 32“X2”X2” Full Size",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 2302.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board medium 26”",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 1260.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess mat & coins",
+        "brand": "Baja Roll Way",
+        "quantity": 5,
+        "unit_price": 735.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess clock",
+        "brand": "NIVIA DG-329",
+        "quantity": 5,
+        "unit_price": 1754.66,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Kit with Bag(junior with Tennis balls) Cosco Tennis Bat, Ball & Plastic Stump",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 15756.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Kit with Bag(junior with Tennis balls and fiber bats) Cosco Bat",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 1890.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Discus(men) - 1.5 kg",
+        "brand": "Nelco Indane",
+        "quantity": 2,
+        "unit_price": 1652.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Discus(Women) - 1. kg",
+        "brand": "Nelco Indane",
+        "quantity": 2,
+        "unit_price": 1416.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Electric air pump",
+        "brand": "Max",
+        "quantity": 1,
+        "unit_price": 2537.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football size 4",
+        "brand": "NIVIA Trainer",
+        "quantity": 5,
+        "unit_price": 436.8,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal/Goalpost Net",
+        "brand": "BajaJ Full Size",
+        "quantity": 2,
+        "unit_price": 4200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football goalkeeping gloves",
+        "brand": "NIVIA Airstritet",
+        "quantity": 2,
+        "unit_price": 304.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Football size 5",
+        "brand": "NIVIA Trainer",
+        "quantity": 3,
+        "unit_price": 540.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Frisbee(Small-2, medium-2 and large-2)",
+        "brand": "Flash",
+        "quantity": 6,
+        "unit_price": 71.4,
+        "hsn_code": null
+      },
+      {
+        "product": "Handball mini",
+        "brand": "NIVIA HB-379",
+        "quantity": 3,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Handball",
+        "brand": "NIVIA HB-379",
+        "quantity": 3,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Sticks Junior",
+        "brand": "Alfa",
+        "quantity": 15,
+        "unit_price": 577.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula hoops large size Plastic 36”",
+        "brand": "BajaJ",
+        "quantity": 15,
+        "unit_price": 124.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula hoops medium size Plastic 24”",
+        "brand": "BajaJ",
+        "quantity": 15,
+        "unit_price": 124.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula hoops small Plastic 18”",
+        "brand": "Nelco",
+        "quantity": 3,
+        "unit_price": 1764.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin(womens) 500 gms",
+        "brand": "Nelco",
+        "quantity": 3,
+        "unit_price": 1416.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring tape 50 mts",
+        "brand": "Freemans",
+        "quantity": 1,
+        "unit_price": 649.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring tape 100 mts",
+        "brand": "Freemans",
+        "quantity": 1,
+        "unit_price": 1240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine ball 1 kg.",
+        "brand": "NIVIA",
+        "quantity": 2,
+        "unit_price": 454.3,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine ball 2 kg.",
+        "brand": "NIVIA",
+        "quantity": 2,
+        "unit_price": 519.2,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Trampolines",
+        "brand": "Cosco",
+        "quantity": 3,
+        "unit_price": 3835.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Parachute Play cloth",
+        "brand": "Bajaj",
+        "quantity": 2,
+        "unit_price": 685.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ping Pong table One Star 40+",
+        "brand": "STAG",
+        "quantity": 2,
+        "unit_price": 187.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pom Porn(multi colour) With Stick",
+        "brand": "Brajj",
+        "quantity": 50,
+        "unit_price": 168.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Puzzles",
+        "brand": "Brajj",
+        "quantity": 10,
+        "unit_price": 577.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Relay Batons",
+        "brand": null,
+        "quantity": 12,
+        "unit_price": 116.03,
+        "hsn_code": null
+      },
+      {
+        "product": "Short put 1 Kg",
+        "brand": "Brajj",
+        "quantity": 1,
+        "unit_price": 165.2,
+        "hsn_code": null
+      },
+      {
+        "product": "short put 5 Kg",
+        "brand": "Brajj",
+        "quantity": 1,
+        "unit_price": 1240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Skipping Rope",
+        "brand": "908 Vaishali",
+        "quantity": 15,
+        "unit_price": 124.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Small Flags with sticks Plastics",
+        "brand": null,
+        "quantity": 30,
+        "unit_price": 38.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Small Plastic balls(Different colours)(packet)",
+        "brand": "Brajj",
+        "quantity": 50,
+        "unit_price": 52.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Snake and ladder(large floor mats version)",
+        "brand": "Ekta",
+        "quantity": 1,
+        "unit_price": 221.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stadio meter( height measuring scale)",
+        "brand": "Brajj",
+        "quantity": 1,
+        "unit_price": 4484.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Starting clapper for athletics Wooden",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 368.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Stopwatch(100 LAPS)",
+        "brand": "Racio",
+        "quantity": 2,
+        "unit_price": 378.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swiss ball 65",
+        "brand": "Casio 65CM",
+        "quantity": 3,
+        "unit_price": 826.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Kits 2 Bat 1 Box Ball",
+        "brand": "STAG 1 STAR",
+        "quantity": 4,
+        "unit_price": 704.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Team Jerseys(2 different colours)",
+        "brand": "Shiv Naresh",
+        "quantity": 30,
+        "unit_price": 1134.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennikoi Ring",
+        "brand": "Brajj",
+        "quantity": 5,
+        "unit_price": 71.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Throwball synthetic Size 5",
+        "brand": "Cosco",
+        "quantity": 2,
+        "unit_price": 695.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tug-of war( for field day event)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 9450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Moulded",
+        "brand": "NIVIA G2O20",
+        "quantity": 3,
+        "unit_price": 709.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball net",
+        "brand": "NIVIA VB5603",
+        "quantity": 2,
+        "unit_price": 1559.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Weighing machine Digital",
+        "brand": "Accsure",
+        "quantity": 1,
+        "unit_price": 2478.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga mats",
+        "brand": "Brajj 180X60 6MM",
+        "quantity": 25,
+        "unit_price": 679.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistle FOX 40 Original Pearl",
+        "brand": null,
+        "quantity": 5,
+        "unit_price": 378.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volley ball net antenna",
+        "brand": "Brajj",
+        "quantity": 2,
+        "unit_price": 735.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hand ball",
+        "brand": "NIVIA Men",
+        "quantity": 3,
+        "unit_price": 635.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hand ball net",
+        "brand": "Metco 667",
+        "quantity": 2,
+        "unit_price": 2016.0,
+        "hsn_code": null
+      },
+      {
+        "product": "hand ball poles",
+        "brand": "Brajj",
+        "quantity": 2,
+        "unit_price": 52710.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Dart Board Junior",
+        "brand": "Unicon 15”",
+        "quantity": 2,
+        "unit_price": 1050.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bean Bags Junior",
+        "brand": "Brajj",
+        "quantity": 2,
+        "unit_price": 42.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Dart Board Senior",
+        "brand": "Unicorn 17”",
+        "quantity": 2,
+        "unit_price": 1155.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volley Ball Poles Set",
+        "brand": "Braj Fix Type",
+        "quantity": 1,
+        "unit_price": 15876.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "JSW Quotation.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "JSW Quotation.html"
+}

@@ -1,0 +1,61 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Bajaj and company",
+      "address": "New Pratap Colony, Q47G+6F6, Siraspur, Delhi, 110042, India",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-08",
+    "ref_number": "25-26/IS/632",
+    "items": [
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 13950.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 8316.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6675.0,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 90077.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 0,
+        "unit_price": 20000.0,
+        "hsn_code": "996511"
+      }
+    ],
+    "source_file": "_000801dc8151_fb91c240_f2b546c0_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "All line items have generic product name 'Product Description' (likely header text, not actual item names).",
+    "One line item has quantity 0 with non-zero unit price (possible extraction error).",
+    "Client phone and GSTIN are missing.",
+    "Date 2026-01-08 may be future-dated depending on document context and should be confirmed.",
+    "HSN code 996511 appears to be a service code and may be inconsistent with sports goods invoice items."
+  ],
+  "source_file": "_000801dc8151_fb91c240_f2b546c0_bajajsports.com__2.html"
+}

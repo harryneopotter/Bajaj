@@ -1,0 +1,33 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "All India Football Federation",
+      "address": "Football House, Sector 19, Phase 1, Dwarka, New Delhi - 110 075",
+      "phone": "+91 11 25308200",
+      "gstin": null
+    },
+    "date": "2022-04-01",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Futsal Goal Post",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_01a601dc8c43_8f6969e0_ae3c3da0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[0].unit_price",
+      "value": 0.0,
+      "reason": "Unit price is zero, likely missing price data"
+    }
+  ],
+  "source_file": "_01a601dc8c43_8f6969e0_ae3c3da0_bajajsports.com__1.html"
+}

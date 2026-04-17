@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Bajaj and Co.",
+      "address": "27, Municipal Market, Connaught Circus, New Delhi - 110001",
+      "phone": "011-23742070",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2025-01-29",
+    "ref_number": null,
+    "items": [],
+    "source_file": "_000501dc90f8_026513a0_072f3ae0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,48 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Gallant Sports & Infra Pvt. Ltd.",
+      "address": "Unit No.424, Eros City Square, Rosewood City, Gurgaon, Haryana – 122 018.",
+      "phone": "9958215554",
+      "gstin": "06AAGCG3428F1ZU"
+    },
+    "date": "2026-01-10",
+    "ref_number": "25-26/IS/PI/199",
+    "items": [
+      {
+        "product": "Basketball Pole made of 6” dia pipe with 2.2 meter projection and basketball board imported 20mm thick size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 102360.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Pickle Ball Movable Without Weight With Net",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 18000.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Pole Fix Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 9240.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6675.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_011101dc821d_ea9c3340_bfd499c0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_011101dc821d_ea9c3340_bfd499c0_bajajsports.com__1.html"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Advance Sports Technology LLP",
+      "address": "Kalinga Stadium Sports Complex Nayapalli Khoradha, Bhubneshwar, Khordha, Odisha-751012",
+      "phone": "9711266776",
+      "gstin": "21AAZFA7144A1ZO"
+    },
+    "date": "2026-02-05",
+    "ref_number": "25-26/IS/PI/231",
+    "items": [
+      {
+        "product": "Football Goal Post Movable Ms Pipe",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 67440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6126.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_007301dc980c_814207d0_83c61770_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

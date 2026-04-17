@@ -1,0 +1,22 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [],
+    "source_file": "_018501dc8c42_0bfb6ff0_23f24fd0_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "All key invoice fields are null or empty (client details, date, reference number, items).",
+    "Unable to verify or correct without source HTML/content."
+  ],
+  "source_file": "_018501dc8c42_0bfb6ff0_23f24fd0_bajajsports.com__2.html"
+}

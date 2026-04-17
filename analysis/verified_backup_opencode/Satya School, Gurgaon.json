@@ -1,0 +1,174 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Satya School",
+      "address": "Sector-49, Gurgaon, Haryana",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-03-18",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football Size-5",
+        "brand": "Cosco Delta Force",
+        "quantity": 1,
+        "unit_price": 820.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-5",
+        "brand": "Nivia Shining Star",
+        "quantity": 1,
+        "unit_price": 750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Net",
+        "brand": "Metco All Double",
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 5800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Foldable for Kids",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag 3 Star 40+ White",
+        "quantity": 1,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "Stag Tournament",
+        "quantity": 1,
+        "unit_price": 410.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "Stag Official",
+        "quantity": 1,
+        "unit_price": 850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex Mavis 350",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex GR-303",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kick Board",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pool Noodles",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 280.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Arm Band",
+        "brand": "Intex",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fins",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Arm Paddles",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Snorkels",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Coins & Striker",
+        "brand": "Champion",
+        "quantity": 1,
+        "unit_price": 250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Powder",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 175.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bibs",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Ball",
+        "brand": "Dunlop Yellow Double Dot",
+        "quantity": 1,
+        "unit_price": 260.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Satya School, Gurgaon.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Satya School, Gurgaon.html"
+}

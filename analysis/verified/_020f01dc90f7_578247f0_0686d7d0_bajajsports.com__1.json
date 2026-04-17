@@ -1,0 +1,104 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "CISF",
+      "address": "PPCL Bhavan, Sector-5, Western Yamuna Canal Link Road, DSIIDC Industrial Area, Iradat Nagar, Delhi – 110039.",
+      "phone": "8802855953",
+      "gstin": null
+    },
+    "date": "2026-01-29",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Sepaktakraw Net Marathon for Competition",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 3100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Sepaktakraw Net Marathon for Practice",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 1450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Sepaktakraw Ball for Practice Marathon No.201 – Men",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Sepaktakraw Ball for Practice Marathon No.201J – Women",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Sepaktakraw Ball for Competition Marathon No.908 – Men",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 1450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Sepaktakraw Ball for Competition Marathon No.909 – Women",
+        "brand": "Marathon",
+        "quantity": 1,
+        "unit_price": 1450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 745.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Lawn Tennis Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kicking Pad",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Cones 6”",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 24.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Cones 9”",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 36.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Cones 12”",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 48.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_020f01dc90f7_578247f0_0686d7d0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_020f01dc90f7_578247f0_0686d7d0_bajajsports.com__1.html"
+}

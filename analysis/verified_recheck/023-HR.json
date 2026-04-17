@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "H R ENTERPRISES",
+      "address": "Pani Khaiti, Lahapara, Lahapara, Guwahati, Kamrup Metropolitan, Assam – 781026",
+      "phone": "+91-6002523764",
+      "gstin": "18AAOFH1896F1ZY"
+    },
+    "date": "2026-04-08",
+    "ref_number": "26-27/CR/023",
+    "items": [
+      {
+        "product": "SAFETY NET",
+        "brand": "GARWARE",
+        "quantity": 2,
+        "unit_price": 26469.5,
+        "hsn_code": "56081900"
+      }
+    ],
+    "source_file": "023-HR.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

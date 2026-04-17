@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bajaj Sports - Data Quality Report</title>
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; background: #f4f4f7; color: #1c1c1e; margin: 0; padding-top: 80px; }
+        
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            background: #111; color: white; display: flex; align-items: center;
+            padding: 0 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #c5a059; z-index: 1000;
+        }
+        .header img { height: 40px; margin-right: 16px; }
+        .header h1 { font-size: 20px; font-weight: 600; }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+        
+        .card {
+            background: white; border-radius: 12px; padding: 20px;
+            margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-left: 4px solid #c5a059;
+        }
+        .card h2 { margin: 0 0 12px 0; font-size: 16px; color: #111; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        
+        .issue { display: flex; gap: 12px; margin-bottom: 8px; font-size: 14px; }
+        .label { font-weight: 600; color: #666; width: 60px; flex-shrink: 0; }
+        .diff { flex: 1; }
+        .old { text-decoration: line-through; color: #999; margin-right: 8px; }
+        .new { color: #2e7d32; font-weight: 500; background: #e8f5e9; padding: 2px 6px; border-radius: 4px; }
+        
+        .meta { margin-top: 40px; text-align: center; color: #888; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="/static/logo.png" alt="Bajaj Logo">
+        <h1>Data Quality Report</h1>
+    </div>
+
+    <div class="container">
+        <div class="card" style="background: #fff3e0; border-color: #ff9800;">
+            <h2 style="color: #e65100;">Summary</h2>
+            <p>The system audited 134 client records and identified formatting issues in names, phone numbers, and GSTINs.</p>
+            <p><strong>Action Required:</strong> Review the proposed changes below. Valid changes will be applied to the master database.</p>
+        </div>
+
+        <!-- Generated Content -->
+        <div class="card"><h2>ALTIUS SPORTS & LEISURE PVT LTD(KOL)</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">ALTIUS SPORTS & LEISURE PVT LTD(KOL)</span> <span class="arrow">→</span> <span class="new">Altius Sports & Leisure Pvt Ltd(Kol)</span></div></div></div>
+<div class="card"><h2>APPROVED CONTRACTORS...</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">ALL CAPS NAME</span> <span class="arrow">→</span> <span class="new">Title Case Name</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">+91-9533210310</span> <span class="arrow">→</span> <span class="new">+91-9533210310</span></div></div></div>
+<div class="card"><h2>ASHIANA AMARAH</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">ASHIANA AMARAH</span> <span class="arrow">→</span> <span class="new">Ashiana Amarah</span></div></div></div>
+<div class="card"><h2>ASHOKA UNIVERSITY GST</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">ASHOKA UNIVERSITY GST</span> <span class="arrow">→</span> <span class="new">Ashoka University Gst</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">06913019792</span> <span class="arrow">→</span> <span class="new">+91-6913019792</span></div></div></div>
+<div class="card"><h2>AVYUKTA CORPORATE SOLUTIONS</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">AVYUKTA CORPORATE SOLUTIONS</span> <span class="arrow">→</span> <span class="new">Avyukta Corporate Solutions</span></div></div></div>
+<div class="card"><h2>Advanced Sport Technologies</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">72900 36622</span> <span class="arrow">→</span> <span class="new">+91-7290036622</span></div></div></div>
+<div class="card"><h2>All India Football Federation</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">+91 11 25308200</span> <span class="arrow">→</span> <span class="new">+91-1125308200</span></div></div></div>
+<div class="card"><h2>Apeejay Education Society</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">92890101061</span> <span class="arrow">→</span> <span class="new">+91-2890101061</span></div></div></div>
+<div class="card"><h2>BAJAJ & CO.</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">BAJAJ & CO.</span> <span class="arrow">→</span> <span class="new">Bajaj & Co.</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">011-23742070</span> <span class="arrow">→</span> <span class="new">+91-1123742070</span></div></div></div>
+<div class="card"><h2>BALASAI EARTHMOVERS...</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">BALASAI EARTHMOVERS...</span> <span class="arrow">→</span> <span class="new">Balasai Earthmovers...</span></div></div></div>
+<div class="card"><h2>CISF</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">CISF</span> <span class="arrow">→</span> <span class="new">Cisf</span></div></div></div>
+<div class="card"><h2>EBACO INDIA PRIVATE LIMITED</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">EBACO INDIA...</span> <span class="arrow">→</span> <span class="new">Ebaco India...</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">+91-9811705990</span> <span class="arrow">→</span> <span class="new">+91-9811705990</span></div></div></div>
+<div class="card"><h2>GALLANT SPORTS AND INFRA LIMITED</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">GALLANT SPORTS...</span> <span class="arrow">→</span> <span class="new">Gallant Sports...</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">+91-99582 15554</span> <span class="arrow">→</span> <span class="new">+91-9958215554</span></div></div></div>
+<div class="card"><h2>Heritage Max Condominium Association</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">0124-4048251</span> <span class="arrow">→</span> <span class="new">+91-1244048251</span></div></div></div>
+<div class="card"><h2>M/s Michezo Sports Infra</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">M/s Michezo Sports Infra</span> <span class="arrow">→</span> <span class="new">Michezo Sports Infra</span></div></div></div>
+<div class="card"><h2>Manoj Kumar Dubey, INSP GD</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">011-26502650-</span> <span class="arrow">→</span> <span class="new">+91-1126502650</span></div></div></div>
+<div class="card"><h2>NELCO(INDIA) PVT. LTD.</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">NELCO(INDIA)...</span> <span class="arrow">→</span> <span class="new">Nelco(India)...</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">0121 2511149</span> <span class="arrow">→</span> <span class="new">+91-1212511149</span></div></div></div>
+<div class="card"><h2>Pathway School Gurgaon</h2><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">0124 4872000</span> <span class="arrow">→</span> <span class="new">+91-1244872000</span></div></div></div>
+<div class="card"><h2>SYNCOTTS INTERNATIONAL(GURGAON)</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">SYNCOTTS...</span> <span class="arrow">→</span> <span class="new">Syncotts...</span></div></div><div class="issue"><span class="label" style="color:red">GSTIN</span><div class="diff"><span class="old">07AAFPB24879ZY</span> <span class="arrow">→</span> <span class="new" style="background:#ffebee; color:#c62828">Invalid Format</span></div></div></div>
+<div class="card"><h2>UESAKA T.E CO.,LTD</h2><div class="issue"><span class="label">Name</span><div class="diff"><span class="old">UESAKA T.E CO.,LTD</span> <span class="arrow">→</span> <span class="new">Uesaka T.E Co.,Ltd</span></div></div><div class="issue"><span class="label">Phone</span><div class="diff"><span class="old">81-3-3622-8171</span> <span class="arrow">→</span> <span class="new">+91-1336228171</span></div></div></div>
+
+        <div class="meta">Generated by OpenClaw Audit Sub-Agent</div>
+    </div>
+</body>
+</html>

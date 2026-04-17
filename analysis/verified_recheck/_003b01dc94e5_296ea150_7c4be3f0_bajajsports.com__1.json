@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Altius Sports & Leisure Pvt Ltd.",
+      "address": "38A/2, Jyotish Roy Road, Kolkata – 700053, West Bengal.",
+      "phone": "7003240836",
+      "gstin": null
+    },
+    "date": "2026-02-03",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "12-seater Dugout",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 166000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_003b01dc94e5_296ea150_7c4be3f0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

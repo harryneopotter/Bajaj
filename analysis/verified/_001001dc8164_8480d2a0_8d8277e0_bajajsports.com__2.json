@@ -1,0 +1,74 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Bajaj & Co.",
+      "address": "27 Municipal Market, Connaught Circus, New Delhi 110001",
+      "phone": "+91-11-23742070",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football Goal Post Fix In Ground Type (Competition Size 24’ x 8’)",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Movable (Competition Size 24’ x 8’)",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Movable and Portable Small (16’ x 8’)",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Movable and Portable Small (12’ x 7’)",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Goal Post Movable and Portable Small (10’ x 7’)",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Futsal Goal Post Movable (Size: 3m x 2m x 1m)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Goal Posts – Portable / Foldable (Size: 1.5m x 0.9m)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Missing invoice-critical fields: date and ref_number are null.",
+    "All unit_price values are null for line items; cannot validate invoice totals.",
+    "All hsn_code values are null; tax classification missing.",
+    "Brand set to MRF for multiple football goal post items may be incorrect and should be cross-checked with source HTML."
+  ],
+  "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__2.html"
+}

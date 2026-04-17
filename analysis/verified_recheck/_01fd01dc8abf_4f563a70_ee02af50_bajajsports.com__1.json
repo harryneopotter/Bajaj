@@ -1,0 +1,68 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "HR Enterprises",
+      "address": "Pani Khaiti, Lahapara, Guwahati, Kamrup Metropolition, Assam-781026",
+      "phone": null,
+      "gstin": "18AAOFH1896F1ZY"
+    },
+    "date": "2026-01-20",
+    "ref_number": "25-26/IS/PI/212",
+    "items": [
+      {
+        "product": "Football Goal Post Aluminium fixed Type(FIFA Approved)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 144000.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Football Net Garware(FIFA Approved)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 10800.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Basketball Pole Channel 8” x 6”, 2.2 mtr. Projection, Aluminium Frame Plate Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 174720.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Volleyball Pole Plate Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 15120.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Volleyball Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Pole Plate Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 9240.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6675.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_01fd01dc8abf_4f563a70_ee02af50_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,58 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Suresh Bajaj",
+      "address": "Bajaj & Co., 27 Municipal Market, Connaught Place, New Delhi 110001, India.",
+      "phone": "+91 910212070",
+      "gstin": null
+    },
+    "date": "2025-03-05",
+    "ref_number": "1.6/2025/SB",
+    "items": [
+      {
+        "product": "Online Training",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 1000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Suresh Bajaj Invoice Previous bill.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "client.phone",
+      "issue": "Phone number appears incomplete for India (+91 should typically be followed by 10 digits). Current value has 9 digits after country code.",
+      "suggested_fix": "Verify and correct to full E.164-like format, e.g. +91XXXXXXXXXX."
+    },
+    {
+      "field": "doc_type",
+      "issue": "Potential mismatch: source filename includes 'Invoice' while doc_type is 'quotation'.",
+      "suggested_fix": "Confirm document classification from content header and set consistent type."
+    },
+    {
+      "field": "items[0].product",
+      "issue": "Item is a service ('Online Training'), which may not align with sports equipment domain records.",
+      "suggested_fix": "Verify if this record belongs to the intended sports equipment dataset."
+    },
+    {
+      "field": "items[0].hsn_code",
+      "issue": "Missing HSN/SAC code for taxable line item.",
+      "suggested_fix": "Capture applicable HSN/SAC code if present in source."
+    },
+    {
+      "field": "client.gstin",
+      "issue": "GSTIN missing.",
+      "suggested_fix": "Extract GSTIN if available in document; otherwise keep null with explicit reason."
+    }
+  ],
+  "flags": [
+    "incomplete_phone",
+    "document_type_inconsistency",
+    "domain_mismatch_possible",
+    "missing_tax_identifier",
+    "missing_hsn_sac"
+  ]
+}

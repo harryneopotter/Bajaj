@@ -1,0 +1,41 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Bajaj & Co.",
+      "address": "27 Municipal Market, Connaught Circus, New Delhi 110001",
+      "phone": "+91-11-23742070",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Foot Ball Goal Posts Aluminium Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Foot Ball Goal Posts Aluminium Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Specifications of Football Goal Post (Aluminium, FIFA).html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    "Date is missing (null)",
+    "Reference number is missing (null)",
+    "Brand is missing for all line items",
+    "Unit price is missing for all line items",
+    "HSN code is missing for all line items",
+    "Document appears to be a specification sheet; doc_type 'quotation' may be incorrect without pricing/quote metadata"
+  ],
+  "source_file": "Specifications of Football Goal Post (Aluminium, FIFA).html"
+}

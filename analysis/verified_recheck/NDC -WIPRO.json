@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Wipro Limited",
+      "address": "27, Municipal Market, Connaught Circus, New Delhi - 110001",
+      "phone": "011-23742070",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2026-04-03",
+    "ref_number": null,
+    "items": [],
+    "source_file": "NDC -WIPRO.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

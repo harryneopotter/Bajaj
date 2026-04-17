@@ -1,0 +1,161 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with Projection (Made of 'C' Type Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable with Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Poles Height Adjustable Suitable for Practice",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_025801dc91c7_f833dc60_e89b9520_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "was": null,
+      "reason": "Missing client name"
+    },
+    {
+      "field": "client.address",
+      "was": null,
+      "reason": "Missing client address"
+    },
+    {
+      "field": "client.phone",
+      "was": null,
+      "reason": "Missing client phone"
+    },
+    {
+      "field": "client.gstin",
+      "was": null,
+      "reason": "Missing client GSTIN"
+    },
+    {
+      "field": "date",
+      "was": null,
+      "reason": "Missing invoice date"
+    },
+    {
+      "field": "ref_number",
+      "was": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "items[0].brand",
+      "was": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[0].unit_price",
+      "was": 0.0,
+      "reason": "Unit price is zero, possibly missing"
+    },
+    {
+      "field": "items[0].hsn_code",
+      "was": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[1].brand",
+      "was": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[1].unit_price",
+      "was": 0.0,
+      "reason": "Unit price is zero, possibly missing"
+    },
+    {
+      "field": "items[1].hsn_code",
+      "was": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[2].brand",
+      "was": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[2].unit_price",
+      "was": 0.0,
+      "reason": "Unit price is zero, possibly missing"
+    },
+    {
+      "field": "items[2].hsn_code",
+      "was": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[3].brand",
+      "was": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[3].unit_price",
+      "was": 0.0,
+      "reason": "Unit price is zero, possibly missing"
+    },
+    {
+      "field": "items[3].hsn_code",
+      "was": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[4].brand",
+      "was": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[4].unit_price",
+      "was": 0.0,
+      "reason": "Unit price is zero, possibly missing"
+    },
+    {
+      "field": "items[4].hsn_code",
+      "was": null,
+      "reason": "Missing HSN code"
+    }
+  ],
+  "source_file": "_025801dc91c7_f833dc60_e89b9520_bajajsports.com__1.html"
+}

@@ -1,0 +1,329 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Sparsh Global School",
+      "address": "HS-01, Sector-20, Greater Noida, U.P. - 201310",
+      "phone": "9971332133",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2026-03-31",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Wilson",
+        "quantity": 10,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Flash",
+        "quantity": 10,
+        "unit_price": 65.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Ball Leather",
+        "brand": "Kimati",
+        "quantity": 10,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat K/W",
+        "brand": "SG",
+        "quantity": 10,
+        "unit_price": 2400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Batting Gloves",
+        "brand": "SS",
+        "quantity": 10,
+        "unit_price": 890.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 1550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Grip",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 85.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Hurdles",
+        "brand": "Nelco",
+        "quantity": 10,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put",
+        "brand": "Nelco",
+        "quantity": 10,
+        "unit_price": 840.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Discus",
+        "brand": "Nelco",
+        "quantity": 10,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine Ball",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 460.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Skipping Rope",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 125.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Relay Baton",
+        "brand": "Nelco",
+        "quantity": 10,
+        "unit_price": 900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bibs",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 170.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Cones 15”",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football G/Keeping Gloves",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring Tape 100mtr.",
+        "brand": "Freemans",
+        "quantity": 10,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula Hoops stand base",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Life Guard Chair",
+        "brand": "Bajaj",
+        "quantity": 10,
+        "unit_price": 26000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Life Jacket",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 1800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Noodle",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shepherd Hook",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 2150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yog Block",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility Stick with Stand",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kids Parachute",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Adjustable Hurdles",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tunnel",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 3600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Flying Disc",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 68.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Jumping Sack",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Floor Marker",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 70.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Seven Stone",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Thera Band",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula Hoops",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 115.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdles Plastic",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cones Plastic",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 22.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hopscotch Mat",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Bowling Pin",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 184.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Sparsh Global School, G. Noida.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[34].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[39].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Sparsh Global School, G. Noida.html"
+}

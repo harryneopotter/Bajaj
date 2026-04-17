@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "ALTIUS SPORTS & LEISURE PVT LTD(KOL)",
+      "address": "Gachibowli Stadium, Hyderabad - 500032, Gautam Gupta - 9830485566 HYDERABAD Telangana 500032",
+      "phone": "9830485566",
+      "gstin": "19AAICA2038B1Z3"
+    },
+    "date": "2026-02-03",
+    "ref_number": "25-26/IS/681",
+    "items": [
+      {
+        "product": "Hockey Goal Post Aluminium as per FIH specifications with Garware Tournament Net",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 180000.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Hockey Goal Net (Garware) New",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 180000.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_00a701dc95cf_c2b56930_48203b90_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

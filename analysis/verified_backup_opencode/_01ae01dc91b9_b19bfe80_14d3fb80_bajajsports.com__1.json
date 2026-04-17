@@ -1,0 +1,48 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Bharatiya Vidya Bhavan’s Mehta Vidyalaya",
+      "address": "Hathi Sadan, Copernicus Lane, Kasturba Gandhi Marg, New Delhi – 110001.",
+      "phone": "8076535706",
+      "gstin": null
+    },
+    "date": "2026-01-30",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Badminton Racket",
+        "brand": "Versa",
+        "quantity": 1,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Marble Powder",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 290.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky",
+        "quantity": 6,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Feather",
+        "brand": "Sports Master Sky King",
+        "quantity": 10,
+        "unit_price": 390.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_01ae01dc91b9_b19bfe80_14d3fb80_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_01ae01dc91b9_b19bfe80_14d3fb80_bajajsports.com__1.html"
+}

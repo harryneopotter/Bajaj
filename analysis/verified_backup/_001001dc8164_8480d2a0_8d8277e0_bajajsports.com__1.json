@@ -1,0 +1,63 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "All India Football Federation",
+      "address": "Football House, Sector 19, Phase 1, Dwarka, New Delhi - 110 075",
+      "phone": "+91 11 25308200",
+      "gstin": null
+    },
+    "date": "2017-09-04",
+    "ref_number": "SUPPLY OF FUTSAL GOAL POST",
+    "items": [
+      {
+        "product": "Foot Ball Goal Posts Aluminium Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Foot Ball Goal Posts Aluminium Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Goal Posts Portable / Foldable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__1.html"
+}

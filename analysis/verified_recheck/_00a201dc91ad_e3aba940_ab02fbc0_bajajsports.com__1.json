@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Saxo Group India Pvt. Ltd.",
+      "address": "5th Floor, Tower 10, Candor Tech Space, Sector 21, Gurugram, Haryana - 122016.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-30",
+    "ref_number": "25-26/IS/PI/221",
+    "items": [
+      {
+        "product": "Pool Stick 12mm",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 1950.0,
+        "hsn_code": "95049990"
+      },
+      {
+        "product": "Pool Stick 10mm",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 990.0,
+        "hsn_code": "95049990"
+      }
+    ],
+    "source_file": "_00a201dc91ad_e3aba940_ab02fbc0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

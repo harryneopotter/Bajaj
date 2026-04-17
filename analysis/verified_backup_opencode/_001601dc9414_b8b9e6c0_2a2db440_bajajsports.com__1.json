@@ -1,0 +1,34 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "GALLANT SPORTS AND INFRA LIMITED-UP",
+      "address": "C BLOCK SECTOR 51, NOIDA, UP - 201301",
+      "phone": "+91-99582 15554",
+      "gstin": null
+    },
+    "date": "2026-01-31",
+    "ref_number": "25-26/IS/678",
+    "items": [
+      {
+        "product": "Pickle Ball Pole Fixed Type with Net",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 9550.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Pickle Ball Net",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 38200.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_001601dc9414_b8b9e6c0_2a2db440_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_001601dc9414_b8b9e6c0_2a2db440_bajajsports.com__1.html"
+}

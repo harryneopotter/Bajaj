@@ -1,0 +1,301 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Seth Anant Ram Jaipuria School",
+      "address": "Sector – 14, Vasundhara, Ghaziabad, U.P.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-01",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Stepper",
+        "brand": "Cosco Giant",
+        "quantity": 1,
+        "unit_price": 2820.0,
+        "hsn_code": null
+      },
+      {
+        "product": "T.T Table",
+        "brand": "Stag Americas Black top",
+        "quantity": 1,
+        "unit_price": 64800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Nivia Engraver",
+        "quantity": 1,
+        "unit_price": 660.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Nivia Engraver",
+        "quantity": 1,
+        "unit_price": 620.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Cosco Challenger",
+        "quantity": 1,
+        "unit_price": 1485.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Cosco Challenger",
+        "quantity": 1,
+        "unit_price": 1430.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball(Coaching tactics pad)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-5",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 765.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-4",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 705.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football small goal post",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football small goal post",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 15900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Metal ball carrying cage with heavy wheels",
+        "brand": "Nelco N1110KEC",
+        "quantity": 1,
+        "unit_price": 13700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fan Pad",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Side Line Flags",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Cosco Super Volley",
+        "quantity": 1,
+        "unit_price": 950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Score Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Referee Stand",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 22000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mangoes(Catching Bat)",
+        "brand": "SG",
+        "quantity": 1,
+        "unit_price": 1850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Exercise Thera Band",
+        "brand": "L/M/H",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Side Arm thrower",
+        "brand": "Omtex",
+        "quantity": 1,
+        "unit_price": 2300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastic Stump Set",
+        "brand": "Flash 3 Stumps + 1 Base",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky Green",
+        "quantity": 1,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Leather Balls",
+        "brand": "SS Club",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pop Up Feilding Net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bat Grip",
+        "brand": "SS/SG",
+        "quantity": 1,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Leverage Balls",
+        "brand": "Cricket Bowling Machine Ball",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Roller Hockey",
+        "brand": "JJ Jonex Junior",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Long Jump Toe Board",
+        "brand": "Nelco N1120STDP",
+        "quantity": 1,
+        "unit_price": 7200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put Toe Board",
+        "brand": "Nelco N1120STDP",
+        "quantity": 1,
+        "unit_price": 7200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin 600 gram.",
+        "brand": "Nelco -N 1112 C",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin 700 gram.",
+        "brand": "Nelco -N 1112 B",
+        "quantity": 1,
+        "unit_price": 1170.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Javelin 800 gram.",
+        "brand": "Nelco -N 1112 A",
+        "quantity": 1,
+        "unit_price": 1305.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put(3kg)",
+        "brand": "Nelco N2018KMSF-90",
+        "quantity": 1,
+        "unit_price": 3190.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put(4kg)",
+        "brand": "Nelco N-1117 - XG",
+        "quantity": 1,
+        "unit_price": 4915.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shot Put(7.26 kg)",
+        "brand": "Nelco N-1117 - XD",
+        "quantity": 1,
+        "unit_price": 6685.0,
+        "hsn_code": null
+      },
+      {
+        "product": "High Jump Bar",
+        "brand": "Nelco Aluminium 04 Mtr.",
+        "quantity": 1,
+        "unit_price": 2200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Line Indication box",
+        "brand": "N-1131 LM 60cm",
+        "quantity": 1,
+        "unit_price": 3500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Marking Nails",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 40.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Seth Anant Ram Jaipuria School.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[13].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[15].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Seth Anant Ram Jaipuria School.html"
+}

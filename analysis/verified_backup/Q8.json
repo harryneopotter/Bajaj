@@ -1,0 +1,455 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "The Shri Ram School - Aravali",
+      "address": "Hamilton Court Complex, Phase-IV, DLF City, Gurgaon, Haryana – 122 002.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-03-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football No.5",
+        "brand": "Nivia Trainer",
+        "quantity": 1,
+        "unit_price": 520.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Nivia Classic",
+        "quantity": 1,
+        "unit_price": 664.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Nivia Shining Star",
+        "quantity": 1,
+        "unit_price": 820.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco Premier",
+        "quantity": 1,
+        "unit_price": 539.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco Delta Force",
+        "quantity": 1,
+        "unit_price": 748.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Nivia Trainer",
+        "quantity": 1,
+        "unit_price": 520.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Nivia Classic",
+        "quantity": 1,
+        "unit_price": 610.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Cosco Premier",
+        "quantity": 1,
+        "unit_price": 495.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 627.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.3",
+        "brand": "Cosco Italia",
+        "quantity": 1,
+        "unit_price": 363.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.3",
+        "brand": "Cosco Belgium",
+        "quantity": 1,
+        "unit_price": 286.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.3",
+        "brand": "Cosco Rio",
+        "quantity": 1,
+        "unit_price": 264.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.3",
+        "brand": "Nivia Trainer",
+        "quantity": 1,
+        "unit_price": 405.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.3",
+        "brand": "Nivia Air Strike",
+        "quantity": 1,
+        "unit_price": 356.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Coaching Board",
+        "brand": "Vinex Magnetic 90 x 60cm",
+        "quantity": 1,
+        "unit_price": 2250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Nivia Pro Touch",
+        "quantity": 1,
+        "unit_price": 1260.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Cosco Challenge",
+        "quantity": 1,
+        "unit_price": 1340.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Vector",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Nivia Pro Touch",
+        "quantity": 1,
+        "unit_price": 1300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Cosco Challenge",
+        "quantity": 1,
+        "unit_price": 1375.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Vector",
+        "quantity": 1,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net",
+        "brand": "Cosco Nylon",
+        "quantity": 1,
+        "unit_price": 190.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball official table equipment",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 6500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Digital Stop Watch",
+        "brand": "Racer",
+        "quantity": 1,
+        "unit_price": 320.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Digital Stop Watch",
+        "brand": "Nivia JS 307",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Digital Stop Watch",
+        "brand": "Casio HS 80W",
+        "quantity": 1,
+        "unit_price": 3500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Coaching Board",
+        "brand": "Vinex Magnetic 90 x 60cm",
+        "quantity": 1,
+        "unit_price": 2250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Soft Ball",
+        "brand": "Nivia Home Play",
+        "quantity": 1,
+        "unit_price": 220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco Light",
+        "quantity": 1,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Ball Red",
+        "brand": "Kimati Deluxe",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Ball Red",
+        "brand": "SS Club",
+        "quantity": 1,
+        "unit_price": 348.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Ball Red",
+        "brand": "SS Cricket World",
+        "quantity": 1,
+        "unit_price": 290.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Ball Red",
+        "brand": "SG Club",
+        "quantity": 1,
+        "unit_price": 668.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Ball Red",
+        "brand": "SG Bouncer",
+        "quantity": 1,
+        "unit_price": 566.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Kit Bag",
+        "brand": "SS Elite Pro",
+        "quantity": 1,
+        "unit_price": 1440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Abdominal Guard",
+        "brand": "SG Litevate",
+        "quantity": 1,
+        "unit_price": 150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Cosco All Courts",
+        "quantity": 1,
+        "unit_price": 225.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Cosco Championship",
+        "quantity": 1,
+        "unit_price": 265.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Wilson Championship",
+        "quantity": 1,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Head Championship",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Versa",
+        "quantity": 1,
+        "unit_price": 210.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco CB88",
+        "quantity": 1,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco CB110",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex GR303",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex NanoRay",
+        "quantity": 1,
+        "unit_price": 1680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Feather",
+        "brand": "Sky King",
+        "quantity": 1,
+        "unit_price": 280.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Cosco Aero 727",
+        "quantity": 1,
+        "unit_price": 440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex Mavis 10",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex Mavis 350",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Metco",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket Stand",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 4800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat",
+        "brand": "Cosco Fit 6mm",
+        "quantity": 1,
+        "unit_price": 390.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat",
+        "brand": "Cosco Pro 8mm",
+        "quantity": 1,
+        "unit_price": 795.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat",
+        "brand": "Bajaj 6mm",
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat",
+        "brand": "Nivia 6mm",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Gymnastic Mat",
+        "brand": "Size: 2m x 1m x 50mm with Canvas Cover",
+        "quantity": 1,
+        "unit_price": 2200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Gymnastic Mat",
+        "brand": "Size: 2m x 1m x 50mm with Tetron Cover",
+        "quantity": 1,
+        "unit_price": 3800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistle",
+        "brand": "Fox-40 Pearl",
+        "quantity": 1,
+        "unit_price": 360.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Q8.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "The Shri Ram School - Aravali",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Q8.html"
+}

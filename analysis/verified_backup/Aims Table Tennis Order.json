@@ -1,0 +1,105 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "All India Institute of Medical Sciences(AIIMS)",
+      "address": "Aims, New Delhi, Ansari Nagar, SOUTH DELHI, DELHI-110029.India",
+      "phone": "011-26593457",
+      "gstin": null
+    },
+    "date": "2026-04-04",
+    "ref_number": "GEM-511687734921011",
+    "items": [
+      {
+        "product": "basket ball padding",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 15000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "nails cricket mat",
+        "brand": "baja",
+        "quantity": 100,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "tabletennisstable",
+        "brand": "Stag",
+        "quantity": 6,
+        "unit_price": 41000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bat knockers",
+        "brand": "SG",
+        "quantity": 3,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "lime powder",
+        "brand": "Bajaj",
+        "quantity": 500,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket bat handle gripper",
+        "brand": "SG",
+        "quantity": 5,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "stricker",
+        "brand": "Bajaj",
+        "quantity": 6,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Aims Table Tennis Order.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[1].unit_price",
+      "value": 0.0,
+      "confidence": "low",
+      "reason": "price out of expected range",
+      "needs_html": true
+    },
+    {
+      "field": "items[3].unit_price",
+      "value": 0.0,
+      "confidence": "low",
+      "reason": "price out of expected range",
+      "needs_html": true
+    },
+    {
+      "field": "items[4].unit_price",
+      "value": 0.0,
+      "confidence": "low",
+      "reason": "price out of expected range",
+      "needs_html": true
+    },
+    {
+      "field": "items[5].unit_price",
+      "value": 0.0,
+      "confidence": "low",
+      "reason": "price out of expected range",
+      "needs_html": true
+    },
+    {
+      "field": "items[6].unit_price",
+      "value": 0.0,
+      "confidence": "low",
+      "reason": "price out of expected range",
+      "needs_html": true
+    }
+  ],
+  "source_file": "Aims Table Tennis Order.html"
+}

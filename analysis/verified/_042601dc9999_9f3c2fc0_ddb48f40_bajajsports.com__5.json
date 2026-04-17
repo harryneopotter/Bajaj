@@ -1,0 +1,119 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Sports Authority of India",
+      "address": "Major Dhyan Chand National Stadium, New Delhi",
+      "phone": "011 23389740",
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Hockey Goal Posts (H.I.F.) (Movable)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Goal Posts (Movable) Aluminium",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Goal Post (H.A.A.) (Movable)",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Rebounder Board",
+        "brand": "Bajaj",
+        "quantity": 4,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__5.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "date",
+      "value": null,
+      "reason": "Missing invoice date"
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "Missing GSTIN for client"
+    },
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[0].brand",
+      "value": null,
+      "reason": "Missing brand"
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[1].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[1].brand",
+      "value": null,
+      "reason": "Missing brand"
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[2].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[2].brand",
+      "value": null,
+      "reason": "Missing brand"
+    },
+    {
+      "field": "items[3].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[3].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    }
+  ],
+  "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__5.html"
+}

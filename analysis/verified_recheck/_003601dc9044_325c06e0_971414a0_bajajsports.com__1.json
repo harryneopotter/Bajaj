@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Gati Shakti Greens",
+      "address": "NCRTC Stabling Yard Complex, Jangpura, Delhi - 110014",
+      "phone": "+91 8941927857",
+      "gstin": null
+    },
+    "date": "2026-01-23",
+    "ref_number": "25-26/IS/660",
+    "items": [
+      {
+        "product": "Badminton Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 11000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net Garware-9506",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 400.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_003601dc9044_325c06e0_971414a0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

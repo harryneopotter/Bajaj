@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Harshita Infrastructure",
+      "address": "Second Floor, A-64, SF-17, Rise Shoplex Mall, Sector-4, Noida, Gautam Buddha Nagar, Uttar Pradesh-201301",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-09",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Tennis Net Garware Tournament",
+        "brand": "Garware",
+        "quantity": 3,
+        "unit_price": 6600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net Garware Tournament",
+        "brand": "Garware",
+        "quantity": 5,
+        "unit_price": 1140.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net Garware Tournament",
+        "brand": "Garware",
+        "quantity": 5,
+        "unit_price": 336.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickle Ball Net Garware Tournament",
+        "brand": "Garware",
+        "quantity": 2,
+        "unit_price": 3245.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Net Garware Tournament",
+        "brand": "Garware",
+        "quantity": 3,
+        "unit_price": 2612.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Proforma Invoice Harshita Infrastructure.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

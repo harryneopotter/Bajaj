@@ -1,0 +1,138 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "KR Mangalam World School",
+      "address": "GK – 2, New Delhi",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-31",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Taekwondo Chest Guard Size-2",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Chest Guard Size-3",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Shin Guard",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Elbow Guard",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Head Guard",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Gloves",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ankle Guard",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Padel Tennis Ball",
+        "brand": "Head",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Padel Tennis Racket",
+        "brand": "Head Gravity Team",
+        "quantity": 1,
+        "unit_price": 10200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Ball",
+        "brand": "Vector X",
+        "quantity": 1,
+        "unit_price": 620.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Racket",
+        "brand": "Stag Blade",
+        "quantity": 1,
+        "unit_price": 3200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Racket",
+        "brand": "Vector X",
+        "quantity": 1,
+        "unit_price": 2400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Nivia K-700 Combo",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Handball No.2",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Handball No.3",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "Stag Official",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "GKI Kungfu Deluxe",
+        "quantity": 1,
+        "unit_price": 875.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_016d01dc927e_17591180_460b3480_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

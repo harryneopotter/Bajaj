@@ -1,0 +1,34 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Shrachi Sports Endavour Pvt Ltd",
+      "address": "8th Floor, 686 Sharachi Tower, Ananadpuram, East Kolkata, West Bengal-700107",
+      "phone": "9899007401",
+      "gstin": null
+    },
+    "date": "2026-01-08",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football Goal Post Movable Small Size",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 40920.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Net Small Size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_058601dc8088_78098670_681c9350_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_058601dc8088_78098670_681c9350_bajajsports.com__1.html"
+}

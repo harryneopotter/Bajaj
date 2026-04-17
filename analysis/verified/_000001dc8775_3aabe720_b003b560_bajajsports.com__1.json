@@ -1,0 +1,48 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Reliance Foundation Youth Sports",
+      "address": "6th Floor, Maker Chamber IV, 222, Nariman Point, Mumbai City, Maharashtra, 400021",
+      "phone": "+91 99867 14222",
+      "gstin": "27AAHCR8960J1ZQ"
+    },
+    "date": "2026-01-12",
+    "ref_number": "25-26/IS/650",
+    "items": [
+      {
+        "product": "Football Goal Post Small Size 1.5M x 0.9M Made of 80MM x 2.5MM MS Pipe with Net",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 7950.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Football Goal Post Small Size 1.3M x 0.7M Made of 80MM x 2.5MM MS Pipe with Net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 14900.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Foot Ball Goal Net - Small Size",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 1500.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Net Holder",
+        "brand": null,
+        "quantity": 100,
+        "unit_price": 488.65,
+        "hsn_code": "39041090"
+      }
+    ],
+    "source_file": "_000001dc8775_3aabe720_b003b560_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_000001dc8775_3aabe720_b003b560_bajajsports.com__1.html"
+}

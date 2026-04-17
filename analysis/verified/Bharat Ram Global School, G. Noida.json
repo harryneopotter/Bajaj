@@ -1,0 +1,118 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Bharat Ram Global School",
+      "address": "Greater Noida, U.P.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-09",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 690.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 495.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 520.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky",
+        "quantity": 1,
+        "unit_price": 55.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Coin",
+        "brand": "Champion",
+        "quantity": 1,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring Tape",
+        "brand": "Freemans",
+        "quantity": 1,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 320.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Net",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 190.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Spartan",
+        "quantity": 1,
+        "unit_price": 990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 530.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Bharat Ram Global School, G. Noida.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Bharat Ram Global School, G. Noida.html"
+}

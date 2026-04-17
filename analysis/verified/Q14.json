@@ -1,0 +1,118 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "K.R. Mangalam World School",
+      "address": "Plot No.11, Sector-6, Near Arogya Hospital, Vaishali Extension, Ramprastha Greens, Vaishali, Ghaziabad, U.P. – 201012.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-07-10",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Volleyball Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 3100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Paddle",
+        "brand": "Cosco Tango Blue",
+        "quantity": 1,
+        "unit_price": 1010.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Paddle",
+        "brand": "Cosco Punch",
+        "quantity": 1,
+        "unit_price": 1350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Paddle",
+        "brand": "Cosco Carbon ARC",
+        "quantity": 1,
+        "unit_price": 2250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Paddle",
+        "brand": "Cosco Carbon Edge 1.0",
+        "quantity": 1,
+        "unit_price": 4250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Pole Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 38400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 3100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Side Drum",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Base Drum",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 726.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Cosco Hi Grip",
+        "quantity": 1,
+        "unit_price": 694.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Cosco Hi Grip",
+        "quantity": 1,
+        "unit_price": 682.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-5",
+        "brand": "Cosco Hi Grip",
+        "quantity": 1,
+        "unit_price": 672.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Q14.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Q14.html"
+}

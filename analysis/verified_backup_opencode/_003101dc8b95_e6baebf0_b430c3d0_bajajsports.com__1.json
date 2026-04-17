@@ -1,0 +1,31 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "SK Sales",
+      "address": "4th Floor, Kothari Orchid, Sakore Nagar, Lohegaon, Pune, Maharashtra – 411032",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-22",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Uesaka Weightlifting Training Platform",
+        "brand": "Uesaka",
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_003101dc8b95_e6baebf0_b430c3d0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Missing key invoice fields: ref_number, unit_price, client phone, client GSTIN, and item HSN code.",
+    "Date value (2026-01-22) may be future-dated and should be validated against source document.",
+    "Only one line item extracted; verify completeness against source HTML."
+  ],
+  "source_file": "_003101dc8b95_e6baebf0_b430c3d0_bajajsports.com__1.html"
+}

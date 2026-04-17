@@ -1,0 +1,111 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Akshay Pratishthan",
+      "address": "D-III, Vasant Kunj, New Delhi – 110 070.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Hand Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 575.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table Tennis Ball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Thera Band",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 340.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Skipping Rope",
+        "brand": "Vaishali",
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ludo",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 160.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine Ball",
+        "brand": "Cougar",
+        "quantity": 1,
+        "unit_price": 570.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine Ball",
+        "brand": "Cougar",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 385.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_020501dc7fbb_ca0947d0_5e1bd770_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_020501dc7fbb_ca0947d0_5e1bd770_bajajsports.com__1.html"
+}

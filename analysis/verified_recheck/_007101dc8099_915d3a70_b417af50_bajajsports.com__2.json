@@ -1,0 +1,89 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "SYNCOTTS INTERNATIONAL(U.P)",
+      "address": "1502, A1 SHALIMAR ONE WORLD, LUCKNOW UP-226010, SIRASPUR, North West Delhi",
+      "phone": null,
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2026-01-05",
+    "ref_number": "25-26/IS/624",
+    "items": [
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 32789.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 47086.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 166704.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 35328.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 96416.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 11200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 24104.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_007101dc8099_915d3a70_b417af50_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

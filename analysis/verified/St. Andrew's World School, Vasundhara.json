@@ -1,0 +1,160 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "St. Andrew’s World School",
+      "address": "Sector 16A, Vasundhara, Ghaziabad, U.P.",
+      "phone": "9289911680",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2026-04-04",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 1080.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag",
+        "quantity": 10,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "GKI",
+        "quantity": 10,
+        "unit_price": 770.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Ball",
+        "brand": "Kimati",
+        "quantity": 10,
+        "unit_price": 418.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 60.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat K/W",
+        "brand": "SS",
+        "quantity": 10,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat K/W",
+        "brand": "SS",
+        "quantity": 10,
+        "unit_price": 2400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Ball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pickleball Racket",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size - 7",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Marker(Saucer Cone)",
+        "brand": "Plastic",
+        "quantity": 10,
+        "unit_price": 14.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cone Plastic",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 18.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Measuring Tape",
+        "brand": "Freemans",
+        "quantity": 10,
+        "unit_price": 450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hurdles Plastic",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 112.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net",
+        "brand": "Garware",
+        "quantity": 10,
+        "unit_price": 340.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Karate Gloves",
+        "brand": "Hanah",
+        "quantity": 10,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Karate Head Guard",
+        "brand": "Hanah",
+        "quantity": 10,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hand Pad(Fan Pad)",
+        "brand": "Hanah",
+        "quantity": 10,
+        "unit_price": 650.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "St. Andrew's World School, Vasundhara.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "St. Andrew's World School, Vasundhara.html"
+}

@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Saxo Group India Pvt. Ltd.",
+      "address": "5th Floor, Tower 10, Candor Tech Space, Sector 21, Gurugram, Haryana -122016.",
+      "phone": "9971824179",
+      "gstin": null
+    },
+    "date": "2026-01-29",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Foosball Table",
+        "brand": "Octem",
+        "quantity": 1,
+        "unit_price": 23500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Foosball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 40100.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_035a01dc9106_7d95e8c0_78c1ba40_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

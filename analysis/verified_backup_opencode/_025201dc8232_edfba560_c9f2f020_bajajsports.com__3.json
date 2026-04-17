@@ -1,0 +1,23 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-06-19",
+    "ref_number": "GEMC-511687753273994",
+    "items": [],
+    "source_file": "_025201dc8232_edfba560_c9f2f020_bajajsports.com__3.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    "Client details are all null (name, address, phone, GSTIN).",
+    "No line items were extracted.",
+    "Verification against source HTML is required to confirm date and reference number accuracy."
+  ],
+  "source_file": "_025201dc8232_edfba560_c9f2f020_bajajsports.com__3.html"
+}

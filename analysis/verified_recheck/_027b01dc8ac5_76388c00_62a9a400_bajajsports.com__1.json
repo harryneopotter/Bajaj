@@ -1,0 +1,61 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "G.D. Goenka Public School",
+      "address": "HS-13, Swarn Nagri, Sector Tau, Greater Noida, U.P.",
+      "phone": "9871467278",
+      "gstin": null
+    },
+    "date": "2026-01-21",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Cricket Tennis Bat",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 60.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat Grip",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 70.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Stump Plastic",
+        "brand": "Flash",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board Small",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2550.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_027b01dc8ac5_76388c00_62a9a400_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

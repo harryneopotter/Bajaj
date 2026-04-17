@@ -1,0 +1,128 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "THE SHRI RAM SCHOOL -VASANT VIHAR",
+      "address": "D-3,STREET VASANT VIHAR, NEW DELHI",
+      "phone": "+91-9821691442",
+      "gstin": null
+    },
+    "date": "2026-01-28",
+    "ref_number": "TSRS/VVADMINRUNNING/2025-26/117",
+    "items": [
+      {
+        "product": "BASKET BALL SIZE -3",
+        "brand": null,
+        "quantity": 60,
+        "unit_price": 168.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "FOOT BALL SIZE -3(COSCO ITALIA)",
+        "brand": "COSCO",
+        "quantity": 60,
+        "unit_price": 360.0,
+        "hsn_code": "95066210"
+      },
+      {
+        "product": "CR TENNIS BALL COSCO GREEN",
+        "brand": "COSCO",
+        "quantity": 200,
+        "unit_price": 50.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "STUMPS SET",
+        "brand": "FLASH",
+        "quantity": 10,
+        "unit_price": 350.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "CARROM POWDER-3004-50GM",
+        "brand": null,
+        "quantity": 48,
+        "unit_price": 55.0,
+        "hsn_code": "30044940"
+      },
+      {
+        "product": "STRIKER",
+        "brand": null,
+        "quantity": 20,
+        "unit_price": 60.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "BALL CARRY BAG - BAJAJ",
+        "brand": "BAJAJ",
+        "quantity": 4,
+        "unit_price": 250.0,
+        "hsn_code": "09050020"
+      },
+      {
+        "product": "Tennis Racket COSCO DRIVE 27”",
+        "brand": "COSCO",
+        "quantity": 2,
+        "unit_price": 880.0,
+        "hsn_code": "95065100"
+      },
+      {
+        "product": "MEDICINE BALL-2KG",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 600.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "BADMINTON RACQUET VERSA",
+        "brand": "VERSA",
+        "quantity": 20,
+        "unit_price": 260.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "MEASURING TAPE-100 MTR",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 900.0,
+        "hsn_code": "90172090"
+      },
+      {
+        "product": "CONE 6”",
+        "brand": null,
+        "quantity": 50,
+        "unit_price": 12.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "PICKLE BALL RACKET WITH 1 BALL",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 1150.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_000b01dc940b_d8d57090_8a8051b0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "client.gstin",
+      "was": "07AAFPB2487F1Z",
+      "now": null,
+      "action": "removed",
+      "confidence": "high",
+      "reason": "invalid GSTIN format"
+    }
+  ],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "THE SHRI RAM SCHOOL -VASANT VIHAR",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_000b01dc940b_d8d57090_8a8051b0_bajajsports.com__1.html"
+}

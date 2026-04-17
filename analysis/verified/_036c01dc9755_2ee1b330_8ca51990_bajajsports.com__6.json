@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Mr. Prakash Ch. Muduli",
+      "address": "Student’s Gymkhana, Indian Institute of Technology, Bhubaneswar",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-02-06",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Technical Table",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 166400.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_036c01dc9755_2ee1b330_8ca51990_bajajsports.com__6.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_036c01dc9755_2ee1b330_8ca51990_bajajsports.com__6.html"
+}

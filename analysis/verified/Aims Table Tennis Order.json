@@ -1,0 +1,105 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "All India Institute of Medical Sciences (AIIMS)",
+      "address": "AIIMS, New Delhi, Ansari Nagar, South Delhi, Delhi - 110029, India",
+      "phone": "011-26593457",
+      "gstin": null
+    },
+    "date": "2026-04-04",
+    "ref_number": "GEM-511687734921011",
+    "items": [
+      {
+        "product": "Basketball padding",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 15000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Nails cricket mat",
+        "brand": "Bajaj",
+        "quantity": 100,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Table tennis table",
+        "brand": "Stag",
+        "quantity": 6,
+        "unit_price": 41000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bat knockers",
+        "brand": "SG",
+        "quantity": 3,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Lime powder",
+        "brand": "Bajaj",
+        "quantity": 500,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket bat handle gripper",
+        "brand": "SG",
+        "quantity": 5,
+        "unit_price": 0.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Striker",
+        "brand": "Bajaj",
+        "quantity": 6,
+        "unit_price": 0.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Aims Table Tennis Order.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [
+    {
+      "field": "client.name",
+      "issue": "Spacing/format inconsistency",
+      "change": "All India Institute of Medical Sciences(AIIMS) -> All India Institute of Medical Sciences (AIIMS)"
+    },
+    {
+      "field": "client.address",
+      "issue": "Typo/casing/punctuation normalization",
+      "change": "Aims -> AIIMS; SOUTH DELHI/DELHI-110029.India -> South Delhi, Delhi - 110029, India"
+    },
+    {
+      "field": "items[1].brand",
+      "issue": "Probable typo",
+      "change": "baja -> Bajaj"
+    },
+    {
+      "field": "items[2].product",
+      "issue": "Concatenated text",
+      "change": "tabletennisstable -> Table tennis table"
+    },
+    {
+      "field": "items[6].product",
+      "issue": "Probable typo",
+      "change": "stricker -> Striker"
+    },
+    {
+      "field": "items[*].product",
+      "issue": "Capitalization normalization",
+      "change": "Standardized product name casing"
+    }
+  ],
+  "flags": [
+    "Multiple items have unit_price = 0.0; likely missing pricing data rather than true zero value.",
+    "GSTIN is missing (null).",
+    "HSN code missing for all line items.",
+    "Document labeled as 'quotation' but includes a GeM-style reference number; verify document type."
+  ],
+  "source_file": "Aims Table Tennis Order.html"
+}

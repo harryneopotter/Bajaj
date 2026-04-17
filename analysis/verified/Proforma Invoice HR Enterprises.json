@@ -1,0 +1,53 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "HR Enterprises",
+      "address": "Pani Khaiti, Lahapara, Guwahati, Kamrup Metropolitan, Assam - 781026",
+      "phone": null,
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": "26-27/CR/PI/009",
+    "items": [
+      {
+        "product": "Safety Net Garware Braided Net",
+        "brand": null,
+        "quantity": 19368,
+        "unit_price": 8.5,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Proforma Invoice HR Enterprises.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.phone",
+      "value": null,
+      "reason": "Phone number is missing; required for contact verification."
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "GSTIN is missing; required for tax compliance verification."
+    },
+    {
+      "field": "date",
+      "value": null,
+      "reason": "Date is missing; needed to validate timeliness and financial year alignment."
+    },
+    {
+      "field": "items[0].brand",
+      "value": null,
+      "reason": "Brand is missing; important for product identification and warranty."
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "HSN code is missing; required for GST classification and tax calculation."
+    }
+  ],
+  "source_file": "Proforma Invoice HR Enterprises.html"
+}

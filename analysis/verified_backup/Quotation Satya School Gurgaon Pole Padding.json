@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Satya School",
+      "address": "Sector-49, Gurgaon, Haryana",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Pole Padding",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 5000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Quotation Satya School Gurgaon Pole Padding.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Quotation Satya School Gurgaon Pole Padding.html"
+}

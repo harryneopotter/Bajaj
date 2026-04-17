@@ -18,6 +18,9 @@ from contextlib import contextmanager
 from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse, Response
 from fastapi.staticfiles import StaticFiles
+from fastapi import UploadFile, File
+import shutil
+import hashlib
 
 # Config
 BASE_DIR = Path(__file__).parent
@@ -25,6 +28,9 @@ DATA_DIR = Path(os.getenv("DATA_DIR", "/home/sachin/work/bajaj"))
 ANALYSIS_DIR = DATA_DIR / "analysis"
 DB_PATH = BASE_DIR / "quotes.db"
 UNIT_TERMS_PATH = BASE_DIR / "unit_terms.json"
+PRODUCT_IMAGES_REGISTRY = ANALYSIS_DIR / "product_images.json"
+IMAGES_DIR = BASE_DIR / "static" / "images"
+IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 # Load catalog data
 def load_catalog() -> List[Dict]:
@@ -92,6 +98,16 @@ for c in CUSTOMERS:
         CUSTOMER_NAMES.append(name)
 
 app = FastAPI(title="Bajaj Sports Quote Generator")
+
+ALLOWED_IPS = {"100.84.92.33", "100.119.13.60"}
+import fastapi
+@app.middleware("http")
+async def ip_whitelist_middleware(request: fastapi.Request, call_next):
+    if request.client.host not in ALLOWED_IPS:
+        from fastapi.responses import JSONResponse
+        return JSONResponse(status_code=403, content={"detail": f"Access denied. Your IP ({request.client.host}) is not authorized."})
+    return await call_next(request)
+
 
 # Static files for downloads/broken scans
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
@@ -500,6 +516,7 @@ MAIN_HTML = """
                         <th style="width: 12%">Unit</th>
                         <th style="width: 8%">GST%</th>
                         <th style="width: 13%">Unit Price (₹)</th>
+                        <th style="width: 10%">Image</th>
                         <th style="width: 12%">Total (₹)</th>
                         <th style="width: 5%"></th>
                     </tr>
@@ -548,6 +565,41 @@ MAIN_HTML = """
                 <textarea id="notes" rows="3" placeholder="Terms, conditions, delivery notes..."></textarea>
             </div>
         </div>
+        <!-- Optional Sections -->
+        <div class="card">
+            <h2>Optional Sections</h2>
+            
+            <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <input type="checkbox" id="enable-payment-terms" onchange="document.getElementById('payment-terms-wrap').style.display = this.checked ? 'block' : 'none'">
+                    <label for="enable-payment-terms" style="font-weight: 600; font-size: 14px; margin: 0;">Payment Terms</label>
+                </div>
+                <div id="payment-terms-wrap" style="display: none;">
+                    <textarea id="payment-terms" rows="2" style="width: 100%;" placeholder="e.g., 50% advance, balance against delivery">100% advance along with firm purchase order.</textarea>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <input type="checkbox" id="enable-transport" onchange="document.getElementById('transport-wrap').style.display = this.checked ? 'block' : 'none'">
+                    <label for="enable-transport" style="font-weight: 600; font-size: 14px; margin: 0;">Transportation Charges</label>
+                </div>
+                <div id="transport-wrap" style="display: none;">
+                    <input type="text" id="transport-charges" style="width: 100%;" placeholder="e.g., Extra at actuals / Included">Extra at actuals.
+                </div>
+            </div>
+
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <input type="checkbox" id="enable-installation" onchange="document.getElementById('installation-wrap').style.display = this.checked ? 'block' : 'none'">
+                    <label for="enable-installation" style="font-weight: 600; font-size: 14px; margin: 0;">Installation Charges</label>
+                </div>
+                <div id="installation-wrap" style="display: none;">
+                    <input type="text" id="installation-charges" style="width: 100%;" placeholder="e.g., Free of cost / ₹5,000 extra">Installation and GST charges extra at actuals.
+                </div>
+            </div>
+        </div>
+
         
         <!-- Actions -->
         <div class="btn-row">
@@ -673,6 +725,13 @@ MAIN_HTML = """
                 </td>
                 <td><input type="number" class="price-input" data-row="${itemCounter}" value="0" step="0.01" 
                            onchange="updateLineTotal(${itemCounter})"></td>
+                <td>
+                    <div id="image-preview-${itemCounter}" style="margin-bottom: 4px; display: none;">
+                        <img src="" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                    </div>
+                    <button class="btn" style="padding: 4px 8px; font-size: 11px;" onclick="openImagePicker(${itemCounter})">🖼️ Pick</button>
+                    <input type="hidden" class="image-url-input" id="image-url-${itemCounter}">
+                </td>
                 <td class="line-total" id="line-total-${itemCounter}">₹0.00</td>
                 <td><button class="remove-btn" onclick="removeRow(${itemCounter})">×</button></td>
             `;
@@ -813,7 +872,7 @@ MAIN_HTML = """
                 const price = parseFloat(row.querySelector('.price-input').value) || 0;
                 if (product && price > 0) {
                     // Quotes are always per-unit. Quantity is captured later in PO, not quote.
-                    items.push({ product, description: desc, unit, gst_percent, quantity: 1, unit_price: price });
+                    const image_url = row.querySelector(".image-url-input").value; items.push({ product, description: desc, unit, gst_percent, quantity: 1, unit_price: price, image_url });
                 }
             });
             
@@ -1015,6 +1074,99 @@ MAIN_HTML = """
         loadUnitTerms();
         loadRecentQuotes();
     </script>
+
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
+    </script>
 </body>
 </html>
 """
@@ -1051,6 +1203,51 @@ async def search_clients(q: str = ""):
     return matches
 
 @app.get("/api/products")
+
+@app.get("/api/images/{product_name}")
+async def get_product_images(product_name: str):
+    if not PRODUCT_IMAGES_REGISTRY.exists():
+        return []
+    registry = json.loads(PRODUCT_IMAGES_REGISTRY.read_text())
+    return registry.get(product_name.lower(), [])
+
+@app.post("/api/upload-image")
+async def upload_image(product_name: str = Form(...), category: str = Form("uncategorized"), file: UploadFile = File(...)):
+    cat_dir = IMAGES_DIR / category.lower().replace(" ", "_")
+    cat_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Save file with hash to avoid collisions
+    contents = await file.read()
+    file_hash = hashlib.md5(contents).hexdigest()[:8]
+    ext = Path(file.filename).suffix or ".jpg"
+    safe_name = product_name.lower().replace(" ", "_")[:50]
+    filename = f"{safe_name}_{file_hash}{ext}"
+    file_path = cat_dir / filename
+    
+    file_path.write_bytes(contents)
+    
+    # Update registry
+    registry = {}
+    if PRODUCT_IMAGES_REGISTRY.exists():
+        try:
+            registry = json.loads(PRODUCT_IMAGES_REGISTRY.read_text())
+        except: pass
+        
+    p_key = product_name.lower()
+    img_entry = {
+        "url": f"static/images/{category.lower().replace(' ', '_')}/{filename}",
+        "filename": filename,
+        "category": category,
+        "uploaded_at": datetime.now().isoformat()
+    }
+    
+    if p_key not in registry:
+        registry[p_key] = []
+    registry[p_key].append(img_entry)
+    PRODUCT_IMAGES_REGISTRY.write_text(json.dumps(registry, indent=2))
+    
+    return img_entry
+
 async def search_products(q: str = "", client: str = ""):
     """Search products with pricing suggestions based on client."""
     q_lower = q.lower().strip()
@@ -1259,12 +1456,25 @@ async def generate_pdf(request: Request):
         # Per-unit quote
         price = item.get("unit_price", 0)
         total = price
+        img_url = item.get("image_url")
+        img_html = ""
+        if img_url:
+            # Construct absolute path for WeasyPrint
+            # img_url is static/images/...
+            local_path = BASE_DIR / img_url
+            if local_path.exists():
+                img_html = f'<img src="{local_path.as_uri()}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 10px; vertical-align: middle;">'
         items_html += f"""
         <tr>
             <td style="padding: 12px; border-bottom: 1px solid #eee;">{idx}</td>
             <td style="padding: 12px; border-bottom: 1px solid #eee;">
-                <strong>{item.get('product', '')}</strong>
-                {f"<br><small style='color:#666'>{item.get('description','')}</small>" if item.get('description') else ''}
+                <div style="display: flex; align-items: center;">
+                    {img_html}
+                    <div>
+                        <strong>{item.get('product', '')}</strong>
+                        {f"<br><small style='color:#666'>{item.get('description','')}</small>" if item.get('description') else ''}
+                    </div>
+                </div>
             </td>
             <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">{item.get('unit','') or ''}</td>
             <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">{int(float(item.get('gst_percent',18) or 18))}</td>
@@ -1272,21 +1482,21 @@ async def generate_pdf(request: Request):
             <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">₹{total:,.2f}</td>
         </tr>
         """
-    
+
+
     # Check if we should leave space for letterhead
     use_letterhead = data.get("use_letterhead", False)
     header_style = "display: none;" if use_letterhead else "display: block;"
     body_margin = "45mm" if use_letterhead else "20mm"
-
-    pdf_html = f"""
+    pdf_html = """
     <!DOCTYPE html>
     <html>
     <head>
         <meta charset="UTF-8">
         <style>
-            @page {{ size: A4; margin: {body_margin} 20mm 20mm 20mm; }}
+            @page {{ size: A4; margin: [[BODY_MARGIN]] 20mm 20mm 20mm; }}
             body {{ font-family: Arial, sans-serif; font-size: 12px; color: #333; }}
-            .header {{ text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #1a237e; {header_style} }}
+            .header {{ text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #1a237e; [[HEADER_STYLE]] }}
             .header h1 {{ color: #1a237e; margin: 0; font-size: 24px; }}
             .header p {{ margin: 5px 0 0; color: #666; }}
             .info-grid {{ display: flex; justify-content: space-between; margin-bottom: 30px; }}
@@ -1316,14 +1526,14 @@ async def generate_pdf(request: Request):
         <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
             <div style="width: 48%;">
                 <h3 style="font-size: 11px; color: #888; margin: 0 0 8px; text-transform: uppercase;">Bill To</h3>
-                <p style="margin: 4px 0; font-weight: bold;">{data.get('client_name', '')}</p>
-                <p style="margin: 4px 0;">{data.get('client_address', '').replace(chr(10), '<br>')}</p>
-                <p style="margin: 4px 0;">{data.get('client_contact', '')}</p>
+                <p style="margin: 4px 0; font-weight: bold;">[[CLIENT_NAME]]</p>
+                <p style="margin: 4px 0;">[[CLIENT_ADDRESS]]</p>
+                <p style="margin: 4px 0;">[[CLIENT_CONTACT]]</p>
             </div>
             <div style="width: 48%; text-align: right;">
                 <h3 style="font-size: 11px; color: #888; margin: 0 0 8px; text-transform: uppercase;">Quote Details</h3>
-                <p style="margin: 4px 0;"><strong>Date:</strong> {data.get('quote_date', '')}</p>
-                <p style="margin: 4px 0;"><strong>Quote #:</strong> BSQ-{datetime.now().strftime('%Y%m%d%H%M')}</p>
+                <p style="margin: 4px 0;"><strong>Date:</strong> [[QUOTE_DATE]]</p>
+                <p style="margin: 4px 0;"><strong>Quote #:</strong> BSQ-[[QUOTE_ID]]</p>
             </div>
         </div>
         
@@ -1339,46 +1549,173 @@ async def generate_pdf(request: Request):
                 </tr>
             </thead>
             <tbody>
-                {items_html}
+                [[ITEMS_HTML]]
             </tbody>
         </table>
         
         <table class="totals">
             <tr>
                 <td>Subtotal (Taxable):</td>
-                <td style="text-align: right;">₹{subtotal:,.2f}</td>
+                <td style="text-align: right;">₹[[SUBTOTAL]]</td>
             </tr>
             <tr>
                 <td>GST @5%:</td>
-                <td style="text-align: right;">₹{gst5:,.2f}</td>
+                <td style="text-align: right;">₹[[GST5]]</td>
             </tr>
             <tr>
                 <td>GST @12%:</td>
-                <td style="text-align: right;">₹{gst12:,.2f}</td>
+                <td style="text-align: right;">₹[[GST12]]</td>
             </tr>
             <tr>
                 <td>GST @18%:</td>
-                <td style="text-align: right;">₹{gst18:,.2f}</td>
+                <td style="text-align: right;">₹[[GST18]]</td>
             </tr>
             <tr>
                 <td>Total GST:</td>
-                <td style="text-align: right;">₹{gst:,.2f}</td>
+                <td style="text-align: right;">₹[[TOTAL_GST]]</td>
             </tr>
             <tr class="grand">
                 <td>Grand Total:</td>
-                <td style="text-align: right;">₹{grand:,.2f}</td>
+                <td style="text-align: right;">₹[[GRAND]]</td>
             </tr>
         </table>
         
-        {f'<div class="notes"><strong>Notes:</strong><br>{data.get("notes", "").replace(chr(10), "<br>")}</div>' if data.get("notes") else ''}
+        
+        [[NOTES_HTML]]
+        
+        [[PAYMENT_HTML]]
+        [[TRANSPORT_HTML]]
+        [[INSTALL_HTML]]
+
         
         <div class="footer">
             <p>This is a computer-generated quotation. Prices are valid for 30 days from the date of issue.</p>
             <p>Terms: GST Extra | Delivery: As per agreement | Payment: As per terms</p>
         </div>
-    </body>
+    
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
+    </script>
+</body>
     </html>
-    """
+"""
+    pdf_html = pdf_html.replace('[[BODY_MARGIN]]', body_margin)\
+                       .replace('[[HEADER_STYLE]]', header_style)\
+                       .replace('[[CLIENT_NAME]]', data.get('client_name', ''))\
+                       .replace('[[CLIENT_ADDRESS]]', data.get('client_address', '').replace('\n', '<br>'))\
+                       .replace('[[CLIENT_CONTACT]]', data.get('client_contact', ''))\
+                       .replace('[[QUOTE_DATE]]', data.get('quote_date', ''))\
+                       .replace('[[QUOTE_ID]]', datetime.now().strftime('%Y%m%d%H%M'))\
+                       .replace('[[ITEMS_HTML]]', items_html)\
+                       .replace('[[SUBTOTAL]]', f"{subtotal:,.2f}")\
+                       .replace('[[GST5]]', f"{gst5:,.2f}")\
+                       .replace('[[GST12]]', f"{gst12:,.2f}")\
+                       .replace('[[GST18]]', f"{gst18:,.2f}")\
+                       .replace('[[TOTAL_GST]]', f"{gst:,.2f}")\
+                       .replace('[[GRAND]]', f"{grand:,.2f}")
+    
+    nl_br = '\n'
+    notes_html = f'<div class="notes"><strong>Notes:</strong><br>{data.get("notes", "").replace(nl_br, "<br>")}</div>' if data.get("notes") else ''
+    pdf_html = pdf_html.replace('[[NOTES_HTML]]', notes_html)
+    
+    pay_html = f'<div style="margin-top: 20px;"><strong>Payment Terms:</strong> {data.get("payment_terms")}</div>' if data.get("payment_terms") else ''
+    pdf_html = pdf_html.replace('[[PAYMENT_HTML]]', pay_html)
+    
+    trans_html = f'<div style="margin-top: 10px;"><strong>Transportation:</strong> {data.get("transport_charges")}</div>' if data.get("transport_charges") else ''
+    pdf_html = pdf_html.replace('[[TRANSPORT_HTML]]', trans_html)
+    
+    inst_html = f'<div style="margin-top: 10px;"><strong>Installation:</strong> {data.get("installation_charges")}</div>' if data.get("installation_charges") else ''
+    pdf_html = pdf_html.replace('[[INSTALL_HTML]]', inst_html)
+
     
     # Try WeasyPrint, fallback to returning HTML
     try:
@@ -1640,6 +1977,99 @@ DIRECTORY_HTML = """
         });
 
         loadDirectory();
+    </script>
+
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
     </script>
 </body>
 </html>
@@ -1933,6 +2363,99 @@ PRODUCTS_HTML = """
 
         loadProducts();
     </script>
+
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
+    </script>
 </body>
 </html>
 """
@@ -2118,6 +2641,99 @@ AUDIT_HTML = """
 
         loadAudit();
     </script>
+
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
+    </script>
 </body>
 </html>
 """
@@ -2202,4 +2818,4 @@ async def cleanup_report():
 if __name__ == "__main__":
     import uvicorn
     print(f"Loaded {len(CATALOG)} products, {len(CUSTOMER_NAMES)} customers")
-    uvicorn.run(app, host="0.0.0.0", port=8081)
+    uvicorn.run(app, host="100.91.37.16", port=8081)

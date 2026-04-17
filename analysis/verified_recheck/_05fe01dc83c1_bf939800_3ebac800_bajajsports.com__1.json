@@ -1,0 +1,89 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Samvid Gurukulam Girls Sainik School",
+      "address": "Mathura - Vrindavan Marg, P.O. Prem Nagar, Vrindavan, U.P. - 281 003.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-12",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Badminton Racket",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 620.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Yonex",
+        "quantity": 1,
+        "unit_price": 1120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 558.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Net with Clip",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 1025.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-5",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-5",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 810.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Size-5",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 940.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 710.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_05fe01dc83c1_bf939800_3ebac800_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

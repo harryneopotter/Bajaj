@@ -1,0 +1,83 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Mr. Prakash Ch. Muduli",
+      "address": "Student’s Gymkhana, Indian Institute of Technology, Bhubaneswar",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-02-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Cricket Pitch practice net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 210000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pitch Movable Cricket Pole & Net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 175000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pitch Practice net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 125000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 9200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pole – 2.5” dia pipe",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 3650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pole – 2.5” dia pipe",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 3850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pole – 2.5” dia pipe",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 4150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pole – 2” dia pipe",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 2500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Pole – 2” dia pipe",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 3000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_019601dc9806_49285d00_db791700_bajajsports.com__2.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_019601dc9806_49285d00_db791700_bajajsports.com__2.html"
+}

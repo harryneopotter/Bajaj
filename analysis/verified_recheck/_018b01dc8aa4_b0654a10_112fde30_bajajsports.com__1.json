@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Vasant Valley School",
+      "address": "Vasant Kunj, New Delhi",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-21",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball pole movable height adjustable small size for practice",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 110000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball pole movable height adjustable with 180cm x 105cm board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 127680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball pole fix type height adjustable Junior size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 87500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_018b01dc8aa4_b0654a10_112fde30_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

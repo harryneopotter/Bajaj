@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "GALLANTSPORTS & INFRA PVT. LTD.",
+      "address": "UNIT NO. 424,EROS CITY SQUARE,ROSE WOOD CITY, Sector 49, Gurugram, Haryana 122018",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-04-01",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "POLES",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 640.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "GALLANTSPORTS & INFRA PVT. LTD.- Ledger.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

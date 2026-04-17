@@ -1,0 +1,244 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Sapphire International School",
+      "address": "Sector 71, Noida, U.P.",
+      "phone": "9837904304",
+      "gstin": "07AAFPB2487F1ZY"
+    },
+    "date": "2026-04-10",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Football Size-5",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pop up Net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Goal Keeper Gloves",
+        "brand": "Nivia Ditmar Spider",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-7",
+        "brand": "Cosco Challenge",
+        "quantity": 1,
+        "unit_price": 1450.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-3",
+        "brand": "Cosco Italia",
+        "quantity": 1,
+        "unit_price": 220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Size-6",
+        "brand": "Cosco Challenge",
+        "quantity": 1,
+        "unit_price": 1430.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Ring",
+        "brand": "Ordinary",
+        "quantity": 1,
+        "unit_price": 3600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racket",
+        "brand": "Stag Tournament",
+        "quantity": 1,
+        "unit_price": 800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag 2 Star",
+        "quantity": 1,
+        "unit_price": 230.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Net",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 170.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Racket",
+        "brand": "Yonex GR-303",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock",
+        "brand": "Yonex Mavis 350",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Iron stand",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 4800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chest Guard",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Head Guard",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fan Pad",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swing Ball",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "White Leather Ball",
+        "brand": "Kimati Deluxe White",
+        "quantity": 1,
+        "unit_price": 460.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Net - 100’ x 10’",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 9200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Wooden Bails",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 40.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Iron poles for pitch",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Air Pump",
+        "brand": "Nivia Ball Pump",
+        "quantity": 1,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cones 6 inch",
+        "brand": "Plastic",
+        "quantity": 1,
+        "unit_price": 16.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Medicine Ball",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistle",
+        "brand": "Fox 40 Classic",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Resistance Band",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Yoga Mat",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 425.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Cosco Volley 18",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula Hoop - Big",
+        "brand": "Plastic",
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hula Hoop - Small",
+        "brand": "Plastic",
+        "quantity": 1,
+        "unit_price": 105.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Sapphire International School, Sec.71, Noida.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "Sapphire International School, Sec.71, Noida.html"
+}

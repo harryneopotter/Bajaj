@@ -1,0 +1,54 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "G.D. Goenka Public School",
+      "address": "HS-13, Swarn Nagri, Sector Tau, Greater Noida, U.P.",
+      "phone": "9871467278",
+      "gstin": null
+    },
+    "date": "2026-01-08",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Table Tennis Bat",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 336.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 840.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Racket",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 840.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Karate Kick Pad",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 900.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_062b01dc8098_8973e350_9c5ba9f0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

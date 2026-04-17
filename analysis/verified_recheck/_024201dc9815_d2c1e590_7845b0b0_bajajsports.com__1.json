@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Jaypee Greens Golf & Spa Resorts",
+      "address": "A Unit of Jaiprakash Associates Ltd., G-Block, Surajpur Kasna Road, Greater Noida, U.P. - 201306.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-02-07",
+    "ref_number": "25-26/IS/PI/232",
+    "items": [
+      {
+        "product": "Vinyl Kettle Bell 14 Kg.",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 3200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Vinyl Kettle Bell 16 Kg.",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Vinyl Kettle Bell 20 Kg.",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 4570.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_024201dc9815_d2c1e590_7845b0b0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

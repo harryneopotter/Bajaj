@@ -1,0 +1,61 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Sharda University",
+      "address": "Plot No. 32-34, Knowledge Park III, Greater Noida, U.P – 201310.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Kabaddi Shoes",
+        "brand": "Pama",
+        "quantity": 1,
+        "unit_price": 850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kabaddi Mat",
+        "brand": "Gravolite",
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kabaddi Mat",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table",
+        "brand": "Stag Championship",
+        "quantity": 1,
+        "unit_price": 35890.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table",
+        "brand": "Stag International",
+        "quantity": 1,
+        "unit_price": 47050.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table",
+        "brand": "Stag International Deluxe",
+        "quantity": 1,
+        "unit_price": 51840.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Sharda University - Quot. dt 07.4.26.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

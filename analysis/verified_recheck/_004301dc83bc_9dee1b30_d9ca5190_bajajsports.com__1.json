@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "SYNCOTTS INTERNATIONAL(GURGAON)",
+      "address": "11th, 1001A, The Vilas, Tower -C, Sector-, 25, Gurugram, Gurugram, Haryana, 122008",
+      "phone": null,
+      "gstin": "06AHCPM0641G1ZS"
+    },
+    "date": "2026-01-09",
+    "ref_number": "25-26/IS/634",
+    "items": [
+      {
+        "product": "VOLLEY BALL POLE MOVABLE",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 35328.0,
+        "hsn_code": null
+      },
+      {
+        "product": "VOLLEY BALL NET GARWARE",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 3187.0,
+        "hsn_code": null
+      },
+      {
+        "product": "VOLLEY BALL ANTINA-9506-5%",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 750.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_004301dc83bc_9dee1b30_d9ca5190_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

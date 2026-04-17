@@ -1,0 +1,89 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "SYNCOTTS INTERNATIONAL PRIVATE LIMITED-UK",
+      "address": "251, Kishan Nagar Extention, Dehradun, Dehradun, Uttarakhand, 248001",
+      "phone": null,
+      "gstin": "05AAWCS5350C1Z9"
+    },
+    "date": "2026-01-28",
+    "ref_number": "25-26/IS/667",
+    "items": [
+      {
+        "product": "BADMINTON POLE MOVABLE",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 15480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "BADMINTON NET GARWARE-9506-5%",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 626.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B/B POLES MADE OF 8” DIA PIPE 3.2 MTR PROJECTION 25 MM BOARD, WITH DUNKING RING",
+        "brand": null,
+        "quantity": 1.5,
+        "unit_price": 129960.0,
+        "hsn_code": null
+      },
+      {
+        "product": "FUTSAL GOAL POST SIZE 10’X 7’",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 42360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "FUTSAL NET-9506-5%",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "PICKLEBALL POLE MOVEABLE W/O WEIGHT",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 26200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "PICKLE BALL NET GARWARE TOURNAMENT",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "VOLLEY BALL POLE MOVABLE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 38400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "VOLLEY BALL NET GARWARE",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B/B POLE MOVABLE-WITH FIXED HEIGHT 2.2 Mtr Projection 20mm Board Dunking Ring, Net & Frame",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 181200.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_004301dc9047_31603a60_9420af20_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Rebound Ace India Pvt. Ltd.",
+      "address": "Plot No.66, Sector - 34, EHTP Gurgaon, Haryana.",
+      "phone": null,
+      "gstin": "06AAECR3085K1Z5"
+    },
+    "date": "2025-01-22",
+    "ref_number": "25-26/IS/PI/214",
+    "items": [
+      {
+        "product": "Badminton Pole Movable without net",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 11000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net Garware Tournament",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 400.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_005b01dc8b77_c796f340_56c4d9c0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

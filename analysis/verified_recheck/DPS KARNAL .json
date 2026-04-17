@@ -1,0 +1,131 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "DELHI PUBLIC SCHOOL- KARNAL",
+      "address": "NEAR KARNA LAKE,N.H-1, KARNAL(HARYANA)- 132001",
+      "phone": "8950522996",
+      "gstin": null
+    },
+    "date": "2026-04-02",
+    "ref_number": "26-27/CR/009",
+    "items": [
+      {
+        "product": "STRING FOR ARCHERY",
+        "brand": null,
+        "quantity": 8,
+        "unit_price": 490.0,
+        "hsn_code": null
+      },
+      {
+        "product": "BASKET BALL NIVIA TOP GRIP -5",
+        "brand": "NIVIA",
+        "quantity": 2,
+        "unit_price": 558.0,
+        "hsn_code": null
+      },
+      {
+        "product": "BASKET BALL NIVIA TOP GRIP -6",
+        "brand": "NIVIA",
+        "quantity": 4,
+        "unit_price": 610.0,
+        "hsn_code": null
+      },
+      {
+        "product": "BADMINTON RACQUET COSCO CB 150",
+        "brand": "COSCO",
+        "quantity": 20,
+        "unit_price": 420.0,
+        "hsn_code": null
+      },
+      {
+        "product": "SHUTTLE FEATHER SK",
+        "brand": null,
+        "quantity": 5,
+        "unit_price": 420.0,
+        "hsn_code": null
+      },
+      {
+        "product": "BALL PUMP NIVIA",
+        "brand": "NIVIA",
+        "quantity": 2,
+        "unit_price": 200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "CR. BAT K.W.SS-9506-5%",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 2800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "CR. BAT COSCO STRIKER",
+        "brand": "COSCO",
+        "quantity": 5,
+        "unit_price": 800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "CR TENNIS(BOX)",
+        "brand": null,
+        "quantity": 20,
+        "unit_price": 378.0,
+        "hsn_code": null
+      },
+      {
+        "product": "STRIKER-9506-12 %",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "CARROM POWDER-3004-5%",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "FOOTBALL NIVIA SHINING STAR",
+        "brand": "NIVIA",
+        "quantity": 5,
+        "unit_price": 905.0,
+        "hsn_code": null
+      },
+      {
+        "product": "SHOOTING",
+        "brand": null,
+        "quantity": 10,
+        "unit_price": 950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT BAT STAG TOURNAMENT",
+        "brand": "STAG",
+        "quantity": 5,
+        "unit_price": 405.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT BALL 2 STAR",
+        "brand": null,
+        "quantity": 15,
+        "unit_price": 215.0,
+        "hsn_code": null
+      },
+      {
+        "product": "T T NET",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 180.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "DPS KARNAL .html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

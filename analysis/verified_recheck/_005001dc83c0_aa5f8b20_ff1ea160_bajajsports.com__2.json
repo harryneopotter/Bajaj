@@ -1,0 +1,75 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "WheelsEye Logistics Pvt Ltd",
+      "address": "5th Floor, Tower-A, Capital Business Park, Sohna Road, Sector 48, Gurugram, Haryana-122018",
+      "phone": "8588001337",
+      "gstin": "06AACCW4880F1Z8"
+    },
+    "date": "2026-01-10",
+    "ref_number": "25-26/IS/637",
+    "items": [
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 410400,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 32400,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 165984,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 43092,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 9561,
+        "hsn_code": "95069960"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 130500,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 6,
+        "unit_price": 366000,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Product Description",
+        "brand": null,
+        "quantity": 6,
+        "unit_price": 3480,
+        "hsn_code": "95069960"
+      }
+    ],
+    "source_file": "_005001dc83c0_aa5f8b20_ff1ea160_bajajsports.com__2.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

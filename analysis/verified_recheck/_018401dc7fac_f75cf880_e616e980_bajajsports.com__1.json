@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Shivalik Hostel",
+      "address": "IIT Delhi, Hauz Khas, New Delhi – 11016.",
+      "phone": "9990905708",
+      "gstin": null
+    },
+    "date": "2026-01-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Leg Extension Machine",
+        "brand": "Energizer",
+        "quantity": 1,
+        "unit_price": 75000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_018401dc7fac_f75cf880_e616e980_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

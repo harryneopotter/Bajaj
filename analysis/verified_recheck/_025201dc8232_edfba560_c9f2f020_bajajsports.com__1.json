@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Manoj Kumar Dubey, INSP GD",
+      "address": "O/O The Commandant, 25th Bn SSB Delhi, Ghitorni SOUTH WEST DELHI DELHI 110047",
+      "phone": "011-26502650-",
+      "gstin": null
+    },
+    "date": "2025-06-30",
+    "ref_number": "GEM-60486729",
+    "items": [
+      {
+        "product": "WILSON Tennis Ball “Type 1( Fast); 6.54 to 6.86 cm",
+        "brand": null,
+        "quantity": 72,
+        "unit_price": 174.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_025201dc8232_edfba560_c9f2f020_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

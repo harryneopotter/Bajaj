@@ -1,0 +1,77 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Sports Authority of India",
+      "address": "Major Dhyan Chand National Stadium, New Delhi",
+      "phone": "011 23389740",
+      "gstin": null
+    },
+    "date": null,
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Hockey Goal Posts (H.I.F.) (Movable)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Goal Posts (Movable) Aluminium",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Goal Post (H.A.A.) (Movable)",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Hockey Rebounder Board",
+        "brand": "Bajaj",
+        "quantity": 4,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__5.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    },
+    {
+      "field": "items[3].unit_price",
+      "value": null,
+      "confidence": "low",
+      "reason": "missing price",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__5.html"
+}

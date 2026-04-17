@@ -1,0 +1,124 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Suresh Bajaj",
+      "address": "B-4, Ordinance Apartments, Vikas Puri, New Delhi – 110018",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2016-06-21",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Volley Ball Pole Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Volley Ball Pole Socket Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Volley Ball Pole Movable Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "VOLLEYBALL REFEREE CHAIR",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__7.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.phone",
+      "value": null,
+      "reason": "Missing phone number for client"
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "Missing GSTIN for client"
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "items[0].brand",
+      "value": null,
+      "reason": "Missing brand information"
+    },
+    {
+      "field": "items[0].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[1].brand",
+      "value": null,
+      "reason": "Missing brand information"
+    },
+    {
+      "field": "items[1].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[1].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[2].brand",
+      "value": null,
+      "reason": "Missing brand information"
+    },
+    {
+      "field": "items[2].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[2].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    },
+    {
+      "field": "items[3].brand",
+      "value": null,
+      "reason": "Missing brand information"
+    },
+    {
+      "field": "items[3].unit_price",
+      "value": null,
+      "reason": "Missing unit price"
+    },
+    {
+      "field": "items[3].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code"
+    }
+  ],
+  "source_file": "_042601dc9999_9f3c2fc0_ddb48f40_bajajsports.com__7.html"
+}

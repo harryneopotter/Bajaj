@@ -1,0 +1,53 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "All India Football Federation",
+      "address": "Football House, Sector 19, Phase 1, Dwarka, New Delhi - 110075",
+      "phone": "+91 11 25308200",
+      "gstin": null
+    },
+    "date": "2017-09-04",
+    "ref_number": "SUPPLY OF FUTSAL GOAL POST",
+    "items": [
+      {
+        "product": "Foot Ball Goal Posts Aluminium Movable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Foot Ball Goal Posts Aluminium Fixed Type",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Goal Posts Portable / Foldable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [
+    {
+      "field": "client.address",
+      "original": "Football House, Sector 19, Phase 1, Dwarka, New Delhi - 110 075",
+      "corrected": "Football House, Sector 19, Phase 1, Dwarka, New Delhi - 110075"
+    }
+  ],
+  "flags": [
+    "Missing GSTIN",
+    "All line items missing unit_price",
+    "All line items missing hsn_code",
+    "ref_number appears to be a subject/title rather than a unique reference number",
+    "doc_type marked as invoice but extracted data resembles quotation/supply request (no pricing/tax totals)"
+  ],
+  "source_file": "_001001dc8164_8480d2a0_8d8277e0_bajajsports.com__1.html"
+}

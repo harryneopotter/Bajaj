@@ -1,0 +1,383 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "DPS International",
+      "address": "HS-01, Block-W, South City – II, Sec. 50, Gurgaon, Haryana – 122 001.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-10",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball- 7",
+        "brand": "Spalding Rebound",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball- 5",
+        "brand": "Spalding Rebound",
+        "quantity": 1,
+        "unit_price": 570.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball- 6",
+        "brand": "Spalding Rebound",
+        "quantity": 1,
+        "unit_price": 560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball- 3",
+        "brand": "Cosco",
+        "quantity": 1,
+        "unit_price": 220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Nets",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 6125.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football -5",
+        "brand": "Cosco Delta Force",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football - 4",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 730.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football - 3",
+        "brand": "Cosco Italia",
+        "quantity": 1,
+        "unit_price": 425.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mannequins",
+        "brand": "Cougar",
+        "quantity": 1,
+        "unit_price": 4350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility Poles",
+        "brand": "Plastic 5’",
+        "quantity": 1,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Corner Flags",
+        "brand": "Plastic",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat E/W",
+        "brand": "SG RSD Xtreme",
+        "quantity": 1,
+        "unit_price": 10800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Leather Balls",
+        "brand": "SG Super 50 Red",
+        "quantity": 1,
+        "unit_price": 360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Kit Bag",
+        "brand": "SG V12 Wheelie Duffle",
+        "quantity": 1,
+        "unit_price": 4300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Plastic Wickets",
+        "brand": "Vinex",
+        "quantity": 1,
+        "unit_price": 1400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Batting Gloves",
+        "brand": "SG Litevate",
+        "quantity": 1,
+        "unit_price": 2100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Catching Bat",
+        "brand": "SG",
+        "quantity": 1,
+        "unit_price": 1150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Fielding Wicket",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Ball",
+        "brand": "Vicky",
+        "quantity": 1,
+        "unit_price": 63.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Batting Pad",
+        "brand": "SG Optipro",
+        "quantity": 1,
+        "unit_price": 1350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat Grip",
+        "brand": "SG Players",
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket White Leather Ball",
+        "brand": "SG Super 50 White",
+        "quantity": 1,
+        "unit_price": 460.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racquet",
+        "brand": "Yonex Attack 9",
+        "quantity": 1,
+        "unit_price": 1580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware Tournament",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Plastics Shuttles",
+        "brand": "Yonex Mavis 350",
+        "quantity": 1,
+        "unit_price": 1100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Feather Shuttles",
+        "brand": "Yonex AS 2",
+        "quantity": 1,
+        "unit_price": 4100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Ball",
+        "brand": "Dunlop Yellow Double Dot",
+        "quantity": 1,
+        "unit_price": 260.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Rackets",
+        "brand": "Cosco LST 125",
+        "quantity": 1,
+        "unit_price": 1175.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Balls",
+        "brand": "Cosco All Court",
+        "quantity": 1,
+        "unit_price": 250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Rackets",
+        "brand": "Cosco Mas Power",
+        "quantity": 1,
+        "unit_price": 1205.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Balls",
+        "brand": "Stag 3 Star",
+        "quantity": 1,
+        "unit_price": 325.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Racquets",
+        "brand": "GKI Euro 5",
+        "quantity": 1,
+        "unit_price": 2350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT tables",
+        "brand": "Stag Intl. Deluxe 1000DX",
+        "quantity": 1,
+        "unit_price": 47125.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Multi ball Net",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 8500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Net",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 235.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Trolley for Multi Ball",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 9000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ball Carrying Bags",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 380.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Air Pump machine",
+        "brand": "Electric Pump",
+        "quantity": 1,
+        "unit_price": 2200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Air pump",
+        "brand": "Nivia Ball Pump",
+        "quantity": 1,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistles",
+        "brand": "Fox 40 Classic Official",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball double sided coaching clipboard",
+        "brand": "Vinex",
+        "quantity": 1,
+        "unit_price": 1550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Taekwondo Fan pads",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chest Guard size -0",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chest Guard size 1",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Head Guard size 0",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Head Guard size 1",
+        "brand": "Hanah",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Pool Noodle",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Pull Buoy",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Athletics Hurdle",
+        "brand": "Nelco N1132TG",
+        "quantity": 1,
+        "unit_price": 2400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Saucers",
+        "brand": "Plastic 2”",
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cones - Medium",
+        "brand": "Plastic 9”",
+        "quantity": 1,
+        "unit_price": 60.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "DPS Intl., Gurgaon.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

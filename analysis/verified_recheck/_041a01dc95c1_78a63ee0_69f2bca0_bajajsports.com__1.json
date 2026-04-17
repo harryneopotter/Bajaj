@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Vatika Hotels Pvt. Ltd.",
+      "address": "5th Floor, Tower-A, Vatika City Centre, Sector-83, Vatika India Next, Gurugram, Haryana – 122012.",
+      "phone": "9582880180",
+      "gstin": null
+    },
+    "date": "2026-02-04",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Badminton Pole Movable",
+        "brand": "Stag",
+        "quantity": 1,
+        "unit_price": 62480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 600.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_041a01dc95c1_78a63ee0_69f2bca0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

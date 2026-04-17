@@ -1,0 +1,49 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Syncotts International",
+      "address": "J-219, Lane – W 15, Western Avenue, Sainik Farms, New Delhi – 110 080.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-02-03",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Volleyball Pole",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 38400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball Net",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 3187.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Net covering on Cricket & Futsal Cage",
+        "brand": "Garware",
+        "quantity": 14850,
+        "unit_price": 3.5,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_007501dc94da_531022a0_f93067e0_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "items[2].quantity",
+      "value": 14850,
+      "confidence": "low",
+      "reason": "quantity out of range",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_007501dc94da_531022a0_f93067e0_bajajsports.com__1.html"
+}

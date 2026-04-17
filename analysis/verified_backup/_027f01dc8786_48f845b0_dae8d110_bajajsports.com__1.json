@@ -1,0 +1,399 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "The Lawrence School",
+      "address": "Sanawar, Distt. Solan, Himachal Pradesh – 173 202.",
+      "phone": "01792-261208 / 209",
+      "gstin": null
+    },
+    "date": "2026-01-17",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Badminton Pole sets",
+        "brand": "Stag",
+        "quantity": 2,
+        "unit_price": 55000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cock",
+        "brand": "Yonex",
+        "quantity": 10,
+        "unit_price": 1000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Padded Blocking Guard",
+        "brand": "USI",
+        "quantity": 2,
+        "unit_price": 1600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Blocking Pad",
+        "brand": "USI",
+        "quantity": 2,
+        "unit_price": 1600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B,ball Acrylic Board with Ring",
+        "brand": "Nivia",
+        "quantity": 5,
+        "unit_price": 7150.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B,ball -Leather No.6",
+        "brand": "Nivia",
+        "quantity": 15,
+        "unit_price": 1300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Ball-Ring Net",
+        "brand": "Garware",
+        "quantity": 10,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Ball-Rubber No. 5",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 524.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Ball-Rubber No. 6",
+        "brand": "Nivia",
+        "quantity": 15,
+        "unit_price": 572.0,
+        "hsn_code": null
+      },
+      {
+        "product": "B’ball Practice Rim",
+        "brand": "Bajaj",
+        "quantity": 5,
+        "unit_price": 2100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Arm Guard",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 330.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Ball Red Leather 4 Pc(Full Size)",
+        "brand": "SG",
+        "quantity": 250,
+        "unit_price": 625.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Ball White Leather 4 Pc(Full Size)",
+        "brand": "SG",
+        "quantity": 250,
+        "unit_price": 720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat English Willow",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 8800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Bat Kashmiri Willow",
+        "brand": "SS",
+        "quantity": 10,
+        "unit_price": 2070.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Gloves Red Colour(M)",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 1680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Gloves White Colour",
+        "brand": "SS",
+        "quantity": 10,
+        "unit_price": 1680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Gloves White Colour(M)",
+        "brand": "SG",
+        "quantity": 5,
+        "unit_price": 1880.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Pad Red Colour",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 1980.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Pad Red Colour Youth Size",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 1980.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Pad White Colour",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 2250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Batting Pad White Colour Youth",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 2250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Catching Bat Kashmir Willow",
+        "brand": "SS",
+        "quantity": 2,
+        "unit_price": 2070.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Cheast Guard",
+        "brand": "SG",
+        "quantity": 5,
+        "unit_price": 620.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Helmet Blue Colour",
+        "brand": "SG",
+        "quantity": 2,
+        "unit_price": 1700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Helmet Blue Colour Youth",
+        "brand": "SG",
+        "quantity": 5,
+        "unit_price": 1700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Helmet Red Colour",
+        "brand": "DSC",
+        "quantity": 2,
+        "unit_price": 1800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Helmet Red Colour Youth",
+        "brand": "DSC",
+        "quantity": 2,
+        "unit_price": 1800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Kit Bag Full Size",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 2500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Mat for Pitch for Full Pitch",
+        "brand": "Bajaj",
+        "quantity": 2,
+        "unit_price": 14000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Mat for Pitch for Half Pitch",
+        "brand": "Bajaj",
+        "quantity": 2,
+        "unit_price": 7000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Net(Green) for Roof",
+        "brand": "Garware",
+        "quantity": 1,
+        "unit_price": 4.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Net(Green) for Sides",
+        "brand": "Garware",
+        "quantity": 3,
+        "unit_price": 8.5,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Plastic Spring Back Stumps Set",
+        "brand": "Bajaj",
+        "quantity": 5,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Score Book",
+        "brand": null,
+        "quantity": 20,
+        "unit_price": 140.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Shot shin Pads",
+        "brand": "SS",
+        "quantity": 2,
+        "unit_price": 500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Wicket Keeping Gloves White Colour",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 3600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Wicket Keeping Gloves White Colour Youth",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 3500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Wicket Keeping Inner Gloves",
+        "brand": "SS",
+        "quantity": 5,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Wicket Keeping Pad in Red Colour",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 1350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Wicket Keeping Pad in White Colour",
+        "brand": "SS",
+        "quantity": 3,
+        "unit_price": 1350.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Cricket Tennis Balls",
+        "brand": null,
+        "quantity": 20,
+        "unit_price": 65.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Ball Double Dot",
+        "brand": "Dunlop",
+        "quantity": 20,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Ball Single Dot",
+        "brand": "Dunlop",
+        "quantity": 20,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Eyewear",
+        "brand": "Head",
+        "quantity": 10,
+        "unit_price": 2550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Squash Racket",
+        "brand": "Head",
+        "quantity": 4,
+        "unit_price": 9200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Wilson",
+        "quantity": 200,
+        "unit_price": 64.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Net with wire",
+        "brand": "Garware",
+        "quantity": 2,
+        "unit_price": 6000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Ankle Weight 1Kg",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 780.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Ankle Weight 500g",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Cone(Plastic) 6 Inch",
+        "brand": null,
+        "quantity": 100,
+        "unit_price": 12.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Training Marker(Plastic)",
+        "brand": null,
+        "quantity": 100,
+        "unit_price": 10.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistle(for Refereeship)",
+        "brand": "Fox",
+        "quantity": 20,
+        "unit_price": 330.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_027f01dc8786_48f845b0_dae8d110_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "The Lawrence School",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_027f01dc8786_48f845b0_dae8d110_bajajsports.com__1.html"
+}

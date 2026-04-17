@@ -1,0 +1,63 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Training platform",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 4200.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "PART-B.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": null,
+      "reason": "Missing client name"
+    },
+    {
+      "field": "client.address",
+      "value": null,
+      "reason": "Missing client address"
+    },
+    {
+      "field": "client.phone",
+      "value": null,
+      "reason": "Missing client phone"
+    },
+    {
+      "field": "client.gstin",
+      "value": null,
+      "reason": "Missing client GSTIN"
+    },
+    {
+      "field": "ref_number",
+      "value": null,
+      "reason": "Missing reference number"
+    },
+    {
+      "field": "items[0].brand",
+      "value": null,
+      "reason": "Missing brand for item"
+    },
+    {
+      "field": "items[0].hsn_code",
+      "value": null,
+      "reason": "Missing HSN code for item"
+    }
+  ],
+  "source_file": "PART-B.html"
+}

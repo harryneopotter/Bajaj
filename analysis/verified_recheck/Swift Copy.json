@@ -1,0 +1,18 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "BAJAJ AND CO",
+      "address": "27 MUNICIPAL MKT. CONNAUGHT CIRCUS NEW DELHI110001INDIA",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-02",
+    "ref_number": "01330FIBC0003426",
+    "items": [],
+    "source_file": "Swift Copy.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Dribble Academy Foundation",
+      "address": "1581, Tower 15, ATS Green Village, Expressway, Sector 93A, Noida, U. P.-201303.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-19",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Movable Bleachers",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 73500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_032801dc8914_dbb51060_931f3120_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

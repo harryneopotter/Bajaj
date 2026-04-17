@@ -1,0 +1,40 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Sports department",
+      "address": "Sector 42 A, Chandigarh Pin Code 160036",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-04-01",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Hockey Goal Post",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 315000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Technical Table",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 315000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Dugout 20 seater",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 225000.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Quotation Hockey Equipment Sports Department Chandigarh.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

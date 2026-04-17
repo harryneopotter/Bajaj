@@ -1,0 +1,32 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-12",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Aluminium Section",
+        "brand": null,
+        "quantity": 2830.25,
+        "unit_price": 356.65,
+        "hsn_code": "76041020"
+      }
+    ],
+    "source_file": "_000801dc839e_0f2c5fb0_2d851f10_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [
+    "Client details are entirely missing (name, address, phone, GSTIN).",
+    "Reference number is missing.",
+    "Single line item has unusually high quantity; verify OCR/extraction accuracy against source.",
+    "No supporting HTML content provided here to validate extracted fields."
+  ],
+  "source_file": "_000801dc839e_0f2c5fb0_2d851f10_bajajsports.com__1.html"
+}

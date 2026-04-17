@@ -1,0 +1,76 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Bala Sai Earth Movers Pvt. Ltd.",
+      "address": "52, Jamuna Lal Bajaj Street, Kolkata – 700007, West Bengal.",
+      "phone": "9830977722",
+      "gstin": null
+    },
+    "date": "2026-01-09",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Tennis Pole – Fixed type",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 9240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole – Socket Type",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 11300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole – Movable",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 35640.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole – Fixed type Aluminium",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 19560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole – Fastener Type Aluminium",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 22200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Pole – Socket Type Aluminium",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 20520.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis ball Trolley – Movable Stainless Steel",
+        "brand": "MRF",
+        "quantity": 1,
+        "unit_price": 11400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Tennis Net Garware Tournament (UV Treated)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6675.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_01c401dc813d_1fcf74f0_5f6e5ed0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_01c401dc813d_1fcf74f0_5f6e5ed0_bajajsports.com__1.html"
+}

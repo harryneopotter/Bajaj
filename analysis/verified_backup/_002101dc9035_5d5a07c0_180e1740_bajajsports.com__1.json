@@ -1,0 +1,63 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": null,
+      "address": null,
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-24",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basket Ball",
+        "brand": "Spalding",
+        "quantity": 20,
+        "unit_price": 535.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Wicket Keeping Gloves",
+        "brand": null,
+        "quantity": 3,
+        "unit_price": 1700.0,
+        "hsn_code": "42032110"
+      },
+      {
+        "product": "Cr. Ball Leather Kimati Delux",
+        "brand": null,
+        "quantity": 60,
+        "unit_price": 440.0,
+        "hsn_code": "95066920"
+      },
+      {
+        "product": "Fuss Ball",
+        "brand": null,
+        "quantity": 20,
+        "unit_price": 90.0,
+        "hsn_code": "95069990"
+      },
+      {
+        "product": "Tennis Ball",
+        "brand": "Head Championship",
+        "quantity": 50,
+        "unit_price": 310.0,
+        "hsn_code": "95066100"
+      }
+    ],
+    "source_file": "_002101dc9035_5d5a07c0_180e1740_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    {
+      "field": "client.name",
+      "value": "",
+      "confidence": "low",
+      "reason": "suspicious client name",
+      "needs_html": true
+    }
+  ],
+  "source_file": "_002101dc9035_5d5a07c0_180e1740_bajajsports.com__1.html"
+}

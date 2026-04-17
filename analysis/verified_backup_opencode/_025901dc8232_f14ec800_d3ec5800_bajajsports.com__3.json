@@ -1,0 +1,32 @@
+{
+  "status": "needs_review",
+  "extraction": {
+    "client": {
+      "name": "Sashastra Seema Bal(SSB)",
+      "address": "O/O The Commandant, 25th Bn SSB Delhi, Ghitorni, SOUTH WEST DELHI, DELHI-110047, India",
+      "phone": "011-26502650-",
+      "gstin": null
+    },
+    "date": "2025-06-19",
+    "ref_number": "GEMC-511687753273994",
+    "items": [
+      {
+        "product": "WILSON Tennis Ball Type 1 (Fast)",
+        "brand": "WILSON",
+        "quantity": 72,
+        "unit_price": null,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_025901dc8232_f14ec800_d3ec5800_bajajsports.com__3.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [
+    "Missing GSTIN for client",
+    "Missing unit_price for item",
+    "Missing hsn_code for item",
+    "Phone appears malformed/trailing hyphen: 011-26502650-"
+  ],
+  "source_file": "_025901dc8232_f14ec800_d3ec5800_bajajsports.com__3.html"
+}

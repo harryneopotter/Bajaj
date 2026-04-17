@@ -1,0 +1,313 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "President Secretariat",
+      "address": "Rashtrapati Bhavan, New Delhi",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-10-10",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Corner Flags",
+        "brand": null,
+        "quantity": 4,
+        "unit_price": 990.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Disc Cone",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 20.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 695.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco Premier",
+        "quantity": 1,
+        "unit_price": 570.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Nivia Trainer",
+        "quantity": 1,
+        "unit_price": 550.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Cosco Milano",
+        "quantity": 1,
+        "unit_price": 650.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Cosco Premier",
+        "quantity": 1,
+        "unit_price": 560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.4",
+        "brand": "Nivia Trainer",
+        "quantity": 1,
+        "unit_price": 525.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Markers",
+        "brand": null,
+        "quantity": 40,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Whistle - Plastic",
+        "brand": "Fox 40 Pearl",
+        "quantity": 1,
+        "unit_price": 340.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Referee Card",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Timer(Stop Watch)",
+        "brand": "Racer",
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football Shoes",
+        "brand": "Sega",
+        "quantity": 1,
+        "unit_price": 580.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Referee Flag",
+        "brand": null,
+        "quantity": 2,
+        "unit_price": 240.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Football Goal Posts",
+        "brand": "Bajaj Mini Goal Posts",
+        "quantity": 1,
+        "unit_price": 21500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mini Football Goal Posts",
+        "brand": "Bajaj Mini Goal Posts",
+        "quantity": 1,
+        "unit_price": 15900.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Coach Football Dress",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility Ladder",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 440.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Speed Hurdles",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 110.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Speed Hurdles",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 120.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Speed Hurdles",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 130.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bibs Small",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 170.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Bibs Big",
+        "brand": "Nivia",
+        "quantity": 1,
+        "unit_price": 170.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Agility Stick",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Air Pump",
+        "brand": "John",
+        "quantity": 1,
+        "unit_price": 700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Electric Air Pump",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Suit",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 850.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Trunk",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Cap",
+        "brand": "VIVA",
+        "quantity": 1,
+        "unit_price": 160.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Goggles",
+        "brand": "VIVA",
+        "quantity": 1,
+        "unit_price": 220.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kick Board",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Hand Paddles",
+        "brand": "Local",
+        "quantity": 1,
+        "unit_price": 980.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Foam Noodle",
+        "brand": "Cougar ND-004",
+        "quantity": 1,
+        "unit_price": 200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Float Belt",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 1250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Swimming Belt",
+        "brand": "Cougar SB-001",
+        "quantity": 1,
+        "unit_price": 700.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Mask with Snorkel",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 1400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Nose Clip",
+        "brand": "VIVA",
+        "quantity": 1,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Ear Clip",
+        "brand": "VIVA",
+        "quantity": 1,
+        "unit_price": 100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Kids Arm Band",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Telescopic Pole with Hook",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Pull Buoy",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 480.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Fins",
+        "brand": "VIVA",
+        "quantity": 1,
+        "unit_price": 1200.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Q11.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": []
+}

@@ -1,0 +1,26 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "HR Enterprises",
+      "address": "Pani Khaiti, Lahapara, Guwahati, Kamrup Metropolition, Assam-781026.",
+      "phone": "6002523764",
+      "gstin": "18AAOFH1896F1ZY"
+    },
+    "date": "2026-02-04",
+    "ref_number": "25-26/IS/PI/224",
+    "items": [
+      {
+        "product": "TT Table Stag Iconic Fun Line TT Table",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 22000.0,
+        "hsn_code": "95069990"
+      }
+    ],
+    "source_file": "_02c701dc95a8_c2ad64a0_48082de0_bajajsports.com__1.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

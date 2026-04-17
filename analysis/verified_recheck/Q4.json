@@ -1,0 +1,82 @@
+{
+  "status": "ok",
+  "extraction": {
+    "client": {
+      "name": "Sharda University",
+      "address": "Plot No. 32-34, Knowledge Park III, Greater Noida, U.P – 201310.",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2025-03-07",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "TT Table Stag Championship",
+        "brand": "Stag International",
+        "quantity": 1,
+        "unit_price": 33750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table Stag International",
+        "brand": "Stag International",
+        "quantity": 1,
+        "unit_price": 44250.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Table Stag International Deluxe 1000 DX",
+        "brand": "Stag International",
+        "quantity": 1,
+        "unit_price": 48750.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board Bajaj 2” x 2” Boarder, 6mm Indian Ply with men & striker",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 2600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board Bajaj 3” x 2” Boarder, 12mm Indian Ply with men & striker",
+        "brand": "Bajaj",
+        "quantity": 1,
+        "unit_price": 3800.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Carrom Board Precise Elegant 3” x 2” Boarder, 20mm English Birch Ply with men & striker",
+        "brand": "Precise",
+        "quantity": 1,
+        "unit_price": 9500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess Board with men Rose Wood 18” x 18” foldable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2950.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Chess Board with men Rose Wood 16” x 16” foldable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 2100.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Dart Board Unicorn 15” with 3 pins",
+        "brand": "Unicorn",
+        "quantity": 1,
+        "unit_price": 980.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "Q4.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": []
+}

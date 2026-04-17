@@ -1,0 +1,233 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            @page {{ size: A4; margin: 20mm 20mm 20mm 20mm; }}
+            body {{ font-family: Arial, sans-serif; font-size: 12px; color: #333; }}
+            .header {{ text-align: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid #1a237e; display: block; }}
+            .header h1 {{ color: #1a237e; margin: 0; font-size: 24px; }}
+            .header p {{ margin: 5px 0 0; color: #666; }}
+            .info-grid {{ display: flex; justify-content: space-between; margin-bottom: 30px; }}
+            .info-box {{ width: 48%; }}
+            .info-box h3 {{ font-size: 12px; color: #888; margin: 0 0 8px; text-transform: uppercase; }}
+            .info-box p {{ margin: 4px 0; }}
+            table {{ width: 100%; border-collapse: collapse; margin-bottom: 30px; }}
+            th {{ background: #1a237e; color: white; padding: 12px; text-align: left; font-weight: 500; }}
+            .totals {{ width: 300px; margin-left: auto; }}
+            .totals tr td {{ padding: 8px; }}
+            .totals .grand {{ font-size: 16px; font-weight: bold; color: #1a237e; border-top: 2px solid #1a237e; }}
+            .notes {{ margin-top: 30px; padding: 15px; background: #f5f5f5; border-radius: 4px; }}
+            .footer {{ margin-top: 40px; text-align: center; color: #888; font-size: 10px; }}
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>🏏 BAJAJ SPORTS</h1>
+            <p>27 Municipal Market, Connaught Circus, New Delhi 110001</p>
+            <p>Phone: +91-11-23742070 | info@bajajsports.com | www.bajajsports.com</p>
+            <p>GST No. 07AAFPB2487F1ZY | MSME No. UDYAM-DL-01-0008669</p>
+            <p>ISO 9001:2015</p>
+        </div>
+        
+        <h2 style="color: #1a237e; text-align: center; margin-bottom: 20px;">QUOTATION</h2>
+        
+        <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+            <div style="width: 48%;">
+                <h3 style="font-size: 11px; color: #888; margin: 0 0 8px; text-transform: uppercase;">Bill To</h3>
+                <p style="margin: 4px 0; font-weight: bold;">TEST CLIENT - BETA RELEASE</p>
+                <p style="margin: 4px 0;">123 Beta Street, Sector 45, Noida, UP 201301</p>
+                <p style="margin: 4px 0;">+91-9876543210</p>
+            </div>
+            <div style="width: 48%; text-align: right;">
+                <h3 style="font-size: 11px; color: #888; margin: 0 0 8px; text-transform: uppercase;">Quote Details</h3>
+                <p style="margin: 4px 0;"><strong>Date:</strong> 2026-04-15</p>
+                <p style="margin: 4px 0;"><strong>Quote #:</strong> BSQ-202604150420</p>
+            </div>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 5%;">#</th>
+                    <th style="width: 45%;">Item Description</th>
+                    <th style="width: 12%; text-align: center;">Unit</th>
+                    <th style="width: 8%; text-align: center;">GST%</th>
+                    <th style="width: 15%; text-align: right;">Unit Price</th>
+                    <th style="width: 15%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #eee;">1</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <img src="file:///home/sachin/work/bajaj/quotegen/static/images/spec_sheets/Specifications_for_Foot_Ball_Goal_Posts/image-016.jpg" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 10px; vertical-align: middle;">
+                    <div>
+                        <strong>Football Size-5</strong>
+                        <br><small style='color:#666'>Professional match quality leather football</small>
+                    </div>
+                </div>
+            </td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">Pcs</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">5</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">₹1,200.00</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">₹1,200.00</td>
+        </tr>
+        
+        <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #eee;">2</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee;">
+                <div style="display: flex; align-items: center;">
+                    <img src="file:///home/sachin/work/bajaj/quotegen/static/images/spec_sheets/Specification_for_Basket_Ball_Pole__Boards/image-005.jpg" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 10px; vertical-align: middle;">
+                    <div>
+                        <strong>Basketball Pole Movable</strong>
+                        <br><small style='color:#666'>Heavy duty movable base with 2.2m projection</small>
+                    </div>
+                </div>
+            </td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">Set</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: center;">5</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">₹85,000.00</td>
+            <td style="padding: 12px; border-bottom: 1px solid #eee; text-align: right;">₹85,000.00</td>
+        </tr>
+        
+            </tbody>
+        </table>
+        
+        <table class="totals">
+            <tr>
+                <td>Subtotal (Taxable):</td>
+                <td style="text-align: right;">₹86,200.00</td>
+            </tr>
+            <tr>
+                <td>GST @5%:</td>
+                <td style="text-align: right;">₹4,310.00</td>
+            </tr>
+            <tr>
+                <td>GST @12%:</td>
+                <td style="text-align: right;">₹0.00</td>
+            </tr>
+            <tr>
+                <td>GST @18%:</td>
+                <td style="text-align: right;">₹0.00</td>
+            </tr>
+            <tr>
+                <td>Total GST:</td>
+                <td style="text-align: right;">₹4,310.00</td>
+            </tr>
+            <tr class="grand">
+                <td>Grand Total:</td>
+                <td style="text-align: right;">₹90,510.00</td>
+            </tr>
+        </table>
+        
+        
+        <div class="notes"><strong>Notes:</strong><br>Prices valid for 30 days. Delivery within 1 week of order.</div>
+        
+        <div style="margin-top: 20px;"><strong>Payment Terms:</strong> 100% advance along with firm purchase order.</div>
+        <div style="margin-top: 10px;"><strong>Transportation:</strong> Transportation charges: Extra at actuals.</div>
+        <div style="margin-top: 10px;"><strong>Installation:</strong> Installation and GST charges extra at actuals.</div>
+
+        
+        <div class="footer">
+            <p>This is a computer-generated quotation. Prices are valid for 30 days from the date of issue.</p>
+            <p>Terms: GST Extra | Delivery: As per agreement | Payment: As per terms</p>
+        </div>
+    
+    <!-- Image Picker Modal -->
+    <div id="image-modal" class="card" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2000; width: 500px; display: none; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+        <h2>Pick Product Image</h2>
+        <div id="existing-images" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; max-height: 200px; overflow-y: auto; padding: 10px; border: 1px solid #eee; border-radius: 8px;">
+            <p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>
+        </div>
+        <div style="border-top: 1px solid #eee; padding-top: 16px;">
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">Upload New Image</label>
+            <input type="file" id="image-upload-file" accept="image/*" style="font-size: 12px; margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+                <button class="btn btn-primary" onclick="uploadNewImage()">Upload & Use</button>
+                <button class="btn btn-secondary" onclick="closeImagePicker()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1999; display: none;" onclick="closeImagePicker()"></div>
+
+    <script>
+        let currentPickerRow = null;
+
+        async function openImagePicker(rowId) {
+            currentPickerRow = rowId;
+            const product = document.querySelector(`#item-row-${rowId} .product-input`).value.trim();
+            if (!product) {
+                showStatus('Enter product name first', true);
+                return;
+            }
+
+            document.getElementById('image-modal').style.display = 'block';
+            document.getElementById('modal-overlay').style.display = 'block';
+
+            // Load existing images
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/images/${encodeURIComponent(product)}`);
+            const images = await res.json();
+            
+            const container = document.getElementById('existing-images');
+            if (images.length > 0) {
+                container.innerHTML = images.map(img => `
+                    <div style="cursor: pointer; border: 2px solid transparent;" onclick="selectExistingImage('${img.url}')">
+                        <img src="${baseUrl}/${img.url}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd;">
+                    </div>
+                `).join('');
+            } else {
+                container.innerHTML = '<p style="color: #888; font-size: 12px;">No images uploaded for this product yet.</p>';
+            }
+        }
+
+        function closeImagePicker() {
+            document.getElementById('image-modal').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
+            currentPickerRow = null;
+        }
+
+        function selectExistingImage(url) {
+            const preview = document.getElementById(`image-preview-${currentPickerRow}`);
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            preview.querySelector('img').src = `${baseUrl}/${url}`;
+            preview.style.display = 'block';
+            document.getElementById(`image-url-${currentPickerRow}`).value = url;
+            closeImagePicker();
+        }
+
+        async function uploadNewImage() {
+            const fileInput = document.getElementById('image-upload-file');
+            if (!fileInput.files[0]) {
+                alert('Pick a file first');
+                return;
+            }
+
+            const product = document.querySelector(`#item-row-${currentPickerRow} .product-input`).value.trim();
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+            formData.append('product_name', product);
+            formData.append('category', 'uncategorized'); // Can be improved to use product cat
+
+            showStatus('Uploading image...');
+            const baseUrl = window.location.pathname.replace(/\/+$/, '');
+            const res = await fetch(`${baseUrl}/api/upload-image`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (res.ok) {
+                const img = await res.json();
+                selectExistingImage(img.url);
+                showStatus('Image uploaded!');
+            } else {
+                showStatus('Upload failed', true);
+            }
+        }
+    </script>
+</body>
+    </html>

@@ -1,0 +1,97 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Mr. Prakash Ch. Muduli",
+      "address": "Student’s Gymkhana, Indian Institute of Technology, Bhubaneswar",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-02-06",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Basketball Pole Fix Type with 2.2 Meter Projection (MS Round Pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 102360.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 2.2 Meter Projection (8” dia pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 116280.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 3.2 Meter Projection (8” dia pipe)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 129960.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type with 3.2 Meter Projection (Made of “C” Channel)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 174720.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable (with Fixed Height of 10’)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 181200.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable – Height Adjustable",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 378000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable Height Adjustable Senior and Junior size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 170000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable – Height Adjustable (small size for practice)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 110000.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Movable – Height Adjustable (small size for practice, 1mtr. projection)",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 127680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basketball Pole Fix Type – Height Adjustable Junior size",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 87500.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Foul Indicator",
+        "brand": null,
+        "quantity": 1,
+        "unit_price": 6500.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_036c01dc9755_2ee1b330_8ca51990_bajajsports.com__3.html",
+    "doc_type": "invoice"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_036c01dc9755_2ee1b330_8ca51990_bajajsports.com__3.html"
+}

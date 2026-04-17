@@ -1,0 +1,104 @@
+{
+  "status": "verified",
+  "extraction": {
+    "client": {
+      "name": "Navyug School",
+      "address": "Sarojini Nagar, New Delhi",
+      "phone": null,
+      "gstin": null
+    },
+    "date": "2026-01-19",
+    "ref_number": null,
+    "items": [
+      {
+        "product": "Volleyball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 970.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Volleyball",
+        "brand": "Spartan",
+        "quantity": 10,
+        "unit_price": 920.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 600.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Football No.5",
+        "brand": "Nivia",
+        "quantity": 10,
+        "unit_price": 560.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Versa",
+        "quantity": 10,
+        "unit_price": 300.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Badminton Racket",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 280.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Shuttle Cocks Nylon",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 495.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Ball",
+        "brand": "Stag",
+        "quantity": 10,
+        "unit_price": 180.0,
+        "hsn_code": null
+      },
+      {
+        "product": "TT Bat",
+        "brand": "Stag",
+        "quantity": 10,
+        "unit_price": 400.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basket Ball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 690.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basket Ball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 680.0,
+        "hsn_code": null
+      },
+      {
+        "product": "Basket Ball",
+        "brand": "Cosco",
+        "quantity": 10,
+        "unit_price": 665.0,
+        "hsn_code": null
+      }
+    ],
+    "source_file": "_02cf01dc8911_e17f2dd0_a47d8970_bajajsports.com__1.html",
+    "doc_type": "quotation"
+  },
+  "fixes": [],
+  "flags": [],
+  "source_file": "_02cf01dc8911_e17f2dd0_a47d8970_bajajsports.com__1.html"
+}
