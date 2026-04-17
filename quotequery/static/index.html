@@ -1,122 +1,258 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>QuoteQuery</title>
+    <title>Analytics Assistant</title>
     <link rel="manifest" href="manifest.json">
     <style>
         :root { --primary: #1a237e; --bg: #f8f9fa; }
-        body { font-family: -apple-system, system-ui; background: var(--bg); margin: 0; padding: 20px; color: #333; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; padding: 20px; color: #333; }
         .header { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
         h1 { font-size: 24px; color: var(--primary); margin: 0; }
         
         .answer-card { 
             background: white; border-radius: 16px; padding: 24px; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 24px;
-            min-height: 100px; display: flex; align-items: center;
-            font-size: 20px; line-height: 1.4; color: var(--primary); font-weight: 500;
+            min-height: 100px; font-size: 16px; line-height: 1.5; color: #444;
         }
-
-        .input-group { position: relative; margin-bottom: 24px; }
+        .answer-title { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
+        .answer-summary { font-size: 18px; margin-bottom: 16px; }
+        .ranked-list { padding-left: 20px; }
+        .ranked-item { margin-bottom: 8px; display: flex; justify-content: space-between; }
+        .ranked-label { font-weight: 500; }
+        .ranked-value { font-weight: 600; color: var(--primary); }
+        .ranked-meta { font-size: 14px; color: #888; }
+        
+        .input-group { position: relative; margin-bottom: 12px; }
         input { 
             width: 100%; padding: 18px 50px 18px 20px; border-radius: 30px; 
-            border: 2px solid #ddd; font-size: 18px; box-sizing: border-box; outline: none;
+            border: 2px solid #ddd; font-size: 16px; box-sizing: border-box; outline: none;
+            -webkit-appearance: none;
         }
         .mic-btn {
             position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; font-size: 24px; cursor: pointer;
+            background: none; border: none; font-size: 20px; cursor: pointer; color: #888;
         }
 
-        .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .big-btn {
-            background: white; border: 1px solid #eee; padding: 20px 15px; border-radius: 16px;
-            font-size: 16px; font-weight: 600; color: #555; text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03); cursor: pointer;
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-        }
-        .big-btn:active { background: #eee; }
-        .big-btn span { font-size: 24px; }
+        .examples { font-size: 13px; color: #666; margin-bottom: 24px; text-align: center; }
 
-        .loading { color: #888; font-style: italic; font-size: 16px; }
+        .button-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .action-btn {
+            background: white; border: 1px solid #eee; padding: 12px; border-radius: 12px;
+            font-size: 14px; font-weight: 500; color: #555; text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); cursor: pointer;
+        }
+        .action-btn:active { background: #f0f0f0; }
+
+        .loading { color: #888; font-style: italic; font-size: 16px; text-align: center; }
+        
+        /* Client Lookup Panel */
+        #client-lookup {
+            display: none; background: white; border-radius: 16px; padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px; border: 2px solid var(--primary);
+        }
+        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .chip {
+            background: #e8eaf6; color: var(--primary); padding: 8px 16px; border-radius: 20px;
+            font-size: 14px; font-weight: 500; cursor: pointer; border: none;
+        }
+        .chip:active { background: #c5cae9; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>🏷️ QuoteQuery</h1>
+        <h1>Analytics Assistant</h1>
     </div>
 
     <div id="answer" class="answer-card">
-        Welcome back. How can I help you today?
+        <div class="answer-summary" style="color:#888;">What would you like to know about your quotes?</div>
+    </div>
+
+    <!-- Client Lookup Inline Panel -->
+    <div id="client-lookup">
+        <div class="answer-title">Search Client</div>
+        <input type="text" id="clientSearchInput" placeholder="Type a client name..." oninput="debounceSearch(event.target.value)">
+        <div id="clientChips" class="chip-container"></div>
     </div>
 
     <div class="input-group">
-        <input type="text" id="query-input" placeholder="Ask anything..." onkeypress="handleKey(event)">
-        <button class="mic-btn" onclick="startVoice()">🎙️</button>
+        <input type="text" id="q" placeholder="Ask about quotes, clients, or products..." onkeypress="handleKey(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <button class="mic-btn" id="voiceBtn" onclick="startVoice()" title="Voice search" aria-label="Voice Search">🎤</button>
     </div>
+    <div class="examples">e.g., "last quote for DPS" • "who are my top clients"</div>
 
     <div class="button-grid">
-        <div class="big-btn" onclick="ask('Show me recent quotes')">
-            <span>🕒</span> Recent Quotes
-        </div>
-        <div class="big-btn" onclick="ask('How much business this month?')">
-            <span>💰</span> This Month
-        </div>
-        <div class="big-btn" onclick="ask('Who are my best clients?')">
-            <span>👑</span> Top Clients
-        </div>
-        <div class="big-btn" onclick="ask('What products am I quoting most?')">
-            <span>📦</span> Top Products
-        </div>
-        <div class="big-btn" onclick="ask('Which clients have gone quiet?')">
-            <span>🤫</span> Who's Quiet?
-        </div>
-        <div class="big-btn" onclick="ask(prompt('Enter client name:') || 'Last quote to DPS')">
-            <span>🔍</span> Last Quote...
-        </div>
+        <div class="action-btn" onclick="ask('How much business this month?')">This Month</div>
+        <div class="action-btn" onclick="ask('Which clients have gone quiet?')">Quiet Clients</div>
+        <div class="action-btn" onclick="openClientLookup()">Last Quote...</div>
     </div>
 
     <script>
+        // Check voice support silently
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            document.getElementById('voiceBtn').style.display = 'none';
+        }
+
+        const formatINR = (val) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val).replace('₹', '₹ ');
+
+        function renderAnswer(data) {
+            const container = document.getElementById('answer');
+            container.innerHTML = ''; // Sanitize by clearing
+
+            if (data.title) {
+                const title = document.createElement('div');
+                title.className = 'answer-title';
+                title.textContent = data.title;
+                container.appendChild(title);
+            }
+
+            if (data.summary) {
+                const summary = document.createElement('div');
+                summary.className = 'answer-summary';
+                summary.textContent = data.summary;
+                container.appendChild(summary);
+            }
+
+            if (data.answer_type === 'ranked_list' && data.items) {
+                const list = document.createElement('div');
+                list.className = 'ranked-list';
+                
+                data.items.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'ranked-item';
+                    
+                    const label = document.createElement('div');
+                    label.className = 'ranked-label';
+                    label.textContent = `${index + 1}. ${item.label} `;
+                    
+                    if (item.meta) {
+                        const meta = document.createElement('span');
+                        meta.className = 'ranked-meta';
+                        meta.textContent = `(${item.meta})`;
+                        label.appendChild(meta);
+                    }
+                    div.appendChild(label);
+
+                    if (item.value !== null) {
+                        const val = document.createElement('div');
+                        val.className = 'ranked-value';
+                        val.textContent = formatINR(item.value);
+                        div.appendChild(val);
+                    }
+                    
+                    list.appendChild(div);
+                });
+                container.appendChild(list);
+            }
+
+            // Clarification Flow
+            if (data.needs_clarification && data.candidates) {
+                const chips = document.createElement('div');
+                chips.className = 'chip-container';
+                data.candidates.forEach(c => {
+                    const btn = document.createElement('button');
+                    btn.className = 'chip';
+                    btn.textContent = c;
+                    btn.onclick = () => ask(`last quote for ${c}`);
+                    chips.appendChild(btn);
+                });
+                container.appendChild(chips);
+            }
+        }
+
         async function ask(text) {
+            document.getElementById('client-lookup').style.display = 'none';
+            document.getElementById('q').value = '';
+            
             const answerDiv = document.getElementById('answer');
-            answerDiv.innerHTML = '<span class="loading">Looking that up...</span>';
+            answerDiv.innerHTML = '<div class="loading">Looking that up...</div>';
             
             try {
-                console.log("Calling API with:", text); const res = await fetch('./api/query', {
+                const res = await fetch('./api/query', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({text})
                 });
                 const data = await res.json();
-                answerDiv.innerHTML = data.answer;
+                renderAnswer(data);
             } catch (e) {
-                answerDiv.innerText = "Error: " + e.message + ". Check console.";
+                renderAnswer({
+                    title: 'Network Error',
+                    summary: 'Could not connect to the assistant. Please try again.',
+                    answer_type: 'unsupported'
+                });
             }
         }
 
         function handleKey(e) {
             if (e.key === 'Enter') {
-                const val = e.target.value;
-                if (val) {
-                    ask(val);
-                    e.target.value = '';
-                }
+                const val = e.target.value.trim();
+                if (val) ask(val);
+                e.target.blur(); // Hide keyboard on mobile
             }
         }
 
-        function startVoice() {
-            if (!('webkitSpeechRecognition' in window)) {
-                alert("Voice not supported in this browser.");
+        // --- Client Lookup Panel UX ---
+        let searchTimeout;
+        
+        function openClientLookup() {
+            document.getElementById('client-lookup').style.display = 'block';
+            document.getElementById('clientSearchInput').focus();
+            document.getElementById('clientChips').innerHTML = '';
+        }
+
+        function debounceSearch(val) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => searchClients(val), 300);
+        }
+
+        async function searchClients(query) {
+            const chipsDiv = document.getElementById('clientChips');
+            if (query.length < 2) {
+                chipsDiv.innerHTML = '';
                 return;
             }
-            const recognition = new webkitSpeechRecognition();
-            recognition.lang = 'en-IN';
-            recognition.onresult = (event) => {
-                const text = event.results[0][0].transcript;
-                document.getElementById('query-input').value = text;
+            
+            try {
+                const res = await fetch(`./api/clients/search?q=${encodeURIComponent(query)}`);
+                const data = await res.json();
+                
+                chipsDiv.innerHTML = '';
+                if (data.candidates.length === 0) {
+                    chipsDiv.innerHTML = '<span class="ranked-meta">No matches found</span>';
+                    return;
+                }
+                
+                data.candidates.forEach(c => {
+                    const btn = document.createElement('button');
+                    btn.className = 'chip';
+                    btn.textContent = c;
+                    btn.onclick = () => ask(`last quote for ${c}`);
+                    chipsDiv.appendChild(btn);
+                });
+            } catch (e) {
+                console.error("Search failed", e);
+            }
+        }
+
+        // --- Voice UX ---
+        function startVoice() {
+            const sr = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!sr) return; // Handled by display:none above
+            
+            const recognition = new sr();
+            const input = document.getElementById('q');
+            
+            recognition.onstart = () => { input.placeholder = "Listening..."; };
+            recognition.onresult = (e) => {
+                const text = e.results[0][0].transcript;
+                input.value = text;
                 ask(text);
             };
+            recognition.onerror = () => { input.placeholder = "Ask about quotes, clients, or products..."; };
+            recognition.onend = () => { input.placeholder = "Ask about quotes, clients, or products..."; };
+            
             recognition.start();
         }
     </script>
