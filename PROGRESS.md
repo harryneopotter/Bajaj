@@ -26,31 +26,45 @@
 ## 2. QuoteQuery - Conversational Query App (Port 8082)
 
 ### Current v0.1 Contract (Implemented)
-- ✅ Deterministic intent routing via ordered registry (regex + explicit handlers)
-- ✅ Structured `/api/query` JSON responses (`ok`, `intent`, `answer_type`, `title`, `summary`, `items`, `proof`, optional clarification/suggestions)
-- ✅ Six supported intents:
+- ✅ **Structured `POST /api/query` envelope** with stable fields (`ok`, `intent`, `answer_type`, `title`, `summary`, `items`, `proof`, optional `suggestions`/clarification keys).
+- ✅ **Deterministic intent registry** (ordered regex routes) for 6 intents:
   1. `last_quote_client`
   2. `month_summary`
   3. `inactive_clients`
   4. `top_clients`
   5. `top_products`
   6. `recent_quotes`
-- ✅ Clarification workflow for ambiguous client queries (`needs_clarification` + candidate chips)
-- ✅ Client assist endpoint: `GET /api/clients/search?q=...`
-- ✅ Query telemetry persisted to `qq_metadata.db` (`qq_query_log`)
-- ✅ Read-only access to shared `quotes.db` for analytics/query execution
-- ✅ `ENABLE_LLM_RESOLVER` feature flag exists and is default-off
+- ✅ **Clarification flow for ambiguous client matches** (`needs_clarification=true` + candidate chips).
+- ✅ **Client lookup endpoint**: `GET /api/clients/search` for inline client search.
+- ✅ **Read-only analytics DB access**: QuoteQuery opens shared `quotes.db` in read-only mode.
+- ✅ **Owned query telemetry DB**: QuoteQuery creates/writes `qq_metadata.db` (`qq_query_log`) for query logs and audit metadata.
+- ✅ **Feature-flagged LLM resolver switch**: `ENABLE_LLM_RESOLVER` exists and is default-off.
 
-### UX Reality (Current)
-- Mobile-first single-page UI with text input, quick actions, and client lookup panel
-- Clarification chips are shown inline in the answer card when disambiguation is required
-- Response rendering is based on backend `answer_type` (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`)
+### UX Status (Current)
+- ✅ Mobile-friendly, single-page UI with:
+  - text input
+  - voice input button (browser-supported)
+  - action buttons for common flows
+  - clarification chips and inline client-lookup panel
+- ✅ UI renders typed response shapes (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`) rather than free-form narration assumptions.
 
-### Target v0.1 Stability Goals
-- Keep deterministic routing and structured payload shape stable for UI compatibility
-- Preserve auditable query logging in `qq_metadata.db`
-- Maintain strict read-only behavior against `quotes.db`
-- Keep LLM fallback optional until deterministic coverage is intentionally expanded
+### Target v0.1 UX/Contract Guardrails
+- Keep deterministic routing as the default path for reliability and testability.
+- Keep unsupported fallback explicit when LLM resolver is disabled.
+- Maintain strict separation of data responsibilities:
+  - `quotes.db`: read-only analytics source
+  - `qq_metadata.db`: query log ownership
+- Preserve chip-based disambiguation workflow for client-specific asks.
+
+### Outdated Assumptions Removed
+- ❌ QuoteQuery is **not** documented as a prototype narration-first flow.
+- ❌ UI is **not** assumed to be only "6 big tap targets" without typed API-state rendering.
+- ❌ LLM path is **not** baseline-required for normal operation.
+
+### Files
+- `/home/sachin/work/bajaj/quotequery/main.py` - FastAPI backend, intent routing, DB access, query log writes
+- `/home/sachin/work/bajaj/quotequery/static/index.html` - UI rendering and clarification/client-search UX
+- `/home/sachin/work/bajaj/quotequery/README.md` - v0.1 contract and manual verification checklist
 
 ---
 
@@ -58,19 +72,24 @@
 
 | Component | Status | Port |
 |-----------|--------|------|
-| Quote Generator | ✅ Active | 8081 |
-| QuoteQuery API/UI | ✅ Active | 8082 |
+| Quote Generator | ✅ Running | 8081 |
+| QuoteQuery App | ✅ Running | 8082 |
+| PDF Generation | ✅ Working (WeasyPrint) | - |
+| Image Upload/Picker | ✅ Working | - |
+| GST Auto-fill | ✅ Working | - |
 | Shared Quote DB (`quotes.db`) | ✅ Read-only from QuoteQuery | - |
+| QuoteQuery Deterministic Intents | ✅ Working | - |
 | QuoteQuery Metadata DB (`qq_metadata.db`) | ✅ Write-enabled | - |
 
 ---
 
 ## 4. Next Steps
 
-1. Add tests under `tests/` for deterministic intent routing and response schemas
-2. Add regression checks for clarification-chip flows
-3. Expand deterministic patterns before enabling any default LLM resolution path
-4. Add lightweight auth/rate controls if external exposure increases
+1. Implement and evaluate gated LLM fallback path behind `ENABLE_LLM_RESOLVER`
+2. Add explicit API contract tests for the 6 intent handlers and unsupported fallback
+3. Add lightweight frontend smoke tests for clarification-chip flow
+4. Cache heavy analytics queries if response times regress
+5. Add authentication/authorization if external access expands
 
 ---
 
