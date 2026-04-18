@@ -11,15 +11,18 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
 BASE_DIR = Path(__file__).parent
-DATA_DIR = Path(os.getenv("DATA_DIR", "/home/sachin/work/bajaj"))
+DATA_DIR = Path(os.getenv("DATA_DIR", str(BASE_DIR.parent)))
+QQ_QUOTES_DB_PATH = os.getenv("QQ_QUOTES_DB_PATH", "").strip()
 
-PROD_DB = DATA_DIR / "quotegen" / "quotes.db"
+PROD_DB = Path(QQ_QUOTES_DB_PATH) if QQ_QUOTES_DB_PATH else (DATA_DIR / "quotegen" / "quotes.db")
 DEV_DB = BASE_DIR / "dev_quotes.db"
 DB_PATH = PROD_DB if PROD_DB.exists() else DEV_DB
 META_DB_PATH = BASE_DIR / "qq_metadata.db"
 
 AI_STUDIO_KEY = os.getenv("AI_STUDIO_KEY", "")
 ENABLE_LLM_RESOLVER = os.getenv("ENABLE_LLM_RESOLVER", "false").lower() == "true"
+APP_HOST = os.getenv("QQ_HOST", "0.0.0.0")
+APP_PORT = int(os.getenv("QQ_PORT", "8082"))
 
 app = FastAPI(title="Analytics Assistant API")
 
@@ -478,4 +481,4 @@ app.mount("/", StaticFiles(directory=BASE_DIR / "static", html=True), name="stat
 if __name__ == "__main__":
     import uvicorn
     # Bound to tailscale IP
-    uvicorn.run(app, host="100.91.37.16", port=8082)
+    uvicorn.run(app, host=APP_HOST, port=APP_PORT)

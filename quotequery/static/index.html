@@ -72,20 +72,20 @@
     <!-- Client Lookup Inline Panel -->
     <div id="client-lookup">
         <div class="answer-title">Search Client</div>
-        <input type="text" id="clientSearchInput" placeholder="Type a client name..." oninput="debounceSearch(event.target.value)">
+        <input type="text" id="clientSearchInput" placeholder="Type a client name...">
         <div id="clientChips" class="chip-container"></div>
     </div>
 
     <div class="input-group">
-        <input type="text" id="q" placeholder="Ask about quotes, clients, or products..." onkeypress="handleKey(event)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        <button class="mic-btn" id="voiceBtn" onclick="startVoice()" title="Voice search" aria-label="Voice Search">🎤</button>
+        <input type="text" id="q" placeholder="Ask about quotes, clients, or products..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <button class="mic-btn" id="voiceBtn" title="Voice search" aria-label="Voice Search">🎤</button>
     </div>
     <div class="examples">e.g., "last quote for DPS" • "who are my top clients"</div>
 
     <div class="button-grid">
-        <div class="action-btn" onclick="ask('How much business this month?')">This Month</div>
-        <div class="action-btn" onclick="ask('Which clients have gone quiet?')">Quiet Clients</div>
-        <div class="action-btn" onclick="openClientLookup()">Last Quote...</div>
+        <div class="action-btn" id="btnThisMonth">This Month</div>
+        <div class="action-btn" id="btnQuietClients">Quiet Clients</div>
+        <div class="action-btn" id="btnLastQuote">Last Quote...</div>
     </div>
 
     <script>
@@ -95,6 +95,9 @@
         }
 
         const formatINR = (val) => new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val).replace('₹', '₹ ');
+
+        let askController = null;
+        let searchController = null;
 
         function renderAnswer(data) {
             const container = document.getElementById('answer');
@@ -169,14 +172,20 @@
             answerDiv.innerHTML = '<div class="loading">Looking that up...</div>';
             
             try {
+                if (askController) askController.abort();
+                askController = new AbortController();
                 const res = await fetch('./api/query', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({text})
+                    body: JSON.stringify({text}),
+                    signal: askController.signal
                 });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 renderAnswer(data);
             } catch (e) {
+                if (e.name === 'AbortError') return;
+                askController = null;
                 renderAnswer({
                     title: 'Network Error',
                     summary: 'Could not connect to the assistant. Please try again.',
@@ -232,6 +241,8 @@
                     chipsDiv.appendChild(btn);
                 });
             } catch (e) {
+                if (e.name === 'AbortError') return;
+                askController = null;
                 console.error("Search failed", e);
             }
         }
@@ -255,6 +266,14 @@
             
             recognition.start();
         }
+    
+        // Programmatic event listeners
+        document.getElementById('q').addEventListener('keypress', handleKey);
+        document.getElementById('clientSearchInput').addEventListener('input', (e) => debounceSearch(e.target.value));
+        document.getElementById('voiceBtn').addEventListener('click', startVoice);
+        document.getElementById('btnThisMonth').addEventListener('click', () => ask('How much business this month?'));
+        document.getElementById('btnQuietClients').addEventListener('click', () => ask('Which clients have gone quiet?'));
+        document.getElementById('btnLastQuote').addEventListener('click', openClientLookup);
     </script>
 </body>
 </html>
