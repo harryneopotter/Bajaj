@@ -54,9 +54,17 @@ def init_metadata_db():
             candidate_count INTEGER,
             latency_ms REAL,
             proof_present BOOLEAN,
+            matched_pattern TEXT,
             error_text TEXT
         )
     ''')
+
+    existing_columns = {
+        row[1] for row in conn.execute("PRAGMA table_info(qq_query_log)").fetchall()
+    }
+    if "matched_pattern" not in existing_columns:
+        conn.execute("ALTER TABLE qq_query_log ADD COLUMN matched_pattern TEXT")
+
     conn.commit()
     conn.close()
 
@@ -74,8 +82,8 @@ def log_query(log_data: dict):
         conn = sqlite3.connect(META_DB_PATH)
         conn.execute('''
             INSERT INTO qq_query_log 
-            (created_at, raw_text, normalized_text, resolved_intent, params_json, route_source, answer_type, success, clarification_required, candidate_count, latency_ms, proof_present, error_text)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (created_at, raw_text, normalized_text, resolved_intent, params_json, route_source, answer_type, success, clarification_required, candidate_count, latency_ms, proof_present, matched_pattern, error_text)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
             datetime.now().isoformat(),
             log_data.get("raw_text", ""),
@@ -89,6 +97,7 @@ def log_query(log_data: dict):
             log_data.get("candidate_count", 0),
             log_data.get("latency_ms", 0.0),
             log_data.get("proof_present", False),
+            log_data.get("matched_pattern", ""),
             log_data.get("error_text", "")
         ))
         conn.commit()
