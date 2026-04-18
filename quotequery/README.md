@@ -1,101 +1,142 @@
-# 🏷️ QuoteQuery: Bajaj Sports Analytics Assistant
+# QuoteQuery (v0.1 Contract)
 
-QuoteQuery is a mobile-first, conversational analytics tool designed for the Bajaj Sports sales team and management. It provides instant insights from ~10 years of historical quote data (over 1,900 quotes and ₹99+ Crore in value) via a simple chat-like interface.
+QuoteQuery is a FastAPI + vanilla JS assistant for querying historical quote data with deterministic, auditable behavior.
 
-## 🛠️ Tech Stack
+## Runtime Architecture
 
-**1. Frontend (Client-Side)**
-* **Vanilla HTML5 / CSS3 / JavaScript:** Zero build steps or heavy frameworks (like React/Vue) to ensure instant load times on mobile networks.
-* **PWA Ready:** Designed to function like a native iOS/Android app.
-* **Modern CSS:** Uses native CSS variables (`:root`), Flexbox, and CSS Grid for responsive, card-based mobile layouts.
-* **Async Fetch API:** Handles backend communication without page reloads.
+- **Backend:** `quotequery/main.py` (FastAPI, port `8082`).
+- **Frontend:** `quotequery/static/index.html` (single-page mobile UI).
+- **Primary quote database:** `quotes.db` opened as **read-only** via SQLite URI (`mode=ro`).
+- **Metadata/query log database:** `qq_metadata.db` in `quotequery/`, owned by QuoteQuery for query telemetry.
 
-**2. Backend (Server-Side)**
-* **Language:** Python 3
-* **Framework:** **FastAPI** for extreme speed, asynchronous capabilities (`async def`), and native JSON handling.
-* **Server:** Uvicorn (ASGI web server) running on port `8082`.
+## Data Ownership and Access Model
 
-**3. Database & Data Pipeline**
-* **Database:** **SQLite3** (`quotes.db`). Shared with the QuoteGen app for zero-configuration, single-file portability.
-* **Data Origin:** Historical data extracted from thousands of unstructured Word documents via a custom Python `docx` heuristic pipeline.
+### `quotes.db` (shared data source)
 
-**4. Query Engine / AI Logic**
-* **Current Routing:** Python Regular Expressions (`re`) and string matching heuristics for instant, deterministic SQL queries.
-* **Planned AI Integration:** **Gemma 4-31B** (via Google AI Studio) acting strictly as an *Intent Resolver* to translate complex natural language into structured SQL parameters.
+- Source-of-truth quote and quote item records.
+- QuoteQuery opens this DB in **read-only** mode and does not write business records.
+- Used for analytics and lookup intents (`quotes`, `quote_items`).
 
-**5. Infrastructure & Deployment**
-* **Host Environment:** Ubuntu Linux VM.
-* **Public Access:** **Cloudflare Tunnels** (`cloudflared`) securely exposes the app to `https://ask.bajajsports.com`.
+### `qq_metadata.db` (QuoteQuery-owned)
 
----
+- Created and managed by QuoteQuery at startup.
+- Stores `qq_query_log` rows for each `/api/query` request (normalized text, resolved intent, route source, latency, success flags, etc.).
+- This is the only database QuoteQuery writes to in normal operation.
 
-## 💻 Running Locally for Development
+## Deterministic Intent Registry
 
-### Prerequisites
-* Python 3.8+
-* Ensure the SQLite database exists at `../quotegen/quotes.db` (relative to the configured data directory).
+`/api/query` routes requests through an ordered `INTENT_REGISTRY` of regex patterns and handler functions.
 
-### Setup & Run
-1. **Navigate to the QuoteQuery directory:**
-   ```bash
-   cd /home/sachin/work/bajaj/quotequery
-   ```
+Supported v0.1 intents:
+1. `last_quote_client`
+2. `month_summary`
+3. `inactive_clients`
+4. `top_clients`
+5. `top_products`
+6. `recent_quotes`
 
-2. **Install dependencies:**
-   ```bash
-   pip install fastapi uvicorn python-dotenv
-   ```
+Behavioral contract:
+- First matching pattern in registry order wins.
+- Handler output is returned directly as structured JSON.
+- If no deterministic match exists, QuoteQuery returns an `unsupported` response.
+- Optional LLM fallback is feature-flagged and off by default (see below).
 
-3. **Start the server:**
-   *For hot-reloading during development:*
-   ```bash
-   uvicorn main:app --host 0.0.0.0 --port 8082 --reload
-   ```
-   *Or using the built-in runner:*
-   ```bash
-   python3 main.py
-   ```
+## API Contract
 
-4. **Access the App:**
-   Open your browser and navigate to `http://localhost:8082`.
+## `POST /api/query`
 
-### Environment Variables
-Create a `.env` file in the `quotequery` directory for LLM features:
-```env
-AI_STUDIO_KEY=your_google_ai_studio_api_key
+Request body:
+
+```json
+{ "text": "last quote for DPS" }
 ```
 
----
+Structured response envelope (shape varies by `answer_type`):
 
-## 🎨 How to Modify the UI/UX
+```json
+{
+  "ok": true,
+  "intent": "last_quote_client",
+  "answer_type": "quote_record",
+  "title": "Last quote to DPS",
+  "summary": "Sent on 2026-04-01 for ₹125,000.",
+  "items": [],
+  "proof": {
+    "source": "quotes"
+  },
+  "needs_clarification": false,
+  "candidates": [],
+  "suggestions": ["Recent quotes", "This month"]
+}
+```
 
-Because QuoteQuery uses vanilla web technologies, modifying the UI is incredibly straightforward—there is no `npm build` or Webpack compilation required.
+Key fields:
+- `ok` (`boolean`): whether the intent resolved successfully.
+- `intent` (`string`): resolved deterministic intent or `unknown`.
+- `answer_type` (`string`): one of `quote_record | summary | ranked_list | clarification | unsupported`.
+- `title` / `summary` (`string`): display-ready response text.
+- `items` (`array`): ranked/list payload for list-style answers.
+- `proof` (`object`): lightweight provenance payload from the underlying query.
+- `needs_clarification` (`boolean`, optional): whether UI should prompt disambiguation.
+- `candidates` (`array`, optional): clarification chip candidates.
+- `suggestions` (`array`, optional): quick follow-up prompts.
 
-### Directory Structure
-* `static/index.html` - The entire frontend (HTML structure, CSS styles, and JS logic).
-* `main.py` - The FastAPI backend routing and API endpoints.
+## `GET /api/clients/search`
 
-### Changing Styles (CSS)
-Open `static/index.html` and look for the `<style>` block at the top. 
-* Change the primary color scheme by modifying the CSS variables: `:root { --primary: #1a237e; --bg: #f8f9fa; }`
-* Adjust button sizes, padding, and layout directly in the `.big-btn` or `.answer-card` classes.
+Client-name lookup endpoint used by the “Last Quote…” workflow.
 
-### Adding a New Quick-Action Button
-1. **Frontend (`static/index.html`):**
-   Add a new button inside the `<div class="button-grid">`. Use the `ask()` function to send a specific query string to the backend.
-   ```html
-   <div class="big-btn" onclick="ask('Show me the latest products')">
-       <span>🆕</span> New Products
-   </div>
-   ```
+Query parameters:
+- `q` (string): client search text (minimum 2 characters after normalization).
+- `limit` (int, optional): max candidates (default `5`).
 
-2. **Backend (`main.py`):**
-   Open `main.py`, locate the `query()` endpoint, and add a string-matching routing block to intercept your new query string before it hits the LLM fallback.
-   ```python
-   if "latest products" in text:
-       # Fetch data from DB
-       # Format response with HTML tags (e.g., <br> and <b>)
-       return {"answer": "Your custom formatted response here"}
-   ```
+Response:
 
-3. **Refresh your browser!** Changes to `index.html` show up immediately upon page refresh. Changes to `main.py` will hot-reload automatically if running with `uvicorn --reload`.
+```json
+{ "candidates": ["Client A", "Client B"] }
+```
+
+## Optional LLM Resolver (default OFF)
+
+`ENABLE_LLM_RESOLVER` controls whether unresolved queries may go to an LLM resolver path.
+
+- Default: `false` (disabled).
+- Current v0.1 behavior: deterministic registry + unsupported fallback remain the active contract.
+- Even when enabled, deterministic routing runs first.
+
+Example `.env`:
+
+```env
+AI_STUDIO_KEY=your_key_here
+ENABLE_LLM_RESOLVER=false
+```
+
+## Manual Verification Checklist (v0.1)
+
+Run the app, then verify these flows in UI or via API:
+
+1. **`last_quote_client` success path**  
+   Ask: `last quote for <known client>` → returns `answer_type=quote_record` with `proof.quote_id`.
+2. **`last_quote_client` clarification path**  
+   Ask with ambiguous client substring (e.g., short shared token) → returns `needs_clarification=true` + `candidates[]`; clicking a candidate chip should re-query and resolve to a quote record.
+3. **`month_summary`**  
+   Ask: `how much business this month` → returns `answer_type=summary`.
+4. **`inactive_clients`**  
+   Ask: `which clients have gone quiet` → returns `answer_type=ranked_list`.
+5. **`top_clients`**  
+   Ask: `top clients` → returns ranked list with values.
+6. **`top_products`**  
+   Ask: `most quoted products` → returns ranked list.
+7. **`recent_quotes`**  
+   Ask: `recent quotes` → returns latest quote list.
+8. **Unsupported fallback**  
+   Ask unrelated text → returns `answer_type=unsupported` with guidance suggestions.
+
+## Local Development
+
+```bash
+cd quotequery
+pip install fastapi uvicorn python-dotenv
+uvicorn main:app --host 0.0.0.0 --port 8082 --reload
+```
+
+Open `http://localhost:8082`.

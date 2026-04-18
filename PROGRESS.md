@@ -1,6 +1,6 @@
 # Bajaj Sports - Development Progress
 
-**Last Updated:** April 15, 2026
+**Last Updated:** April 18, 2026
 
 ---
 
@@ -11,77 +11,66 @@
 - ✅ Client autocomplete with contact/address
 - ✅ Line items with GST calculation (5%/12%/18%)
 - ✅ PDF generation with WeasyPrint
-- ✅ **Product Images** - Upload & pick images for products
-- ✅ **Image Thumbnails in PDF** - 60x60px thumbnails next to line items
-- ✅ **Optional Sections** - Payment Terms, Transportation, Installation (checkbox-enabled)
-- ✅ **GST Auto-fill** - Auto-selects GST slab from verified HSN/GST data
-- ✅ **Image Picker UI** - Modal for selecting/uploading product images
+- ✅ Product image upload + picker
+- ✅ PDF line-item thumbnails
+- ✅ Optional sections (payment, transport, installation)
+- ✅ GST auto-fill from verified HSN/GST data
 
 ### Data Files
-- `/home/sachin/work/bajaj/analysis/product_images.json` - Image registry (153 images)
-- `/home/sachin/work/bajaj/analysis/product_hsn_gst_verified.json` - HSN/GST lookup (1120 products)
-- `/home/sachin/work/bajaj/quotegen/static/images/spec_sheets/` - Extracted product images
-
-### Files Modified
-- `/home/sachin/work/bajaj/quotegen/main.py` - Core app
+- `/home/sachin/work/bajaj/analysis/product_images.json`
+- `/home/sachin/work/bajaj/analysis/product_hsn_gst_verified.json`
+- `/home/sachin/work/bajaj/quotegen/static/images/spec_sheets/`
 
 ---
 
 ## 2. QuoteQuery - Conversational Query App (Port 8082)
 
-### Purpose
-Simple voice/text chatbot for the "Oldman of Bajaj Sports" to query quotes without dashboards.
+### Current v0.1 Contract (Implemented)
+- ✅ Deterministic intent routing via ordered registry (regex + explicit handlers)
+- ✅ Structured `/api/query` JSON responses (`ok`, `intent`, `answer_type`, `title`, `summary`, `items`, `proof`, optional clarification/suggestions)
+- ✅ Six supported intents:
+  1. `last_quote_client`
+  2. `month_summary`
+  3. `inactive_clients`
+  4. `top_clients`
+  5. `top_products`
+  6. `recent_quotes`
+- ✅ Clarification workflow for ambiguous client queries (`needs_clarification` + candidate chips)
+- ✅ Client assist endpoint: `GET /api/clients/search?q=...`
+- ✅ Query telemetry persisted to `qq_metadata.db` (`qq_query_log`)
+- ✅ Read-only access to shared `quotes.db` for analytics/query execution
+- ✅ `ENABLE_LLM_RESOLVER` feature flag exists and is default-off
 
-### Features Implemented
-- ✅ **Big Button UI** - 6 large tap targets (Recent Quotes, This Month, Top Clients, etc.)
-- ✅ **Voice Input** - Web Speech API (works on iPhone Safari)
-- ✅ **Analytics Endpoints:**
-  - `GET /api/analytics/quotes/summary` - Total quotes, value, average
-  - `GET /api/analytics/clients/top` - Rank clients by count/value
-  - `GET /api/analytics/products/top` - Most quoted products
-  - `GET /api/quotes/search` - Full-text search across quotes
-  - `GET /api/analytics/quotes/inactive-clients` - Clients with no recent quotes
-- ✅ **Heuristic Resolver** - Handles common queries without LLM
-- ✅ **LLM Intent Resolver** - Uses Google AI Studio (Gemma 3-31B) to resolve complex queries
-- ✅ **Response Narration** - Converts API results to plain English
+### UX Reality (Current)
+- Mobile-first single-page UI with text input, quick actions, and client lookup panel
+- Clarification chips are shown inline in the answer card when disambiguation is required
+- Response rendering is based on backend `answer_type` (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`)
 
-### Configuration
-- API Key: Loaded from `/home/sachin/work/bajaj/quotequery/.env` (AI_STUDIO_KEY)
-- Model: `gemma-3-31b` via Google Generative Language API
-
-### Files Created
-- `/home/sachin/work/bajaj/quotequery/main.py` - FastAPI backend
-- `/home/sachin/work/bajaj/quotequery/static/index.html` - Frontend UI
-- `/home/sachin/work/bajaj/quotequery/static/manifest.json` - PWA manifest
-
----
-
-## 3. Test PDFs Generated
-
-- `/home/sachin/work/bajaj/quotegen/static/test_final_quote.pdf` - Full test with images & optional sections
+### Target v0.1 Stability Goals
+- Keep deterministic routing and structured payload shape stable for UI compatibility
+- Preserve auditable query logging in `qq_metadata.db`
+- Maintain strict read-only behavior against `quotes.db`
+- Keep LLM fallback optional until deterministic coverage is intentionally expanded
 
 ---
 
-## 4. What's Working
+## 3. System Status Snapshot
 
 | Component | Status | Port |
 |-----------|--------|------|
-| Quote Generator | ✅ Running | 8081 |
-| QuoteQuery App | ✅ Running | 8082 |
-| PDF Generation | ✅ Working (WeasyPrint) | - |
-| Image Upload/Picker | ✅ Working | - |
-| GST Auto-fill | ✅ Working | - |
-| LLM Resolver | ✅ Configured | - |
+| Quote Generator | ✅ Active | 8081 |
+| QuoteQuery API/UI | ✅ Active | 8082 |
+| Shared Quote DB (`quotes.db`) | ✅ Read-only from QuoteQuery | - |
+| QuoteQuery Metadata DB (`qq_metadata.db`) | ✅ Write-enabled | - |
 
 ---
 
-## 5. Next Steps (If Needed)
+## 4. Next Steps
 
-1. Add more heuristic patterns to QuoteQuery
-2. Wire up PDF download button in QuoteQuery for "last quote to X"
-3. Add client picker UI for "Last Quote to..." button
-4. Cache heavy analytics queries
-5. Add authentication if needed
+1. Add tests under `tests/` for deterministic intent routing and response schemas
+2. Add regression checks for clarification-chip flows
+3. Expand deterministic patterns before enabling any default LLM resolution path
+4. Add lightweight auth/rate controls if external exposure increases
 
 ---
 
