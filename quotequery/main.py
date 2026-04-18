@@ -107,64 +107,82 @@ def log_query(log_data: dict):
 
 # --- INTENT HANDLERS ---
 
+def build_response(
+    *,
+    ok: bool,
+    intent: str,
+    answer_type: str,
+    title: str,
+    summary: str,
+    items: Optional[list] = None,
+    proof: Optional[dict] = None,
+    suggestions: Optional[list] = None,
+    needs_clarification: bool = False,
+    candidates: Optional[list] = None
+) -> dict:
+    return {
+        "ok": ok,
+        "intent": intent,
+        "answer_type": answer_type,
+        "title": title,
+        "summary": summary,
+        "items": items or [],
+        "proof": proof or {},
+        "suggestions": suggestions or [],
+        "needs_clarification": needs_clarification,
+        "candidates": candidates or []
+    }
+
 def handle_last_quote_client(params: dict) -> dict:
     client_name = params.get("client_name", "").strip()
     if not client_name or client_name.lower() in ["a client", "the client", "client"]:
-        return {
-            "ok": False,
-            "intent": "last_quote_client",
-            "answer_type": "clarification",
-            "title": "Which client?",
-            "summary": "Please specify the client name.",
-            "items": [],
-            "proof": {},
-            "needs_clarification": True,
-            "candidates": []
-        }
+        return build_response(
+            ok=False,
+            intent="last_quote_client",
+            answer_type="clarification",
+            title="Which client?",
+            summary="Please specify the client name.",
+            needs_clarification=True
+        )
     
     with get_db() as conn:
         candidates = conn.execute("SELECT DISTINCT client_name FROM quotes WHERE client_name LIKE ? LIMIT 6", [f"%{client_name}%"]).fetchall()
         if len(candidates) > 1 and client_name.lower() not in [c["client_name"].lower() for c in candidates]:
-            return {
-                "ok": False,
-                "intent": "last_quote_client",
-                "answer_type": "clarification",
-                "title": "Multiple clients found",
-                "summary": f"Which '{client_name}' did you mean?",
-                "items": [],
-                "proof": {},
-                "needs_clarification": True,
-                "candidates": [c["client_name"] for c in candidates[:5]]
-            }
+            return build_response(
+                ok=False,
+                intent="last_quote_client",
+                answer_type="clarification",
+                title="Multiple clients found",
+                summary=f"Which '{client_name}' did you mean?",
+                needs_clarification=True,
+                candidates=[c["client_name"] for c in candidates[:5]]
+            )
         
         row = conn.execute("SELECT id, client_name, quote_date, grand_total FROM quotes WHERE client_name LIKE ? ORDER BY quote_date DESC, id DESC LIMIT 1", [f"%{client_name}%"]).fetchone()
         
         if row:
-            return {
-                "ok": True,
-                "intent": "last_quote_client",
-                "answer_type": "quote_record",
-                "title": f"Last quote to {row['client_name']}",
-                "summary": f"Sent on {row['quote_date']} for ₹{row['grand_total']:,.0f}.",
-                "items": [],
-                "proof": {
+            return build_response(
+                ok=True,
+                intent="last_quote_client",
+                answer_type="quote_record",
+                title=f"Last quote to {row['client_name']}",
+                summary=f"Sent on {row['quote_date']} for ₹{row['grand_total']:,.0f}.",
+                proof={
                     "source": "quotes",
                     "quote_id": row["id"],
                     "client_name": row["client_name"],
                     "quote_date": row["quote_date"],
                     "grand_total": row["grand_total"]
                 },
-                "suggestions": ["Recent quotes", "This month"]
-            }
-        return {
-            "ok": False,
-            "intent": "last_quote_client",
-            "answer_type": "unsupported",
-            "title": "No quotes found",
-            "summary": f"I couldn't find any quotes for '{client_name}'.",
-            "items": [],
-            "proof": {}
-        }
+                suggestions=["Recent quotes", "This month"]
+            )
+        return build_response(
+            ok=False,
+            intent="last_quote_client",
+            answer_type="unsupported",
+            title="No quotes found",
+            summary=f"I couldn't find any quotes for '{client_name}'."
+        )
 
 def handle_month_summary(params: dict) -> dict:
     start = datetime.now().replace(day=1).strftime('%Y-%m-%d')
@@ -172,21 +190,20 @@ def handle_month_summary(params: dict) -> dict:
         row = conn.execute("SELECT COUNT(*) as c, SUM(grand_total) as t FROM quotes WHERE quote_date >= ?", [start]).fetchone()
         c = row["c"] or 0
         t = row["t"] or 0
-        return {
-            "ok": True,
-            "intent": "month_summary",
-            "answer_type": "summary",
-            "title": "This Month's Business",
-            "summary": f"{c} quotes generated totaling ₹{t:,.0f}.",
-            "items": [],
-            "proof": {
+        return build_response(
+            ok=True,
+            intent="month_summary",
+            answer_type="summary",
+            title="This Month's Business",
+            summary=f"{c} quotes generated totaling ₹{t:,.0f}.",
+            proof={
                 "source": "quotes",
                 "period_start": start,
                 "count": c,
                 "total_value": t
             },
-            "suggestions": ["Recent quotes", "Top clients"]
-        }
+            suggestions=["Recent quotes", "Top clients"]
+        )
 
 def handle_inactive_clients(params: dict) -> dict:
     days = params.get("days", 60)
@@ -203,81 +220,81 @@ def handle_inactive_clients(params: dict) -> dict:
         rows = conn.execute(query, [cutoff]).fetchall()
         items = [{"label": r["client_name"], "meta": f"Last quote: {r['last_quote_date']}", "value": None} for r in rows]
         
-        return {
-            "ok": True,
-            "intent": "inactive_clients",
-            "answer_type": "ranked_list",
-            "title": f"Quiet Clients (> {days} days)",
-            "summary": "These clients haven't received a quote recently.",
-            "items": items,
-            "proof": {
+        return build_response(
+            ok=True,
+            intent="inactive_clients",
+            answer_type="ranked_list",
+            title=f"Quiet Clients (> {days} days)",
+            summary="These clients haven't received a quote recently.",
+            items=items,
+            proof={
                 "source": "quotes",
                 "cutoff_date": cutoff,
                 "count": len(items)
             },
-            "suggestions": ["Top clients", "This month"]
-        }
+            suggestions=["Top clients", "This month"]
+        )
 
 def handle_top_clients(params: dict) -> dict:
     with get_db() as conn:
         rows = conn.execute("SELECT client_name, COUNT(*) as quote_count, SUM(grand_total) as total_value FROM quotes GROUP BY client_name ORDER BY total_value DESC LIMIT 5").fetchall()
         items = [{"label": r["client_name"], "meta": f"{r['quote_count']} quotes", "value": r["total_value"]} for r in rows]
         
-        return {
-            "ok": True,
-            "intent": "top_clients",
-            "answer_type": "ranked_list",
-            "title": "Top Clients",
-            "summary": "Your highest value clients historically.",
-            "items": items,
-            "proof": {
+        return build_response(
+            ok=True,
+            intent="top_clients",
+            answer_type="ranked_list",
+            title="Top Clients",
+            summary="Your highest value clients historically.",
+            items=items,
+            proof={
                 "source": "quotes",
                 "sort_by": "value",
                 "limit": 5
             },
-            "suggestions": ["Quiet clients", "Top products"]
-        }
+            suggestions=["Quiet clients", "Top products"]
+        )
 
 def handle_top_products(params: dict) -> dict:
     with get_db() as conn:
         rows = conn.execute("SELECT product_name, COUNT(*) as freq FROM quote_items GROUP BY product_name ORDER BY freq DESC LIMIT 5").fetchall()
         items = [{"label": r["product_name"], "meta": f"Quoted {r['freq']} times", "value": None} for r in rows]
         
-        return {
-            "ok": True,
-            "intent": "top_products",
-            "answer_type": "ranked_list",
-            "title": "Top Products",
-            "summary": "Your most frequently quoted items.",
-            "items": items,
-            "proof": {
+        return build_response(
+            ok=True,
+            intent="top_products",
+            answer_type="ranked_list",
+            title="Top Products",
+            summary="Your most frequently quoted items.",
+            items=items,
+            proof={
                 "source": "quote_items",
                 "sort_by": "frequency",
                 "limit": 5
             },
-            "suggestions": ["This month", "Recent quotes"]
-        }
+            suggestions=["This month", "Recent quotes"]
+        )
 
 def handle_recent_quotes(params: dict) -> dict:
     with get_db() as conn:
         rows = conn.execute("SELECT id, client_name, quote_date, grand_total FROM quotes ORDER BY quote_date DESC, id DESC LIMIT 5").fetchall()
         items = [{"label": r["client_name"], "meta": r["quote_date"], "value": r["grand_total"]} for r in rows]
         
-        return {
-            "ok": True,
-            "intent": "recent_quotes",
-            "answer_type": "ranked_list",
-            "title": "Recent Quotes",
-            "summary": "The latest 5 quotes generated.",
-            "items": items,
-            "proof": {
+        return build_response(
+            ok=True,
+            intent="recent_quotes",
+            answer_type="ranked_list",
+            title="Recent Quotes",
+            summary="The latest 5 quotes generated.",
+            items=items,
+            proof={
                 "source": "quotes",
                 "sort_by": "date",
                 "limit": 5,
                 "quote_ids": [r["id"] for r in rows]
             },
-            "suggestions": ["This month", "Quiet clients"]
-        }
+            suggestions=["This month", "Quiet clients"]
+        )
 
 # --- INTENT REGISTRY ---
 
@@ -366,14 +383,13 @@ async def process_query(request: Request):
                     log_record["proof_present"] = bool(response.get("proof", {}))
                 except Exception as e:
                     log_record["error_text"] = str(e)
-                    response = {
-                        "ok": False,
-                        "intent": route["intent"],
-                        "answer_type": "unsupported",
-                        "title": "Error",
-                        "summary": "Something went wrong fetching that data.",
-                        "proof": {}
-                    }
+                    response = build_response(
+                        ok=False,
+                        intent=route["intent"],
+                        answer_type="unsupported",
+                        title="Error",
+                        summary="Something went wrong fetching that data."
+                    )
                 break
         if response:
             break
@@ -384,16 +400,14 @@ async def process_query(request: Request):
 
     # 3. Unsupported Fallback
     if not response:
-        response = {
-            "ok": False,
-            "intent": "unknown",
-            "answer_type": "unsupported",
-            "title": "I'm still learning",
-            "summary": "I can currently help with recent quotes, top clients, top products, this month's totals, and quiet clients.",
-            "items": [],
-            "proof": {},
-            "suggestions": ["Recent quotes", "This month", "Quiet clients"]
-        }
+        response = build_response(
+            ok=False,
+            intent="unknown",
+            answer_type="unsupported",
+            title="I'm still learning",
+            summary="I can currently help with recent quotes, top clients, top products, this month's totals, and quiet clients.",
+            suggestions=["Recent quotes", "This month", "Quiet clients"]
+        )
 
     log_record["latency_ms"] = (datetime.now() - start_time).total_seconds() * 1000
     log_query(log_record)
