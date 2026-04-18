@@ -129,15 +129,15 @@ ALLOWED_IPS=
 
 Use this checklist after changes to routing/UX.
 
-- [ ] **Intent: `month_summary`** — Ask “How much business this month?” and confirm `answer_type=summary` with proof period fields.
-- [ ] **Intent: `inactive_clients`** — Ask “Which clients have gone quiet?” and confirm ranked list response.
-- [ ] **Intent: `top_clients`** — Ask “Who are my top clients?” and confirm ranked list by value.
-- [ ] **Intent: `top_products`** — Ask “What are my top products?” and confirm ranked list by frequency.
-- [ ] **Intent: `recent_quotes`** — Ask “Show recent quotes” and confirm 5 latest entries returned.
-- [ ] **Intent: `last_quote_client`** — Ask “Last quote for <known client>” and confirm quote record response.
-- [ ] **Clarification-chip workflow** — Ask “last quote for school” (or another ambiguous stem), confirm clarification response with chips, tap a chip, and confirm resolved quote record.
-- [ ] **Client search endpoint** — In the “Last Quote...” panel, type at least 2 characters and confirm `/api/clients/search` returns candidate chips.
-- [ ] **Fallback behavior** — Ask unsupported query, confirm deterministic “I’m still learning” response when `ENABLE_LLM_RESOLVER=false`.
+- [ ] **Intent: `month_summary`** — Ask "How much business this month?" and confirm `answer_type=summary` with proof period fields.
+- [ ] **Intent: `inactive_clients`** — Ask "Which clients have gone quiet?" and confirm ranked list response.
+- [ ] **Intent: `top_clients`** — Ask "Who are my top clients?" and confirm ranked list by value.
+- [ ] **Intent: `top_products`** — Ask "What are my top products?" and confirm ranked list by frequency.
+- [ ] **Intent: `recent_quotes`** — Ask "Show recent quotes" and confirm 5 latest entries returned.
+- [ ] **Intent: `last_quote_client`** — Ask "Last quote for <known client>" and confirm quote record response.
+- [ ] **Clarification-chip workflow** — Ask "last quote for school" (or another ambiguous stem), confirm clarification response with chips, tap a chip, and confirm resolved quote record.
+- [ ] **Client search endpoint** — In the "Last Quote..." panel, type at least 2 characters and confirm `/api/clients/search` returns candidate chips.
+- [ ] **Fallback behavior** — Ask unsupported query, confirm deterministic "I'm still learning" response when `ENABLE_LLM_RESOLVER=false`.
 
 ## Notes
 

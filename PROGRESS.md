@@ -11,19 +11,15 @@
 - ✅ Client autocomplete with contact/address
 - ✅ Line items with GST calculation (5%/12%/18%)
 - ✅ PDF generation with WeasyPrint
-- ✅ **Product Images** - Upload & pick images for products
-- ✅ **Image Thumbnails in PDF** - 60x60px thumbnails next to line items
-- ✅ **Optional Sections** - Payment Terms, Transportation, Installation (checkbox-enabled)
-- ✅ **GST Auto-fill** - Auto-selects GST slab from verified HSN/GST data
-- ✅ **Image Picker UI** - Modal for selecting/uploading product images
+- ✅ Product image upload + picker
+- ✅ PDF line-item thumbnails
+- ✅ Optional sections (payment, transport, installation)
+- ✅ GST auto-fill from verified HSN/GST data
 
 ### Data Files
-- `/home/sachin/work/bajaj/analysis/product_images.json` - Image registry (153 images)
-- `/home/sachin/work/bajaj/analysis/product_hsn_gst_verified.json` - HSN/GST lookup (1120 products)
-- `/home/sachin/work/bajaj/quotegen/static/images/spec_sheets/` - Extracted product images
-
-### Files Modified
-- `/home/sachin/work/bajaj/quotegen/main.py` - Core app
+- `/home/sachin/work/bajaj/analysis/product_images.json`
+- `/home/sachin/work/bajaj/analysis/product_hsn_gst_verified.json`
+- `/home/sachin/work/bajaj/quotegen/static/images/spec_sheets/`
 
 ---
 
@@ -62,7 +58,7 @@
 
 ### Outdated Assumptions Removed
 - ❌ QuoteQuery is **not** documented as a prototype narration-first flow.
-- ❌ UI is **not** assumed to be only “6 big tap targets” without typed API-state rendering.
+- ❌ UI is **not** assumed to be only "6 big tap targets" without typed API-state rendering.
 - ❌ LLM path is **not** baseline-required for normal operation.
 
 ### Files
@@ -72,13 +68,7 @@
 
 ---
 
-## 3. Test PDFs Generated
-
-- `/home/sachin/work/bajaj/quotegen/static/test_final_quote.pdf` - Full test with images & optional sections
-
----
-
-## 4. What's Working
+## 3. System Status Snapshot
 
 | Component | Status | Port |
 |-----------|--------|------|
@@ -87,12 +77,13 @@
 | PDF Generation | ✅ Working (WeasyPrint) | - |
 | Image Upload/Picker | ✅ Working | - |
 | GST Auto-fill | ✅ Working | - |
+| Shared Quote DB (`quotes.db`) | ✅ Read-only from QuoteQuery | - |
 | QuoteQuery Deterministic Intents | ✅ Working | - |
-| QuoteQuery Query Logging (`qq_metadata.db`) | ✅ Working | - |
+| QuoteQuery Metadata DB (`qq_metadata.db`) | ✅ Write-enabled | - |
 
 ---
 
-## 5. Next Steps (If Needed)
+## 4. Next Steps
 
 1. Implement and evaluate gated LLM fallback path behind `ENABLE_LLM_RESOLVER`
 2. Add explicit API contract tests for the 6 intent handlers and unsupported fallback
