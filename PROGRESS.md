@@ -1,6 +1,6 @@
 # Bajaj Sports - Development Progress
 
-**Last Updated:** April 15, 2026
+**Last Updated:** April 18, 2026
 
 ---
 
@@ -29,30 +29,46 @@
 
 ## 2. QuoteQuery - Conversational Query App (Port 8082)
 
-### Purpose
-Simple voice/text chatbot for the "Oldman of Bajaj Sports" to query quotes without dashboards.
+### Current v0.1 Contract (Implemented)
+- ✅ **Structured `POST /api/query` envelope** with stable fields (`ok`, `intent`, `answer_type`, `title`, `summary`, `items`, `proof`, optional `suggestions`/clarification keys).
+- ✅ **Deterministic intent registry** (ordered regex routes) for 6 intents:
+  1. `last_quote_client`
+  2. `month_summary`
+  3. `inactive_clients`
+  4. `top_clients`
+  5. `top_products`
+  6. `recent_quotes`
+- ✅ **Clarification flow for ambiguous client matches** (`needs_clarification=true` + candidate chips).
+- ✅ **Client lookup endpoint**: `GET /api/clients/search` for inline client search.
+- ✅ **Read-only analytics DB access**: QuoteQuery opens shared `quotes.db` in read-only mode.
+- ✅ **Owned query telemetry DB**: QuoteQuery creates/writes `qq_metadata.db` (`qq_query_log`) for query logs and audit metadata.
+- ✅ **Feature-flagged LLM resolver switch**: `ENABLE_LLM_RESOLVER` exists and is default-off.
 
-### Features Implemented
-- ✅ **Big Button UI** - 6 large tap targets (Recent Quotes, This Month, Top Clients, etc.)
-- ✅ **Voice Input** - Web Speech API (works on iPhone Safari)
-- ✅ **Analytics Endpoints:**
-  - `GET /api/analytics/quotes/summary` - Total quotes, value, average
-  - `GET /api/analytics/clients/top` - Rank clients by count/value
-  - `GET /api/analytics/products/top` - Most quoted products
-  - `GET /api/quotes/search` - Full-text search across quotes
-  - `GET /api/analytics/quotes/inactive-clients` - Clients with no recent quotes
-- ✅ **Heuristic Resolver** - Handles common queries without LLM
-- ✅ **LLM Intent Resolver** - Uses Google AI Studio (Gemma 3-31B) to resolve complex queries
-- ✅ **Response Narration** - Converts API results to plain English
+### UX Status (Current)
+- ✅ Mobile-friendly, single-page UI with:
+  - text input
+  - voice input button (browser-supported)
+  - action buttons for common flows
+  - clarification chips and inline client-lookup panel
+- ✅ UI renders typed response shapes (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`) rather than free-form narration assumptions.
 
-### Configuration
-- API Key: Loaded from `/home/sachin/work/bajaj/quotequery/.env` (AI_STUDIO_KEY)
-- Model: `gemma-3-31b` via Google Generative Language API
+### Target v0.1 UX/Contract Guardrails
+- Keep deterministic routing as the default path for reliability and testability.
+- Keep unsupported fallback explicit when LLM resolver is disabled.
+- Maintain strict separation of data responsibilities:
+  - `quotes.db`: read-only analytics source
+  - `qq_metadata.db`: query log ownership
+- Preserve chip-based disambiguation workflow for client-specific asks.
 
-### Files Created
-- `/home/sachin/work/bajaj/quotequery/main.py` - FastAPI backend
-- `/home/sachin/work/bajaj/quotequery/static/index.html` - Frontend UI
-- `/home/sachin/work/bajaj/quotequery/static/manifest.json` - PWA manifest
+### Outdated Assumptions Removed
+- ❌ QuoteQuery is **not** documented as a prototype narration-first flow.
+- ❌ UI is **not** assumed to be only “6 big tap targets” without typed API-state rendering.
+- ❌ LLM path is **not** baseline-required for normal operation.
+
+### Files
+- `/home/sachin/work/bajaj/quotequery/main.py` - FastAPI backend, intent routing, DB access, query log writes
+- `/home/sachin/work/bajaj/quotequery/static/index.html` - UI rendering and clarification/client-search UX
+- `/home/sachin/work/bajaj/quotequery/README.md` - v0.1 contract and manual verification checklist
 
 ---
 
@@ -71,17 +87,18 @@ Simple voice/text chatbot for the "Oldman of Bajaj Sports" to query quotes witho
 | PDF Generation | ✅ Working (WeasyPrint) | - |
 | Image Upload/Picker | ✅ Working | - |
 | GST Auto-fill | ✅ Working | - |
-| LLM Resolver | ✅ Configured | - |
+| QuoteQuery Deterministic Intents | ✅ Working | - |
+| QuoteQuery Query Logging (`qq_metadata.db`) | ✅ Working | - |
 
 ---
 
 ## 5. Next Steps (If Needed)
 
-1. Add more heuristic patterns to QuoteQuery
-2. Wire up PDF download button in QuoteQuery for "last quote to X"
-3. Add client picker UI for "Last Quote to..." button
-4. Cache heavy analytics queries
-5. Add authentication if needed
+1. Implement and evaluate gated LLM fallback path behind `ENABLE_LLM_RESOLVER`
+2. Add explicit API contract tests for the 6 intent handlers and unsupported fallback
+3. Add lightweight frontend smoke tests for clarification-chip flow
+4. Cache heavy analytics queries if response times regress
+5. Add authentication/authorization if external access expands
 
 ---
 
