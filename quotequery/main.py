@@ -37,6 +37,16 @@ if ALLOWED_IPS:
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
+def normalize_search_text(value: str) -> str:
+    text = (value or "").lower()
+    text = re.sub(r"[’`]", "'", text)
+    text = text.replace("&", " and ")
+    text = re.sub(r"[/_,.;:!?()\[\]{}\"\\\-]+", " ", text)
+    text = re.sub(r"[^a-z0-9'\s]", " ", text)
+    text = re.sub(r"\band\b", " and ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
 def init_metadata_db():
     conn = sqlite3.connect(META_DB_PATH)
     conn.execute('''
@@ -303,7 +313,7 @@ INTENT_REGISTRY = [
         "intent": "last_quote_client",
         "patterns": [r"last quote to (.+)", r"last quote for (.+)", r"quotes? for (.+)"],
         "handler": handle_last_quote_client,
-        "extract": lambda m: {"client_name": m.group(1).strip(" ?.")}
+        "extract": lambda m: {"client_name": normalize_search_text(m.group(1))}
     },
     {
         "intent": "month_summary",
@@ -341,19 +351,68 @@ INTENT_REGISTRY = [
 
 @app.get("/api/clients/search")
 async def search_clients(q: str = "", limit: int = 5):
-    q = re.sub(r'[^a-zA-Z0-9 ]', '', q).strip().lower()
-    if len(q) < 2:
-        return {"candidates": []}
+    normalized_query = normalize_search_text(q)
+    if len(normalized_query) < 2:
+        return {"candidates": [], "candidate_objects": []}
+
+    safe_limit = max(1, min(limit, 25))
+    query_tokens = normalized_query.split()
+    compact_query = normalized_query.replace(" ", "")
+
+    def rank_candidate(normalized_name: str):
+        if normalized_name.startswith(normalized_query):
+            return (0, normalized_name.find(normalized_query))
+        if normalized_query in normalized_name:
+            return (1, normalized_name.find(normalized_query))
+        compact_name = normalized_name.replace(" ", "")
+        if compact_query and compact_query in compact_name:
+            return (2, compact_name.find(compact_query))
+        if query_tokens and all(any(name_token.startswith(token) for name_token in normalized_name.split()) for token in query_tokens):
+            return (3, len(normalized_name))
+        return (4, len(normalized_name))
+
     with get_db() as conn:
-        rows = conn.execute("SELECT DISTINCT client_name FROM quotes WHERE LOWER(REPLACE(client_name, '.', '')) LIKE ? LIMIT ?", [f"%{q}%", limit]).fetchall()
-        return {"candidates": [r["client_name"] for r in rows]}
+        rows = conn.execute(
+            """
+            SELECT client_name, COUNT(*) AS quote_count, MAX(quote_date) AS latest_quote_date
+            FROM quotes
+            GROUP BY client_name
+            """
+        ).fetchall()
+
+        ranked = []
+        for row in rows:
+            client_name = row["client_name"]
+            normalized_name = normalize_search_text(client_name)
+            tier, pos = rank_candidate(normalized_name)
+            if tier <= 3:
+                ranked.append(
+                    (
+                        tier,
+                        pos,
+                        len(normalized_name),
+                        normalized_name,
+                        {
+                            "name": client_name,
+                            "quote_count": row["quote_count"],
+                            "latest_quote_date": row["latest_quote_date"]
+                        },
+                    )
+                )
+
+        ranked.sort(key=lambda item: (item[0], item[1], item[2], item[3]))
+        selected = [item[4] for item in ranked[:safe_limit]]
+        return {
+            "candidates": [c["name"] for c in selected],
+            "candidate_objects": selected
+        }
 
 @app.post("/api/query")
 async def process_query(request: Request):
     start_time = datetime.now()
     data = await request.json()
     raw_text = data.get("text", "")
-    text = raw_text.lower().strip()
+    text = normalize_search_text(raw_text)
     
     log_record = {
         "raw_text": raw_text,
