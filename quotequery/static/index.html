@@ -117,6 +117,18 @@
                 container.appendChild(summary);
             }
 
+
+            if (data.answer_type === 'quote_record' && data.proof && data.proof.quote_id) {
+                const meta = document.createElement('div');
+                meta.className = 'ranked-meta';
+                const bits = [`Quote ID: ${data.proof.quote_id}`];
+                if (data.proof.filters && data.proof.filters.product_name) {
+                    bits.push(`Filter: ${data.proof.filters.product_name}`);
+                }
+                meta.textContent = bits.join(' • ');
+                container.appendChild(meta);
+            }
+
             if (data.answer_type === 'ranked_list' && data.items) {
                 const list = document.createElement('div');
                 list.className = 'ranked-list';
@@ -157,7 +169,8 @@
                     const btn = document.createElement('button');
                     btn.className = 'chip';
                     btn.textContent = c;
-                    btn.onclick = () => ask(`last quote for ${c}`);
+                    const template = (data.proof && data.proof.query_template) ? data.proof.query_template : 'last quote for {client}';
+                    btn.onclick = () => ask(template.replace('{client}', c));
                     chips.appendChild(btn);
                 });
                 container.appendChild(chips);
@@ -237,7 +250,8 @@
                     const btn = document.createElement('button');
                     btn.className = 'chip';
                     btn.textContent = c;
-                    btn.onclick = () => ask(`last quote for ${c}`);
+                    const template = (data.proof && data.proof.query_template) ? data.proof.query_template : 'last quote for {client}';
+                    btn.onclick = () => ask(template.replace('{client}', c));
                     chipsDiv.appendChild(btn);
                 });
             } catch (e) {
