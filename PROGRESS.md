@@ -23,48 +23,69 @@
 
 ---
 
-## 2. QuoteQuery - Conversational Query App (Port 8082)
+## 2. QuoteQuery - Analytics Assistant (Port 8082)
 
-### Current v0.1 Contract (Implemented)
-- ✅ **Structured `POST /api/query` envelope** with stable fields (`ok`, `intent`, `answer_type`, `title`, `summary`, `items`, `proof`, optional `suggestions`/clarification keys).
-- ✅ **Deterministic intent registry** (ordered regex routes) for 6 intents:
+### Deterministic contract baseline (preserved)
+- ✅ Structured `POST /api/query` response envelope with typed payloads (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`).
+- ✅ Existing 6 deterministic v0.1 intents remain active:
   1. `last_quote_client`
   2. `month_summary`
   3. `inactive_clients`
   4. `top_clients`
   5. `top_products`
   6. `recent_quotes`
-- ✅ **Clarification flow for ambiguous client matches** (`needs_clarification=true` + candidate chips).
-- ✅ **Client lookup endpoint**: `GET /api/clients/search` for inline client search.
-- ✅ **Read-only analytics DB access**: QuoteQuery opens shared `quotes.db` in read-only mode.
-- ✅ **Owned query telemetry DB**: QuoteQuery creates/writes `qq_metadata.db` (`qq_query_log`) for query logs and audit metadata.
-- ✅ **Feature-flagged LLM resolver switch**: `ENABLE_LLM_RESOLVER` exists and is default-off.
+- ✅ Read-only shared analytics DB (`quotes.db`) remains the data source.
+- ✅ QuoteQuery-owned metadata DB (`qq_metadata.db`) remains the query telemetry store.
+- ✅ `ENABLE_LLM_RESOLVER` remains default-off and non-required.
 
-### UX Status (Current)
-- ✅ Mobile-friendly, single-page UI with:
-  - text input
-  - voice input button (browser-supported)
-  - action buttons for common flows
-  - clarification chips and inline client-lookup panel
-- ✅ UI renders typed response shapes (`summary`, `ranked_list`, `quote_record`, `clarification`, `unsupported`) rather than free-form narration assumptions.
+### New deterministic capability implemented
+- ✅ Added first-class `quote_search` capability in `quotequery/main.py`.
+- ✅ Deterministic filter extraction added for combinations of:
+  - `client_name`
+  - `product_name`
+  - `from_date`
+  - `to_date`
+  - `limit`
+- ✅ Deterministic period parsing added for:
+  - `this month`
+  - `last week`
+  - `last month`
+  - `this year`
+  - `last year`
+  - month names (`in March`, `in March 2024`)
+  - year phrases (`in 2024`, `from 2024`)
+- ✅ Added deterministic `GET /api/quotes/search` endpoint for backend filter search reuse.
 
-### Target v0.1 UX/Contract Guardrails
-- Keep deterministic routing as the default path for reliability and testability.
-- Keep unsupported fallback explicit when LLM resolver is disabled.
-- Maintain strict separation of data responsibilities:
-  - `quotes.db`: read-only analytics source
-  - `qq_metadata.db`: query log ownership
-- Preserve chip-based disambiguation workflow for client-specific asks.
+### `quote_search` response behavior
+- ✅ Returns `quote_record` when exactly one strong result is found.
+- ✅ Returns `ranked_list` when multiple results are found.
+- ✅ Returns `clarification` when client disambiguation is required.
+- ✅ Returns `unsupported` when safe filters cannot be extracted or no results are found.
+- ✅ Adds proof metadata with extracted filters, result count, route source, and returned quote IDs.
 
-### Outdated Assumptions Removed
-- ❌ QuoteQuery is **not** documented as a prototype narration-first flow.
-- ❌ UI is **not** assumed to be only "6 big tap targets" without typed API-state rendering.
-- ❌ LLM path is **not** baseline-required for normal operation.
+### Logging/telemetry updates
+- ✅ Extended query processing flow to log:
+  - resolved capability/intent
+  - extracted params
+  - route source
+  - success/failure
+  - clarification candidate count
+  - proof present marker
+  - latency
 
-### Files
-- `/home/sachin/work/bajaj/quotequery/main.py` - FastAPI backend, intent routing, DB access, query log writes
-- `/home/sachin/work/bajaj/quotequery/static/index.html` - UI rendering and clarification/client-search UX
-- `/home/sachin/work/bajaj/quotequery/README.md` - v0.1 contract and manual verification checklist
+### Frontend updates (`quotequery/static/index.html`)
+- ✅ Kept the same single-page UI shape and existing 3 quick actions.
+- ✅ Preserved safe DOM rendering approach (`textContent`, element creation).
+- ✅ Improved typed rendering support for quote-search responses:
+  - ranked list entries continue to show client/date/amount
+  - quote record now shows lightweight quote metadata
+  - clarification chips now support query template from proof for `quote_search`
+
+### Files changed in this update
+- `quotequery/main.py`
+- `quotequery/static/index.html`
+- `quotequery/README.md`
+- `PROGRESS.md`
 
 ---
 
@@ -79,17 +100,17 @@
 | GST Auto-fill | ✅ Working | - |
 | Shared Quote DB (`quotes.db`) | ✅ Read-only from QuoteQuery | - |
 | QuoteQuery Deterministic Intents | ✅ Working | - |
+| QuoteQuery Deterministic Quote Search | ✅ Working | - |
 | QuoteQuery Metadata DB (`qq_metadata.db`) | ✅ Write-enabled | - |
 
 ---
 
 ## 4. Next Steps
 
-1. Implement and evaluate gated LLM fallback path behind `ENABLE_LLM_RESOLVER`
-2. Add explicit API contract tests for the 6 intent handlers and unsupported fallback
-3. Add lightweight frontend smoke tests for clarification-chip flow
-4. Cache heavy analytics queries if response times regress
-5. Add authentication/authorization if external access expands
+1. Add deterministic API contract tests for quote_search extraction and filter SQL.
+2. Add deterministic frontend smoke tests for clarification-chip query-template behavior.
+3. Evaluate optional LLM fallback path behind `ENABLE_LLM_RESOLVER` only after deterministic test coverage is stable.
+4. Add authentication/authorization if external access expands.
 
 ---
 

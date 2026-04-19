@@ -1,87 +1,28 @@
-# QuoteQuery (v0.1 Contract)
+# QuoteQuery (v0.2 Deterministic Contract)
 
-QuoteQuery is a FastAPI + vanilla JS assistant for querying Bajaj quote history with deterministic, auditable behavior by default.
+QuoteQuery is a FastAPI + vanilla JS Analytics Assistant for querying Bajaj quote history with deterministic, auditable behavior by default.
 
 ## Scope
 
 - Mobile-friendly single-page UI served from `quotequery/static/index.html`.
-- Deterministic intent routing in `quotequery/main.py` for core business questions.
+- Deterministic intent routing in `quotequery/main.py`.
 - SQLite-backed analytics responses with explicit proof metadata.
 - Optional (default-off) LLM resolver path for future expansion.
 
 ## Runtime and Data Ownership
 
-QuoteQuery uses **two SQLite databases with distinct roles**:
-
 1. **`quotes.db` (read-only)**
-   - Source of truth for historical quotes and line items.
+   - Source of truth for historical quotes and quote line-items.
    - Opened in URI read-only mode (`mode=ro`) by QuoteQuery.
-   - Queried for analytics and client lookup only.
+   - Queried for analytics and deterministic search only.
 
 2. **`qq_metadata.db` (owned by QuoteQuery)**
    - Created/managed by QuoteQuery in the app directory.
-   - Stores query execution logs in `qq_query_log` (normalized text, resolved intent, routing source, latency, success/error, etc.).
-   - This is the system of record for query telemetry and audit trails.
+   - Stores query execution logs in `qq_query_log` (normalized text, resolved intent, route source, latency, success/failure, proof marker, etc.).
 
-## API Contract
+## Deterministic Capabilities
 
-### `POST /api/query`
-
-Accepts JSON:
-
-```json
-{ "text": "last quote for DPS" }
-```
-
-Returns a **structured response envelope** (shape may vary by `answer_type`, but keys are stable):
-
-```json
-{
-  "ok": true,
-  "intent": "last_quote_client",
-  "answer_type": "quote_record",
-  "title": "Last quote to DPS",
-  "summary": "Sent on 2026-04-10 for ₹1,25,000.",
-  "items": [],
-  "proof": {
-    "source": "quotes",
-    "quote_id": 123
-  },
-  "suggestions": ["Recent quotes", "This month"],
-  "needs_clarification": false,
-  "candidates": []
-}
-```
-
-#### Supported `answer_type` values (v0.1)
-- `summary`
-- `ranked_list`
-- `quote_record`
-- `clarification`
-- `unsupported`
-
-#### Clarification behavior
-- If user text maps to `last_quote_client` but the client is ambiguous, response is `answer_type: "clarification"` with:
-  - `needs_clarification: true`
-  - `candidates: [ ... ]`
-- UI renders candidates as chips; selecting a chip re-queries using the selected client.
-
-### `GET /api/clients/search?q=<text>&limit=<n>`
-
-- Used by the inline client-lookup panel.
-- Returns candidate names for clarification assist.
-- For short queries (`<2` chars), returns an empty candidate list.
-
-Response shape:
-
-```json
-{ "candidates": ["Client A", "Client B"] }
-```
-
-## Deterministic Intent Registry (default path)
-
-`/api/query` first evaluates a fixed intent registry (ordered rules + regex extraction). Current v0.1 intents:
-
+### Core v0.1 intents (preserved)
 1. `last_quote_client`
 2. `month_summary`
 3. `inactive_clients`
@@ -89,24 +30,84 @@ Response shape:
 5. `top_products`
 6. `recent_quotes`
 
-This deterministic registry is the primary contract for predictable and testable routing.
+### New deterministic capability
+7. `quote_search`
+
+`quote_search` supports deterministic combinations of:
+- `client_name`
+- `product_name`
+- `from_date`
+- `to_date`
+- `limit`
+
+It can return:
+- `quote_record` (single strong result)
+- `ranked_list` (multiple results)
+- `clarification` (client disambiguation required)
+- `unsupported` (filters could not be safely extracted)
+
+## Supported deterministic period parsing
+
+`quote_search` supports:
+- Relative phrases: `this month`, `last week`, `last month`, `this year`, `last year`
+- Month phrases: `in March`, `in March 2024`
+- Year phrases: `in 2024`, `from 2024`
+
+## API Contract
+
+### `POST /api/query`
+
+Accepts:
+```json
+{ "text": "quotes for IIT in March" }
+```
+
+Returns the same structured envelope contract:
+- `ok`
+- `intent`
+- `answer_type`
+- `title`
+- `summary`
+- `items`
+- `proof`
+- optional `suggestions`, `needs_clarification`, `candidates`
+
+For `quote_search`, proof includes fields such as:
+- `source`
+- extracted `filters`
+- `result_count`
+- `returned_quote_ids`
+- `route_source`
+
+### `GET /api/clients/search?q=<text>&limit=<n>`
+
+- Deterministic client candidate lookup.
+- For short input (`<2` chars), returns empty candidates.
+
+### `GET /api/quotes/search`
+
+Deterministic SQLite-backed filter endpoint used by `quote_search`.
+
+Query params:
+- `client_name`
+- `product_name`
+- `from_date` (`YYYY-MM-DD`)
+- `to_date` (`YYYY-MM-DD`)
+- `limit` (1..50)
+
+Response includes:
+- applied filters
+- result count
+- returned quote ids
+- typed quote records (`quote_id`, `client_name`, `quote_date`, `grand_total`, `product_preview`)
 
 ## Optional LLM Resolver (feature-flagged)
 
 - Env flag: `ENABLE_LLM_RESOLVER`
 - Default: **off** (`false`)
-- Behavior:
-  - If not enabled, unresolved inputs fall back to deterministic `unsupported` response.
-  - If enabled (and key present), unresolved inputs are eligible for future LLM-based intent resolution.
-- Current code keeps LLM fallback path stubbed and non-default.
+- Unresolved queries remain deterministic `unsupported` when disabled.
 
 ## Local Development
-
-### Prerequisites
-- Python 3.8+
-- Access to quote data at `../quotegen/quotes.db` (or a local `dev_quotes.db` fallback)
-
-### Run
 
 ```bash
 cd quotequery
@@ -114,32 +115,27 @@ pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8082 --reload
 ```
 
-Open: `http://localhost:8082`
+## Manual Verification Checklist (v0.2)
 
-### Environment Variables
+### New `quote_search` checks
+- [ ] `quotes for IIT`
+- [ ] `football quotes`
+- [ ] `quotes for IIT in March`
+- [ ] `basketball poles this month`
+- [ ] `quotes to DPS last week`
+- [ ] `quotes for football in 2024`
+- [ ] `show DPS quotes from last year`
 
-```env
-DATA_DIR=/home/sachin/work/bajaj
-ENABLE_LLM_RESOLVER=false
-AI_STUDIO_KEY=
-ALLOWED_IPS=
-```
-
-## Manual Verification Checklist (v0.1)
-
-Use this checklist after changes to routing/UX.
-
-- [ ] **Intent: `month_summary`** — Ask "How much business this month?" and confirm `answer_type=summary` with proof period fields.
-- [ ] **Intent: `inactive_clients`** — Ask "Which clients have gone quiet?" and confirm ranked list response.
-- [ ] **Intent: `top_clients`** — Ask "Who are my top clients?" and confirm ranked list by value.
-- [ ] **Intent: `top_products`** — Ask "What are my top products?" and confirm ranked list by frequency.
-- [ ] **Intent: `recent_quotes`** — Ask "Show recent quotes" and confirm 5 latest entries returned.
-- [ ] **Intent: `last_quote_client`** — Ask "Last quote for <known client>" and confirm quote record response.
-- [ ] **Clarification-chip workflow** — Ask "last quote for school" (or another ambiguous stem), confirm clarification response with chips, tap a chip, and confirm resolved quote record.
-- [ ] **Client search endpoint** — In the "Last Quote..." panel, type at least 2 characters and confirm `/api/clients/search` returns candidate chips.
-- [ ] **Fallback behavior** — Ask unsupported query, confirm deterministic "I'm still learning" response when `ENABLE_LLM_RESOLVER=false`.
+### Existing v0.1 checks
+- [ ] `How much business this month?`
+- [ ] `Which clients have gone quiet?`
+- [ ] `Who are my top clients?`
+- [ ] `What are my top products?`
+- [ ] `Show recent quotes`
+- [ ] `Last quote for DPS`
 
 ## Notes
 
-- Keep API output structured and stable; frontend rendering assumes typed response contracts.
-- Any expansion of intents should update this README and `PROGRESS.md` in the same change.
+- Keep deterministic routing as default.
+- Keep `quotes.db` read-only and `qq_metadata.db` as QuoteQuery-owned metadata.
+- Any intent expansion must update this README and `PROGRESS.md` in the same change.
