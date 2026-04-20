@@ -5,7 +5,7 @@ import re
 import httpx
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -187,6 +187,27 @@ def init_metadata_db():
     if "matched_pattern" not in existing_columns:
         conn.execute("ALTER TABLE qq_query_log ADD COLUMN matched_pattern TEXT")
 
+    conn.execute(
+        """
+        CREATE TABLE IF NOT EXISTS qq_client_alias (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            canonical_name TEXT NOT NULL,
+            canonical_norm TEXT NOT NULL,
+            alias_name TEXT NOT NULL,
+            alias_norm TEXT NOT NULL UNIQUE,
+            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            is_active INTEGER NOT NULL DEFAULT 1
+        )
+    """
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_qq_client_alias_canonical_norm ON qq_client_alias(canonical_norm)"
+    )
+    conn.execute(
+        "CREATE INDEX IF NOT EXISTS idx_qq_client_alias_is_active ON qq_client_alias(is_active)"
+    )
+
     conn.commit()
     conn.close()
 
@@ -285,13 +306,29 @@ def rank_name_match(normalized_query: str, candidate_name: str) -> Tuple[int, in
     return 9, len(normalized_name), len(normalized_name), normalized_name
 
 
-def lookup_client_candidates(raw_term: str, limit: int = 6) -> List[dict]:
+def get_alias_rows(active_only: bool = True) -> List[sqlite3.Row]:
+    with sqlite3.connect(META_DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        if active_only:
+            return conn.execute(
+                """
+                SELECT canonical_name, canonical_norm, alias_name, alias_norm
+                FROM qq_client_alias
+                WHERE is_active = 1
+                """
+            ).fetchall()
+        return conn.execute(
+            "SELECT canonical_name, canonical_norm, alias_name, alias_norm FROM qq_client_alias"
+        ).fetchall()
+
+
+def resolve_client_name(raw_term: str, limit: int = 6) -> Dict[str, object]:
     normalized_query = normalize_search_text(raw_term)
     if not normalized_query:
-        return []
+        return {"status": "unresolved", "resolution_mode": "none", "candidates": []}
 
     with get_db() as conn:
-        rows = conn.execute(
+        quote_rows = conn.execute(
             """
             SELECT client_name, COUNT(*) AS quote_count, MAX(quote_date) AS latest_quote_date
             FROM quotes
@@ -299,18 +336,124 @@ def lookup_client_candidates(raw_term: str, limit: int = 6) -> List[dict]:
             """
         ).fetchall()
 
-    ranked = []
-    for row in rows:
+    direct_ranked = []
+    canonical_info: Dict[str, dict] = {}
+    for row in quote_rows:
         score = rank_name_match(normalized_query, row["client_name"])
+        canonical_info[row["client_name"]] = {
+            "name": row["client_name"],
+            "quote_count": row["quote_count"],
+            "latest_quote_date": row["latest_quote_date"],
+            "match_type": "direct",
+            "matched_alias": None,
+            "match_score": score,
+        }
         if score[0] <= 4:
-            ranked.append((score, {
-                "name": row["client_name"],
-                "quote_count": row["quote_count"],
-                "latest_quote_date": row["latest_quote_date"],
-            }))
+            direct_ranked.append((score, row["client_name"]))
 
-    ranked.sort(key=lambda item: item[0])
-    return [item[1] for item in ranked[:limit]]
+    alias_rows = get_alias_rows(active_only=True)
+    alias_ranked = []
+    for alias_row in alias_rows:
+        alias_score = rank_name_match(normalized_query, alias_row["alias_name"])
+        canonical_score = rank_name_match(normalized_query, alias_row["canonical_name"])
+        score = alias_score if alias_score[0] <= canonical_score[0] else canonical_score
+        if score[0] > 4:
+            continue
+        canonical_name = alias_row["canonical_name"]
+        if canonical_name in canonical_info:
+            current = canonical_info[canonical_name]
+            if current["match_type"] == "direct":
+                continue
+            if score < current["match_score"]:
+                current["match_score"] = score
+                current["matched_alias"] = alias_row["alias_name"]
+        else:
+            canonical_info[canonical_name] = {
+                "name": canonical_name,
+                "quote_count": 0,
+                "latest_quote_date": None,
+                "match_type": "alias",
+                "matched_alias": alias_row["alias_name"],
+                "match_score": score,
+            }
+        if canonical_info[canonical_name]["match_type"] != "direct":
+            canonical_info[canonical_name]["match_type"] = "alias"
+            canonical_info[canonical_name]["matched_alias"] = alias_row["alias_name"]
+            alias_ranked.append((score, canonical_name))
+
+    ranked_keys = []
+    for score, name in sorted(direct_ranked, key=lambda item: item[0]):
+        ranked_keys.append((0, score, name))
+    for score, name in sorted(alias_ranked, key=lambda item: item[0]):
+        if any(existing[2] == name for existing in ranked_keys):
+            continue
+        ranked_keys.append((1, score, name))
+
+    ranked_keys.sort(key=lambda item: (item[0], item[1]))
+    selected = []
+    for _, _, name in ranked_keys[:limit]:
+        item = canonical_info[name]
+        selected.append(
+            {
+                "name": item["name"],
+                "quote_count": item["quote_count"],
+                "latest_quote_date": item["latest_quote_date"],
+                "match_type": item["match_type"],
+                "matched_alias": item["matched_alias"],
+            }
+        )
+
+    if not selected:
+        return {"status": "unresolved", "resolution_mode": "none", "candidates": []}
+
+    exact_direct = [
+        c
+        for c in selected
+        if c["match_type"] == "direct" and normalize_search_text(c["name"]) == normalized_query
+    ]
+    if exact_direct:
+        return {
+            "status": "resolved",
+            "resolution_mode": "direct",
+            "client_name": exact_direct[0]["name"],
+            "matched_alias": None,
+            "candidates": selected,
+        }
+
+    exact_alias = [
+        c
+        for c in selected
+        if c["match_type"] == "alias" and normalize_search_text(c["matched_alias"] or "") == normalized_query
+    ]
+    if exact_alias:
+        return {
+            "status": "resolved",
+            "resolution_mode": "alias",
+            "client_name": exact_alias[0]["name"],
+            "matched_alias": exact_alias[0]["matched_alias"],
+            "candidates": selected,
+        }
+
+    if len(selected) == 1:
+        only = selected[0]
+        return {
+            "status": "resolved",
+            "resolution_mode": only["match_type"],
+            "client_name": only["name"],
+            "matched_alias": only["matched_alias"],
+            "candidates": selected,
+        }
+
+    return {
+        "status": "clarify",
+        "resolution_mode": "ambiguous",
+        "candidates": selected,
+    }
+
+
+def lookup_client_candidates(raw_term: str, limit: int = 6) -> List[dict]:
+    resolved = resolve_client_name(raw_term, limit=limit)
+    return resolved.get("candidates", [])
 
 
 def lookup_product_candidates(raw_term: str, limit: int = 6) -> List[dict]:
@@ -338,20 +481,7 @@ def lookup_product_candidates(raw_term: str, limit: int = 6) -> List[dict]:
 
 
 def canonicalize_client_filter(raw_client: str) -> dict:
-    candidates = lookup_client_candidates(raw_client, limit=6)
-    normalized = normalize_search_text(raw_client)
-
-    exact = [c for c in candidates if normalize_search_text(c["name"]) == normalized]
-    if exact:
-        return {"status": "resolved", "client_name": exact[0]["name"], "candidates": candidates}
-
-    if len(candidates) > 1:
-        return {"status": "clarify", "candidates": candidates}
-
-    if len(candidates) == 1:
-        return {"status": "resolved", "client_name": candidates[0]["name"], "candidates": candidates}
-
-    return {"status": "unresolved", "candidates": []}
+    return resolve_client_name(raw_client, limit=6)
 
 
 def run_quote_search(params: dict) -> dict:
@@ -369,8 +499,8 @@ def run_quote_search(params: dict) -> dict:
     product_clause = ""
 
     if filters["client_name"]:
-        where.append("q.client_name LIKE ?")
-        values.append(f"%{filters['client_name']}%")
+        where.append("q.client_name = ?")
+        values.append(filters["client_name"])
 
     if filters["from_date"]:
         where.append("q.quote_date >= ?")
@@ -466,6 +596,7 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
                         **period_filters,
                         "client_name": entity_text,
                         "product_name": "",
+                        "client_resolution_mode": "ambiguous",
                     },
                     "route_source": route_source,
                     "matched_pattern": "quotes_for_to",
@@ -506,6 +637,9 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
         "limit": 10,
         **period_filters,
         "route_source": route_source,
+        "client_resolution_mode": client_res.get("resolution_mode", "none") if "client_res" in locals() else "none",
+        "matched_alias": client_res.get("matched_alias") if "client_res" in locals() else None,
+        "raw_client_term": entity_text if "entity_text" in locals() else "",
     }
 
     params["matched_pattern"] = (
@@ -588,6 +722,12 @@ def handle_quote_search(params: dict) -> dict:
         "result_count": result_count,
         "returned_quote_ids": returned_quote_ids,
         "route_source": params.get("route_source", "quote_search:deterministic"),
+        "client_resolution": {
+            "raw_client_term": params.get("raw_client_term", ""),
+            "resolved_client_name": params.get("client_name", ""),
+            "mode": params.get("client_resolution_mode", "none"),
+            "matched_alias": params.get("matched_alias"),
+        },
     }
 
     if result_count == 1:
@@ -639,22 +779,58 @@ def handle_last_quote_client(params: dict) -> dict:
             needs_clarification=True,
         )
 
+    client_resolution = canonicalize_client_filter(client_name)
+    if client_resolution["status"] == "clarify":
+        return build_response(
+            ok=False,
+            intent="last_quote_client",
+            answer_type="clarification",
+            title="Multiple clients found",
+            summary=f"Which '{client_name}' did you mean?",
+            needs_clarification=True,
+            candidates=[c["name"] for c in client_resolution["candidates"][:5]],
+            proof={
+                "source": "quotes",
+                "client_resolution": {
+                    "raw_client_term": client_name,
+                    "mode": "ambiguous",
+                },
+            },
+        )
+
+    if client_resolution["status"] == "unresolved":
+        return build_response(
+            ok=False,
+            intent="last_quote_client",
+            answer_type="unsupported",
+            title="No quotes found",
+            summary=f"I couldn't find any quotes for '{client_name}'.",
+            proof={
+                "source": "quotes",
+                "client_resolution": {
+                    "raw_client_term": client_name,
+                    "mode": "none",
+                },
+            },
+        )
+
+    canonical_client = client_resolution["client_name"]
     with get_db() as conn:
-        candidates = conn.execute("SELECT DISTINCT client_name FROM quotes WHERE client_name LIKE ? LIMIT 6", [f"%{client_name}%"]).fetchall()
-        if len(candidates) > 1 and client_name.lower() not in [c["client_name"].lower() for c in candidates]:
+        candidates = conn.execute("SELECT DISTINCT client_name FROM quotes WHERE client_name = ? LIMIT 6", [canonical_client]).fetchall()
+        if len(candidates) > 1:
             return build_response(
                 ok=False,
                 intent="last_quote_client",
                 answer_type="clarification",
                 title="Multiple clients found",
-                summary=f"Which '{client_name}' did you mean?",
+                summary=f"Which '{canonical_client}' did you mean?",
                 needs_clarification=True,
                 candidates=[c["client_name"] for c in candidates[:5]],
             )
 
         row = conn.execute(
-            "SELECT id, client_name, quote_date, grand_total FROM quotes WHERE client_name LIKE ? ORDER BY quote_date DESC, id DESC LIMIT 1",
-            [f"%{client_name}%"],
+            "SELECT id, client_name, quote_date, grand_total FROM quotes WHERE client_name = ? ORDER BY quote_date DESC, id DESC LIMIT 1",
+            [canonical_client],
         ).fetchone()
 
         if row:
@@ -670,6 +846,11 @@ def handle_last_quote_client(params: dict) -> dict:
                     "client_name": row["client_name"],
                     "quote_date": row["quote_date"],
                     "grand_total": row["grand_total"],
+                    "client_resolution": {
+                        "raw_client_term": client_name,
+                        "mode": client_resolution.get("resolution_mode", "direct"),
+                        "matched_alias": client_resolution.get("matched_alias"),
+                    },
                 },
                 suggestions=["Recent quotes", "This month"],
             )
@@ -879,8 +1060,16 @@ async def search_quotes(
     to_date: str = "",
     limit: int = 10,
 ):
+    client_resolution = canonicalize_client_filter(client_name) if client_name.strip() else {
+        "status": "unresolved",
+        "resolution_mode": "none",
+        "client_name": "",
+        "matched_alias": None,
+    }
+    resolved_client_name = client_resolution["client_name"] if client_resolution.get("status") == "resolved" else ""
+
     filters = {
-        "client_name": normalize_search_text(client_name),
+        "client_name": resolved_client_name,
         "product_name": normalize_search_text(product_name),
         "from_date": from_date.strip(),
         "to_date": to_date.strip(),
@@ -902,6 +1091,12 @@ async def search_quotes(
 
     return {
         "filters": filters,
+        "client_resolution": {
+            "raw_client_term": client_name,
+            "mode": client_resolution.get("resolution_mode", "none"),
+            "resolved_client_name": resolved_client_name,
+            "matched_alias": client_resolution.get("matched_alias"),
+        },
         "result_count": search_result["result_count"],
         "returned_quote_ids": search_result["returned_quote_ids"],
         "records": records,

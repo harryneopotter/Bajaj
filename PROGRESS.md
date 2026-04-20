@@ -1,6 +1,6 @@
 # Bajaj Sports - Development Progress
 
-**Last Updated:** April 18, 2026
+**Last Updated:** April 19, 2026
 
 ---
 
@@ -55,6 +55,12 @@
   - month names (`in March`, `in March 2024`)
   - year phrases (`in 2024`, `from 2024`)
 - ✅ Added deterministic `GET /api/quotes/search` endpoint for backend filter search reuse.
+- ✅ Added persistent QuoteQuery-owned client alias memory in `qq_metadata.db` (`qq_client_alias`) without touching `quotes.db`.
+- ✅ Alias-assisted deterministic client resolution added for:
+  - `/api/clients/search`
+  - `last_quote_client`
+  - `quote_search` (including deterministic SQL filter resolution)
+- ✅ Added auditable proof metadata for client resolution mode (`direct` vs `alias`, matched alias, raw term).
 
 ### `quote_search` response behavior
 - ✅ Returns `quote_record` when exactly one strong result is found.
@@ -72,6 +78,7 @@
   - clarification candidate count
   - proof present marker
   - latency
+- ✅ Query proofs now include explicit client resolution mode for deterministic auditability.
 
 ### Frontend updates (`quotequery/static/index.html`)
 - ✅ Kept the same single-page UI shape and existing 3 quick actions.
@@ -83,7 +90,6 @@
 
 ### Files changed in this update
 - `quotequery/main.py`
-- `quotequery/static/index.html`
 - `quotequery/README.md`
 - `PROGRESS.md`
 

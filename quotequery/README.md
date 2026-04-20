@@ -19,6 +19,25 @@ QuoteQuery is a FastAPI + vanilla JS Analytics Assistant for querying Bajaj quot
 2. **`qq_metadata.db` (owned by QuoteQuery)**
    - Created/managed by QuoteQuery in the app directory.
    - Stores query execution logs in `qq_query_log` (normalized text, resolved intent, route source, latency, success/failure, proof marker, etc.).
+   - Stores deterministic client alias memory in `qq_client_alias` (canonical name + aliases), without changing `quotes.db`.
+
+### `qq_client_alias` schema (QuoteQuery-owned)
+
+```sql
+CREATE TABLE IF NOT EXISTS qq_client_alias (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    canonical_name TEXT NOT NULL,
+    canonical_norm TEXT NOT NULL,
+    alias_name TEXT NOT NULL,
+    alias_norm TEXT NOT NULL UNIQUE,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    is_active INTEGER NOT NULL DEFAULT 1
+);
+```
+
+- One canonical client can have multiple aliases (multiple rows with same `canonical_name`/`canonical_norm`).
+- Alias resolution is deterministic because each `alias_norm` maps to only one canonical client.
 
 ## Deterministic Capabilities
 
@@ -82,6 +101,7 @@ For `quote_search`, proof includes fields such as:
 ### `GET /api/clients/search?q=<text>&limit=<n>`
 
 - Deterministic client candidate lookup.
+- Uses direct client-name matching first, then alias-assisted matching from `qq_client_alias`.
 - For short input (`<2` chars), returns empty candidates.
 
 ### `GET /api/quotes/search`
@@ -97,9 +117,29 @@ Query params:
 
 Response includes:
 - applied filters
+- client resolution audit (`direct` / `alias` / `none`)
 - result count
 - returned quote ids
 - typed quote records (`quote_id`, `client_name`, `quote_date`, `grand_total`, `product_preview`)
+
+## Deterministic alias resolution behavior
+
+When a client-like term is provided (for `/api/clients/search`, `last_quote_client`, and `quote_search`):
+
+1. Normalize query text deterministically (`normalize_search_text`).
+2. Rank direct client-name matches from `quotes.db`.
+3. Rank alias matches from `qq_client_alias` and map to canonical client names.
+4. Resolve in deterministic order:
+   - exact direct match
+   - exact alias match
+   - single remaining candidate
+   - otherwise clarification
+5. Log/proof indicates whether the match was:
+   - `direct`
+   - `alias` (with `matched_alias`)
+   - `ambiguous` / `none`
+
+Example: searching `DPS RK Puram` can resolve via alias to canonical `Delhi Public School R.K. Puram`.
 
 ## Optional LLM Resolver (feature-flagged)
 
@@ -119,6 +159,7 @@ uvicorn main:app --host 0.0.0.0 --port 8082 --reload
 
 ### New `quote_search` checks
 - [ ] `quotes for IIT`
+- [ ] `quotes for DPS RK Puram` (when alias exists for `Delhi Public School R.K. Puram`)
 - [ ] `football quotes`
 - [ ] `quotes for IIT in March`
 - [ ] `basketball poles this month`
