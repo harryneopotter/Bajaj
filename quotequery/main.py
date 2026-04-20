@@ -379,7 +379,7 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
         return {"status": "malformed_provider_output", "error": "Missing provider content"}
 
     parsed = parse_llm_json_payload(content)
-    if not parsed:
+    if parsed is None:
         return {"status": "malformed_provider_output", "error": "Could not parse provider JSON"}
 
     validated = validate_llm_resolver_output(parsed)
