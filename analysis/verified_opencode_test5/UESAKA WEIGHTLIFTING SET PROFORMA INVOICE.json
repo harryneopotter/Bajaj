@@ -1,4 +1,0 @@
-{
-  "status": "error",
-  "error_text": "json\n{\n  \"status\": \"review\",\n  \"extraction\": \"Accurate\",\n  \"fixes\": \"Add missing GSTIN for client; Add missing HSN codes for all line items.\",\n  \"flags\": \"Date is in the future (2026-03-30); GSTIN is null; HSN codes are null for all items.\"\n}\n"
-}

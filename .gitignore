@@ -47,3 +47,4 @@ analysis/*.json
 analysis/*.csv
 analysis/extractions/
 invoices.json
+analysis/
