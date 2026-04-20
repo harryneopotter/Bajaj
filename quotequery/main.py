@@ -26,7 +26,11 @@ def parse_float_env(env_name: str, default: float) -> float:
     if not candidate:
         return default
     try:
-        return float(candidate)
+        parsed_value = float(candidate)
+        if parsed_value <= 0:
+            print(f"Invalid {env_name}='{raw_value}' (must be > 0). Falling back to {default}.")
+            return default
+        return parsed_value
     except (TypeError, ValueError):
         print(f"Invalid {env_name}='{raw_value}'. Falling back to {default}.")
         return default
