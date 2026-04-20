@@ -95,6 +95,18 @@
 - ✅ Added provider integration using `httpx.AsyncClient` with configurable timeout.
 - ✅ Kept default `ENABLE_LLM_RESOLVER=false` and non-required for normal operation.
 
+### Bugfix/consistency patch (no architecture redesign)
+- ✅ Fixed safe timeout env parsing for `LLM_RESOLVER_TIMEOUT_SEC`:
+  - invalid/blank values now fall back to `6.0`
+  - QuoteQuery startup no longer fails from timeout parse errors
+  - preserves optional/default-off LLM behavior
+- ✅ Made `quote_search` date-only behavior consistent:
+  - date-only filters are now valid (`from_date`/`to_date` window or `month`)
+  - deterministic date-only queries now return `quote_record`/`ranked_list` based on rows
+  - unsupported is returned only when no safe filters exist or no rows match
+- ✅ Added deterministic explicit date-range parsing for phrases like:
+  - `quotes between 2026-01-01 and 2026-01-31`
+
 ### Frontend updates (`quotequery/static/index.html`)
 - ✅ Kept the same single-page UI shape and existing 3 quick actions.
 - ✅ Preserved safe DOM rendering approach (`textContent`, element creation).

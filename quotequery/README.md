@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS qq_client_alias (
 - `product_name`
 - `from_date`
 - `to_date`
+- `month`
 - `limit`
 
 It can return:
@@ -65,12 +66,15 @@ It can return:
 - `clarification` (client disambiguation required)
 - `unsupported` (filters could not be safely extracted)
 
+Date-only search is supported when at least one safe time filter exists (`from_date`, `to_date`, or `month`).
+
 ## Supported deterministic period parsing
 
 `quote_search` supports:
 - Relative phrases: `this month`, `last week`, `last month`, `this year`, `last year`
 - Month phrases: `in March`, `in March 2024`
 - Year phrases: `in 2024`, `from 2024`
+- Explicit ISO date ranges: `between 2026-01-01 and 2026-01-31`
 
 ## API Contract
 
@@ -181,6 +185,10 @@ Required when `ENABLE_LLM_RESOLVER=true`:
 - `LLM_PROVIDER_MODEL` (default: `gemma-3-27b-it`)
 - `LLM_RESOLVER_TIMEOUT_SEC` (default: `6`)
 
+Timeout env parsing is startup-safe:
+- if `LLM_RESOLVER_TIMEOUT_SEC` is missing, blank, or invalid (example: `abc`), QuoteQuery falls back to `6.0` seconds
+- invalid timeout values never block app startup (including when `ENABLE_LLM_RESOLVER=false`)
+
 Implementation notes:
 - Transport uses `httpx.AsyncClient`.
 - Deterministic handlers remain the only execution path for business responses.
@@ -229,3 +237,4 @@ uvicorn main:app --host 0.0.0.0 --port 8082 --reload
 - Keep deterministic routing as default.
 - Keep `quotes.db` read-only and `qq_metadata.db` as QuoteQuery-owned metadata.
 - Any intent expansion must update this README and `PROGRESS.md` in the same change.
+- This update is a targeted bugfix/consistency patch (no architecture redesign).

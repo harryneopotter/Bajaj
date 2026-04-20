@@ -19,6 +19,19 @@ DEV_DB = BASE_DIR / "dev_quotes.db"
 DB_PATH = PROD_DB if PROD_DB.exists() else DEV_DB
 META_DB_PATH = BASE_DIR / "qq_metadata.db"
 
+
+def parse_float_env(env_name: str, default: float) -> float:
+    raw_value = os.getenv(env_name, "")
+    candidate = (raw_value or "").strip()
+    if not candidate:
+        return default
+    try:
+        return float(candidate)
+    except (TypeError, ValueError):
+        print(f"Invalid {env_name}='{raw_value}'. Falling back to {default}.")
+        return default
+
+
 AI_STUDIO_KEY = os.getenv("AI_STUDIO_KEY", "")
 ENABLE_LLM_RESOLVER = os.getenv("ENABLE_LLM_RESOLVER", "false").lower() == "true"
 LLM_PROVIDER_URL = os.getenv(
@@ -26,7 +39,7 @@ LLM_PROVIDER_URL = os.getenv(
     "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
 ).strip()
 LLM_PROVIDER_MODEL = os.getenv("LLM_PROVIDER_MODEL", "gemma-3-27b-it").strip()
-LLM_RESOLVER_TIMEOUT_SEC = float(os.getenv("LLM_RESOLVER_TIMEOUT_SEC", "6").strip() or "6")
+LLM_RESOLVER_TIMEOUT_SEC = parse_float_env("LLM_RESOLVER_TIMEOUT_SEC", 6.0)
 APP_HOST = os.getenv("QQ_HOST", "0.0.0.0")
 APP_PORT = int(os.getenv("QQ_PORT", "8082"))
 
@@ -111,7 +124,28 @@ def parse_period_filters(text: str) -> Tuple[dict, str]:
         filters["period_label"] = label
         cleaned = re.sub(pattern, " ", cleaned).strip()
 
-    if re.search(r"\bthis month\b", cleaned):
+    date_range_match = re.search(
+        r"\bbetween\s+(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\s+and\s+(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\b",
+        cleaned,
+    )
+    if date_range_match:
+        from_date = f"{date_range_match.group(1)}-{date_range_match.group(2)}-{date_range_match.group(3)}"
+        to_date = f"{date_range_match.group(4)}-{date_range_match.group(5)}-{date_range_match.group(6)}"
+    else:
+        from_date = ""
+        to_date = ""
+
+    if from_date and to_date and is_iso_date(from_date) and is_iso_date(to_date):
+        if from_date <= to_date:
+            filters["from_date"] = from_date
+            filters["to_date"] = to_date
+            filters["period_label"] = "between_dates"
+            cleaned = re.sub(
+                r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
+                " ",
+                cleaned,
+            ).strip()
+    elif re.search(r"\bthis month\b", cleaned):
         start = now.replace(day=1)
         apply_period(start, now, "this_month", r"\bthis month\b")
     elif re.search(r"\blast week\b", cleaned):
@@ -822,7 +856,10 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
         if period_only_phrase and period_filters:
             product_candidate = period_only_phrase
 
-    if not client_candidate and not product_candidate:
+    has_date_window = bool(period_filters.get("from_date") or period_filters.get("to_date"))
+    has_month_filter = bool(period_filters.get("month"))
+
+    if not client_candidate and not product_candidate and not has_date_window and not has_month_filter:
         return None
 
     params = {
@@ -873,13 +910,16 @@ def handle_quote_search(params: dict) -> dict:
         "limit": params.get("limit", 10),
     }
 
-    if not query_filters["client_name"] and not query_filters["product_name"]:
+    has_date_window = bool(query_filters["from_date"] or query_filters["to_date"])
+    has_month_filter = bool(query_filters["month"])
+
+    if not query_filters["client_name"] and not query_filters["product_name"] and not has_date_window and not has_month_filter:
         return build_response(
             ok=False,
             intent="quote_search",
             answer_type="unsupported",
             title="Could not resolve search filters",
-            summary="Please mention a client or product for quote search.",
+            summary="Please mention a client, product, month, or date range for quote search.",
             proof={
                 "source": "quotes",
                 "filters": query_filters,
