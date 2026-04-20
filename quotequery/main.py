@@ -5,7 +5,7 @@ import re
 import httpx
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, List, Tuple, Dict
+from typing import Optional, List, Tuple, Dict, Any
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -21,6 +21,12 @@ META_DB_PATH = BASE_DIR / "qq_metadata.db"
 
 AI_STUDIO_KEY = os.getenv("AI_STUDIO_KEY", "")
 ENABLE_LLM_RESOLVER = os.getenv("ENABLE_LLM_RESOLVER", "false").lower() == "true"
+LLM_PROVIDER_URL = os.getenv(
+    "LLM_PROVIDER_URL",
+    "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+).strip()
+LLM_PROVIDER_MODEL = os.getenv("LLM_PROVIDER_MODEL", "gemma-3-27b-it").strip()
+LLM_RESOLVER_TIMEOUT_SEC = float(os.getenv("LLM_RESOLVER_TIMEOUT_SEC", "6").strip() or "6")
 APP_HOST = os.getenv("QQ_HOST", "0.0.0.0")
 APP_PORT = int(os.getenv("QQ_PORT", "8082"))
 
@@ -42,6 +48,16 @@ MONTH_NAME_TO_NUM = {
 }
 
 NOISE_PREFIX_RE = re.compile(r"^(show|find|give|list|tell|please|me|all)\s+")
+ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+LLM_SUPPORTED_INTENTS = {
+    "quote_search",
+    "last_quote_client",
+    "month_summary",
+    "inactive_clients",
+    "top_clients",
+    "top_products",
+    "recent_quotes",
+}
 
 # Optional IP Whitelist via ENV
 ALLOWED_IPS = os.getenv("ALLOWED_IPS", "")
@@ -155,6 +171,184 @@ def trim_noise_tokens(text: str) -> str:
         result = updated
     result = re.sub(r"\b(?:in|from|for|to)\s*$", "", result).strip()
     return result
+
+
+def is_iso_date(value: str) -> bool:
+    value = (value or "").strip()
+    if not ISO_DATE_RE.match(value):
+        return False
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+    except ValueError:
+        return False
+    return True
+
+
+def unsupported_fallback_response() -> dict:
+    return build_response(
+        ok=False,
+        intent="unknown",
+        answer_type="unsupported",
+        title="I'm still learning",
+        summary="I can currently help with quote search, recent quotes, top clients, top products, this month's totals, and quiet clients.",
+        suggestions=["Recent quotes", "This month", "Quiet clients"],
+    )
+
+
+def parse_llm_json_payload(raw_content: str) -> Optional[dict]:
+    text = (raw_content or "").strip()
+    if not text:
+        return None
+
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?", "", text).strip()
+        text = re.sub(r"```$", "", text).strip()
+
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start == -1 or end == -1 or end <= start:
+            return None
+        try:
+            return json.loads(text[start : end + 1])
+        except json.JSONDecodeError:
+            return None
+
+
+def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
+    if not isinstance(payload, dict):
+        return None
+
+    intent = (payload.get("intent") or "").strip()
+    if intent not in LLM_SUPPORTED_INTENTS:
+        return None
+
+    params = payload.get("params", {})
+    if not isinstance(params, dict):
+        return None
+
+    resolved_params: Dict[str, Any] = {"route_source": "llm"}
+    if intent in {"month_summary", "inactive_clients", "top_clients", "top_products", "recent_quotes"}:
+        return {"intent": intent, "params": resolved_params}
+
+    if intent == "last_quote_client":
+        client_name = trim_noise_tokens((params.get("client_name") or "").strip())
+        if not client_name:
+            return None
+        resolved_params["client_name"] = client_name
+        return {"intent": intent, "params": resolved_params}
+
+    if intent == "quote_search":
+        client_name = trim_noise_tokens((params.get("client_name") or "").strip())
+        product_name = trim_noise_tokens((params.get("product_name") or "").strip())
+        from_date = (params.get("from_date") or "").strip()
+        to_date = (params.get("to_date") or "").strip()
+        if from_date and not is_iso_date(from_date):
+            return None
+        if to_date and not is_iso_date(to_date):
+            return None
+        if from_date and to_date and from_date > to_date:
+            return None
+        if not client_name and not product_name and not (from_date and to_date):
+            return None
+        resolved_params.update(
+            {
+                "client_name": client_name,
+                "product_name": normalize_search_text(product_name),
+                "from_date": from_date,
+                "to_date": to_date,
+                "limit": 10,
+                "client_resolution_mode": "none",
+                "matched_alias": None,
+                "raw_client_term": client_name,
+            }
+        )
+        if client_name:
+            client_res = canonicalize_client_filter(client_name)
+            if client_res["status"] == "clarify":
+                return {
+                    "intent": "quote_search",
+                    "params": {
+                        "intent": "quote_search",
+                        "clarification": True,
+                        "clarification_for": "client_name",
+                        "candidate_names": [c["name"] for c in client_res["candidates"][:5]],
+                        "filters": {
+                            "client_name": client_name,
+                            "product_name": normalize_search_text(product_name),
+                            "from_date": from_date,
+                            "to_date": to_date,
+                            "limit": 10,
+                            "client_resolution_mode": "ambiguous",
+                        },
+                        "route_source": "llm",
+                    },
+                }
+            if client_res["status"] == "resolved":
+                resolved_params["client_name"] = client_res["client_name"]
+                resolved_params["client_resolution_mode"] = client_res.get("resolution_mode", "direct")
+                resolved_params["matched_alias"] = client_res.get("matched_alias")
+                resolved_params["raw_client_term"] = client_name
+        return {"intent": intent, "params": resolved_params}
+
+    return None
+
+
+async def resolve_with_llm_parser(normalized_text: str) -> dict:
+    if not ENABLE_LLM_RESOLVER:
+        return {"status": "disabled"}
+    if not AI_STUDIO_KEY or not LLM_PROVIDER_URL or not LLM_PROVIDER_MODEL:
+        return {"status": "disabled"}
+
+    system_prompt = (
+        "You are a strict query parser. Output JSON only. "
+        "Do not answer business questions. "
+        "Map input to one supported intent exactly: "
+        "quote_search, last_quote_client, month_summary, inactive_clients, top_clients, top_products, recent_quotes. "
+        "If unsupported, output {\"intent\":\"unsupported\",\"params\":{}}. "
+        "For quote_search params may include client_name, product_name, from_date, to_date. "
+        "Dates must be YYYY-MM-DD. "
+        "For last_quote_client include client_name."
+    )
+
+    payload = {
+        "model": LLM_PROVIDER_MODEL,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": normalized_text},
+        ],
+        "temperature": 0,
+    }
+    headers = {
+        "Authorization": f"Bearer {AI_STUDIO_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    try:
+        async with httpx.AsyncClient(timeout=LLM_RESOLVER_TIMEOUT_SEC) as client:
+            provider_response = await client.post(LLM_PROVIDER_URL, headers=headers, json=payload)
+            provider_response.raise_for_status()
+            data = provider_response.json()
+    except Exception as exc:
+        return {"status": "provider_failure", "error": str(exc)}
+
+    try:
+        content = data["choices"][0]["message"]["content"]
+    except Exception:
+        return {"status": "malformed_provider_output", "error": "Missing provider content"}
+
+    parsed = parse_llm_json_payload(content)
+    if not parsed:
+        return {"status": "malformed_provider_output", "error": "Could not parse provider JSON"}
+
+    validated = validate_llm_resolver_output(parsed)
+    if not validated:
+        return {"status": "unsupported_or_invalid", "error": "Unsupported or invalid intent/params"}
+
+    return {"status": "success", "intent": validated["intent"], "params": validated["params"]}
 
 
 def init_metadata_db():
@@ -1153,20 +1347,39 @@ async def process_query(request: Request):
         if response:
             break
 
-    # 2. LLM Fallback (Feature Flagged)
-    if not response and ENABLE_LLM_RESOLVER and AI_STUDIO_KEY:
-        pass  # To be implemented with httpx
+    # 2. LLM Fallback (Feature Flagged, parser-only)
+    if not response:
+        llm_resolution = await resolve_with_llm_parser(text)
+        llm_status = llm_resolution.get("status")
+        if llm_status == "success":
+            resolved_intent = llm_resolution["intent"]
+            params = llm_resolution["params"]
+            route = next((r for r in INTENT_REGISTRY if r["intent"] == resolved_intent), None)
+            if route:
+                log_record["resolved_intent"] = resolved_intent
+                log_record["params"] = params
+                log_record["route_source"] = "llm"
+                log_record["matched_pattern"] = "llm_resolver"
+                try:
+                    response = route["handler"](params)
+                    log_record["success"] = response.get("ok", False)
+                    log_record["answer_type"] = response.get("answer_type", "")
+                    log_record["clarification_required"] = response.get("needs_clarification", False)
+                    log_record["candidate_count"] = len(response.get("candidates", []))
+                    log_record["proof_present"] = bool(response.get("proof", {}))
+                except Exception as e:
+                    log_record["error_text"] = f"llm_handler_failure: {e}"
+                    response = unsupported_fallback_response()
+            else:
+                log_record["route_source"] = "llm"
+                log_record["error_text"] = "llm_intent_not_registered"
+        elif llm_status in {"provider_failure", "malformed_provider_output", "unsupported_or_invalid"}:
+            log_record["route_source"] = "llm"
+            log_record["error_text"] = f"llm_{llm_status}: {llm_resolution.get('error', '')}"
 
     # 3. Unsupported Fallback
     if not response:
-        response = build_response(
-            ok=False,
-            intent="unknown",
-            answer_type="unsupported",
-            title="I'm still learning",
-            summary="I can currently help with quote search, recent quotes, top clients, top products, this month's totals, and quiet clients.",
-            suggestions=["Recent quotes", "This month", "Quiet clients"],
-        )
+        response = unsupported_fallback_response()
 
     log_record["latency_ms"] = (datetime.now() - start_time).total_seconds() * 1000
     log_query(log_record)

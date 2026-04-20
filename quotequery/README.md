@@ -141,11 +141,60 @@ When a client-like term is provided (for `/api/clients/search`, `last_quote_clie
 
 Example: searching `DPS RK Puram` can resolve via alias to canonical `Delhi Public School R.K. Puram`.
 
-## Optional LLM Resolver (feature-flagged)
+## Optional Gemma LLM Resolver (feature-flagged, parser-only)
+
+The resolver is **optional** and remains **default-off**. Deterministic routing always runs first.
 
 - Env flag: `ENABLE_LLM_RESOLVER`
 - Default: **off** (`false`)
-- Unresolved queries remain deterministic `unsupported` when disabled.
+- When disabled, unresolved queries remain deterministic `unsupported`.
+- When enabled, LLM is used only as a **parser** to map free text to existing deterministic capabilities.
+
+### Allowed LLM behavior (strict)
+
+The LLM resolver may only:
+- classify into supported intents/capabilities:
+  - `quote_search`
+  - `last_quote_client`
+  - `month_summary`
+  - `inactive_clients`
+  - `top_clients`
+  - `top_products`
+  - `recent_quotes`
+- extract params:
+  - `client_name`
+  - `product_name`
+  - `from_date`
+  - `to_date`
+
+The LLM resolver may **not**:
+- act as truth source
+- generate narrative answers
+- generate direct business conclusions
+- create new capabilities outside the deterministic handlers
+
+### Provider environment requirements
+
+Required when `ENABLE_LLM_RESOLVER=true`:
+- `AI_STUDIO_KEY`: provider API key
+- `LLM_PROVIDER_URL` (default: `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`)
+- `LLM_PROVIDER_MODEL` (default: `gemma-3-27b-it`)
+- `LLM_RESOLVER_TIMEOUT_SEC` (default: `6`)
+
+Implementation notes:
+- Transport uses `httpx.AsyncClient`.
+- Deterministic handlers remain the only execution path for business responses.
+
+### Timeout and failure behavior
+
+If LLM resolver call fails (timeout/provider error), returns malformed JSON, or maps to unsupported/invalid output:
+- resolver fails cleanly
+- query falls back to deterministic `unsupported` response
+- metadata logs record route source as `llm` and include failure reason (`provider_failure`, `malformed_provider_output`, or `unsupported_or_invalid`)
+
+If resolver succeeds:
+- metadata logs record route source as `llm`
+- response still comes from existing deterministic intent handlers
 
 ## Local Development
 

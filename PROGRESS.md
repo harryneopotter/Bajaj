@@ -1,6 +1,6 @@
 # Bajaj Sports - Development Progress
 
-**Last Updated:** April 19, 2026
+**Last Updated:** April 20, 2026
 
 ---
 
@@ -79,6 +79,21 @@
   - proof present marker
   - latency
 - ✅ Query proofs now include explicit client resolution mode for deterministic auditability.
+- ✅ Optional Gemma parser resolver now logs route source as `llm` on LLM path attempts.
+- ✅ LLM resolver failures are explicitly logged (`provider_failure`, `malformed_provider_output`, `unsupported_or_invalid`).
+
+### Optional LLM resolver implementation (behind feature flag)
+- ✅ Implemented parser-only LLM fallback behind `ENABLE_LLM_RESOLVER`.
+- ✅ Preserved deterministic-first contract:
+  - deterministic router runs first
+  - LLM only maps free-text -> existing deterministic intents/params
+  - final business response always produced by deterministic handlers
+- ✅ Enforced strict LLM boundaries:
+  - no narration generation
+  - no direct business answer generation
+  - unsupported intents fall back cleanly
+- ✅ Added provider integration using `httpx.AsyncClient` with configurable timeout.
+- ✅ Kept default `ENABLE_LLM_RESOLVER=false` and non-required for normal operation.
 
 ### Frontend updates (`quotequery/static/index.html`)
 - ✅ Kept the same single-page UI shape and existing 3 quick actions.
