@@ -106,6 +106,7 @@
   - unsupported is returned only when no safe filters exist or no rows match
 - ✅ Added deterministic explicit date-range parsing for phrases like:
   - `quotes between 2026-01-01 and 2026-01-31`
+- ✅ Added deterministic route trigger pattern for explicit date ranges so date-only `between ... and ...` queries reach `extract_quote_search_params` without relying on LLM fallback.
 
 ### Frontend updates (`quotequery/static/index.html`)
 - ✅ Kept the same single-page UI shape and existing 3 quick actions.

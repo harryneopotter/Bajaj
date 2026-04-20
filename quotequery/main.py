@@ -1224,6 +1224,7 @@ INTENT_REGISTRY = [
         "patterns": [
             r"\bquotes?\s+(?:for|to)\b",
             r"\bquotes?$",
+            r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
             r"\b(this month|last week|last month|this year|last year)\b",
             r"\bin\s+(january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+\d{4})?\b",
             r"\b(?:in|from)\s+(20\d{2}|19\d{2})\b",

@@ -76,6 +76,8 @@ Date-only search is supported when at least one safe time filter exists (`from_d
 - Year phrases: `in 2024`, `from 2024`
 - Explicit ISO date ranges: `between 2026-01-01 and 2026-01-31`
 
+Deterministic router trigger coverage includes explicit date-range phrases, so `extract_quote_search_params` runs even when the query is date-only.
+
 ## API Contract
 
 ### `POST /api/query`
