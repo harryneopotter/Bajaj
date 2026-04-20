@@ -139,11 +139,26 @@ def parse_period_filters(text: str) -> Tuple[dict, str]:
         from_date = ""
         to_date = ""
 
-    if from_date and to_date and is_iso_date(from_date) and is_iso_date(to_date):
-        if from_date <= to_date:
-            filters["from_date"] = from_date
-            filters["to_date"] = to_date
-            filters["period_label"] = "between_dates"
+    if from_date and to_date:
+        if is_iso_date(from_date) and is_iso_date(to_date):
+            if from_date <= to_date:
+                filters["from_date"] = from_date
+                filters["to_date"] = to_date
+                filters["period_label"] = "between_dates"
+                cleaned = re.sub(
+                    r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
+                    " ",
+                    cleaned,
+                ).strip()
+            else:
+                filters["invalid_period"] = True
+                cleaned = re.sub(
+                    r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
+                    " ",
+                    cleaned,
+                ).strip()
+        else:
+            filters["invalid_period"] = True
             cleaned = re.sub(
                 r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
                 " ",
@@ -188,13 +203,14 @@ def parse_period_filters(text: str) -> Tuple[dict, str]:
                 filters["period_label"] = f"month:{month_name}:any_year"
             cleaned = re.sub(month_pattern, " ", cleaned).strip()
         else:
-            year_match = re.search(r"\b(?:in|from)?\s*(20\d{2}|19\d{2})\b", cleaned)
-            if year_match:
-                year = int(year_match.group(1))
-                filters["from_date"] = f"{year}-01-01"
-                filters["to_date"] = f"{year}-12-31"
-                filters["period_label"] = f"year:{year}"
-                cleaned = re.sub(rf"\b(?:in|from)?\s*{year}\b", " ", cleaned).strip()
+            if not filters.get("invalid_period"):
+                year_match = re.search(r"\b(?:in|from)?\s*(20\d{2}|19\d{2})\b", cleaned)
+                if year_match:
+                    year = int(year_match.group(1))
+                    filters["from_date"] = f"{year}-01-01"
+                    filters["to_date"] = f"{year}-12-31"
+                    filters["period_label"] = f"year:{year}"
+                    cleaned = re.sub(rf"\b(?:in|from)?\s*{year}\b", " ", cleaned).strip()
 
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return filters, cleaned
@@ -259,7 +275,10 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
     if not isinstance(payload, dict):
         return None
 
-    intent = (payload.get("intent") or "").strip()
+    intent_raw = payload.get("intent")
+    if not isinstance(intent_raw, str):
+        return None
+    intent = intent_raw.strip()
     if intent not in LLM_SUPPORTED_INTENTS:
         return None
 
@@ -272,17 +291,35 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
         return {"intent": intent, "params": resolved_params}
 
     if intent == "last_quote_client":
-        client_name = trim_noise_tokens((params.get("client_name") or "").strip())
+        client_name_raw = params.get("client_name")
+        if not isinstance(client_name_raw, str):
+            return None
+        client_name = trim_noise_tokens(client_name_raw.strip())
         if not client_name:
             return None
         resolved_params["client_name"] = client_name
         return {"intent": intent, "params": resolved_params}
 
     if intent == "quote_search":
-        client_name = trim_noise_tokens((params.get("client_name") or "").strip())
-        product_name = trim_noise_tokens((params.get("product_name") or "").strip())
-        from_date = (params.get("from_date") or "").strip()
-        to_date = (params.get("to_date") or "").strip()
+        client_name_raw = params.get("client_name")
+        product_name_raw = params.get("product_name")
+        from_date_raw = params.get("from_date")
+        to_date_raw = params.get("to_date")
+
+        if not isinstance(client_name_raw, str) and client_name_raw is not None:
+            return None
+        if not isinstance(product_name_raw, str) and product_name_raw is not None:
+            return None
+        if not isinstance(from_date_raw, str) and from_date_raw is not None:
+            return None
+        if not isinstance(to_date_raw, str) and to_date_raw is not None:
+            return None
+
+        client_name = trim_noise_tokens((client_name_raw or "").strip())
+        product_name = trim_noise_tokens((product_name_raw or "").strip())
+        from_date = (from_date_raw or "").strip()
+        to_date = (to_date_raw or "").strip()
+
         if from_date and not is_iso_date(from_date):
             return None
         if to_date and not is_iso_date(to_date):
@@ -369,9 +406,13 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
         async with httpx.AsyncClient(timeout=LLM_RESOLVER_TIMEOUT_SEC) as client:
             provider_response = await client.post(LLM_PROVIDER_URL, headers=headers, json=payload)
             provider_response.raise_for_status()
-            data = provider_response.json()
     except Exception as exc:
         return {"status": "provider_failure", "error": str(exc)}
+
+    try:
+        data = provider_response.json()
+    except (json.JSONDecodeError, ValueError) as exc:
+        return {"status": "malformed_provider_output", "error": f"JSON decode error: {str(exc)}"}
 
     try:
         content = data["choices"][0]["message"]["content"]
@@ -862,8 +903,9 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
 
     has_date_window = bool(period_filters.get("from_date") or period_filters.get("to_date"))
     has_month_filter = bool(period_filters.get("month"))
+    has_month_filter_eligible = bool(period_filters.get("month")) and (client_candidate or product_candidate)
 
-    if not client_candidate and not product_candidate and not has_date_window and not has_month_filter:
+    if not client_candidate and not product_candidate and not has_date_window and not has_month_filter_eligible:
         return None
 
     params = {
