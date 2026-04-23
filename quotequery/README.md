@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS qq_client_alias (
 - `product_name`
 - `from_date`
 - `to_date`
+- `month`
 - `limit`
 
 It can return:
@@ -65,12 +66,17 @@ It can return:
 - `clarification` (client disambiguation required)
 - `unsupported` (filters could not be safely extracted)
 
+Date-only search is supported when at least one safe time filter exists (`from_date`, `to_date`, or `month`).
+
 ## Supported deterministic period parsing
 
 `quote_search` supports:
 - Relative phrases: `this month`, `last week`, `last month`, `this year`, `last year`
 - Month phrases: `in March`, `in March 2024`
 - Year phrases: `in 2024`, `from 2024`
+- Explicit ISO date ranges: `between 2026-01-01 and 2026-01-31`
+
+Deterministic router trigger coverage includes explicit date-range phrases, so `extract_quote_search_params` runs even when the query is date-only.
 
 ## API Contract
 
@@ -141,11 +147,65 @@ When a client-like term is provided (for `/api/clients/search`, `last_quote_clie
 
 Example: searching `DPS RK Puram` can resolve via alias to canonical `Delhi Public School R.K. Puram`.
 
-## Optional LLM Resolver (feature-flagged)
+## Optional Gemma LLM Resolver (feature-flagged, parser-only)
+
+The resolver is **optional** and remains **default-off**. Deterministic routing always runs first.
 
 - Env flag: `ENABLE_LLM_RESOLVER`
 - Default: **off** (`false`)
-- Unresolved queries remain deterministic `unsupported` when disabled.
+- When disabled, unresolved queries remain deterministic `unsupported`.
+- When enabled, LLM is used only as a **parser** to map free text to existing deterministic capabilities.
+
+### Allowed LLM behavior (strict)
+
+The LLM resolver may only:
+- classify into supported intents/capabilities:
+  - `quote_search`
+  - `last_quote_client`
+  - `month_summary`
+  - `inactive_clients`
+  - `top_clients`
+  - `top_products`
+  - `recent_quotes`
+- extract params:
+  - `client_name`
+  - `product_name`
+  - `from_date`
+  - `to_date`
+  - `month` (`1` to `12`)
+
+The LLM resolver may **not**:
+- act as truth source
+- generate narrative answers
+- generate direct business conclusions
+- create new capabilities outside the deterministic handlers
+
+### Provider environment requirements
+
+Required when `ENABLE_LLM_RESOLVER=true`:
+- `AI_STUDIO_KEY`: provider API key
+- `LLM_PROVIDER_URL` (default: `https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`)
+- `LLM_PROVIDER_MODEL` (default: `gemma-3-27b-it`)
+- `LLM_RESOLVER_TIMEOUT_SEC` (default: `6`)
+
+Timeout env parsing is startup-safe:
+- if `LLM_RESOLVER_TIMEOUT_SEC` is missing, blank, or invalid (example: `abc`), QuoteQuery falls back to `6.0` seconds
+- invalid timeout values never block app startup (including when `ENABLE_LLM_RESOLVER=false`)
+
+Implementation notes:
+- Transport uses `httpx.AsyncClient`.
+- Deterministic handlers remain the only execution path for business responses.
+
+### Timeout and failure behavior
+
+If LLM resolver call fails (timeout/provider error), returns malformed JSON, or maps to unsupported/invalid output:
+- resolver fails cleanly
+- query falls back to deterministic `unsupported` response
+- metadata logs record route source as `llm` and include failure reason (`provider_failure`, `malformed_provider_output`, or `unsupported_or_invalid`)
+
+If resolver succeeds:
+- metadata logs record route source as `llm`
+- response still comes from existing deterministic intent handlers
 
 ## Local Development
 
@@ -180,3 +240,4 @@ uvicorn main:app --host 0.0.0.0 --port 8082 --reload
 - Keep deterministic routing as default.
 - Keep `quotes.db` read-only and `qq_metadata.db` as QuoteQuery-owned metadata.
 - Any intent expansion must update this README and `PROGRESS.md` in the same change.
+- This update is a targeted bugfix/consistency patch (no architecture redesign).

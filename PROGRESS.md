@@ -1,6 +1,6 @@
 # Bajaj Sports - Development Progress
 
-**Last Updated:** April 19, 2026
+**Last Updated:** April 20, 2026
 
 ---
 
@@ -79,6 +79,34 @@
   - proof present marker
   - latency
 - ✅ Query proofs now include explicit client resolution mode for deterministic auditability.
+- ✅ Optional Gemma parser resolver now logs route source as `llm` on LLM path attempts.
+- ✅ LLM resolver failures are explicitly logged (`provider_failure`, `malformed_provider_output`, `unsupported_or_invalid`).
+
+### Optional LLM resolver implementation (behind feature flag)
+- ✅ Implemented parser-only LLM fallback behind `ENABLE_LLM_RESOLVER`.
+- ✅ Preserved deterministic-first contract:
+  - deterministic router runs first
+  - LLM only maps free-text -> existing deterministic intents/params
+  - final business response always produced by deterministic handlers
+- ✅ Enforced strict LLM boundaries:
+  - no narration generation
+  - no direct business answer generation
+  - unsupported intents fall back cleanly
+- ✅ Added provider integration using `httpx.AsyncClient` with configurable timeout.
+- ✅ Kept default `ENABLE_LLM_RESOLVER=false` and non-required for normal operation.
+
+### Bugfix/consistency patch (no architecture redesign)
+- ✅ Fixed safe timeout env parsing for `LLM_RESOLVER_TIMEOUT_SEC`:
+  - invalid/blank values now fall back to `6.0`
+  - QuoteQuery startup no longer fails from timeout parse errors
+  - preserves optional/default-off LLM behavior
+- ✅ Made `quote_search` date-only behavior consistent:
+  - date-only filters are now valid (`from_date`/`to_date` window or `month`)
+  - deterministic date-only queries now return `quote_record`/`ranked_list` based on rows
+  - unsupported is returned only when no safe filters exist or no rows match
+- ✅ Added deterministic explicit date-range parsing for phrases like:
+  - `quotes between 2026-01-01 and 2026-01-31`
+- ✅ Added deterministic route trigger pattern for explicit date ranges so date-only `between ... and ...` queries reach `extract_quote_search_params` without relying on LLM fallback.
 
 ### Frontend updates (`quotequery/static/index.html`)
 - ✅ Kept the same single-page UI shape and existing 3 quick actions.
