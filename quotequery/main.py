@@ -66,6 +66,11 @@ MONTH_NAME_TO_NUM = {
 
 NOISE_PREFIX_RE = re.compile(r"^(show|find|give|list|tell|please|me|all)\s+")
 ISO_DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+BETWEEN_DATES_PATTERN = (
+    r"\bbetween\s+(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\s+and\s+"
+    r"(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\b"
+)
+BETWEEN_DATES_RE = re.compile(BETWEEN_DATES_PATTERN)
 LLM_SUPPORTED_INTENTS = {
     "quote_search",
     "last_quote_client",
@@ -128,10 +133,7 @@ def parse_period_filters(text: str) -> Tuple[dict, str]:
         filters["period_label"] = label
         cleaned = re.sub(pattern, " ", cleaned).strip()
 
-    date_range_match = re.search(
-        r"\bbetween\s+(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\s+and\s+(\d{4})[\s\-]+(\d{2})[\s\-]+(\d{2})\b",
-        cleaned,
-    )
+    date_range_match = BETWEEN_DATES_RE.search(cleaned)
     if date_range_match:
         from_date = f"{date_range_match.group(1)}-{date_range_match.group(2)}-{date_range_match.group(3)}"
         to_date = f"{date_range_match.group(4)}-{date_range_match.group(5)}-{date_range_match.group(6)}"
@@ -140,30 +142,16 @@ def parse_period_filters(text: str) -> Tuple[dict, str]:
         to_date = ""
 
     if from_date and to_date:
+        cleaned = BETWEEN_DATES_RE.sub(" ", cleaned).strip()
         if is_iso_date(from_date) and is_iso_date(to_date):
             if from_date <= to_date:
                 filters["from_date"] = from_date
                 filters["to_date"] = to_date
                 filters["period_label"] = "between_dates"
-                cleaned = re.sub(
-                    r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
-                    " ",
-                    cleaned,
-                ).strip()
             else:
                 filters["invalid_period"] = True
-                cleaned = re.sub(
-                    r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
-                    " ",
-                    cleaned,
-                ).strip()
         else:
             filters["invalid_period"] = True
-            cleaned = re.sub(
-                r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
-                " ",
-                cleaned,
-            ).strip()
     elif re.search(r"\bthis month\b", cleaned):
         start = now.replace(day=1)
         apply_period(start, now, "this_month", r"\bthis month\b")
@@ -925,7 +913,6 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
             product_candidate = period_only_phrase
 
     has_date_window = bool(period_filters.get("from_date") or period_filters.get("to_date"))
-    has_month_filter = bool(period_filters.get("month"))
     has_month_filter_eligible = bool(period_filters.get("month")) and (client_candidate or product_candidate)
 
     if not client_candidate and not product_candidate and not has_date_window and not has_month_filter_eligible:
@@ -1293,7 +1280,7 @@ INTENT_REGISTRY = [
         "patterns": [
             r"\bquotes?\s+(?:for|to)\b",
             r"\bquotes?$",
-            r"\bbetween\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\s+and\s+\d{4}[\s\-]+\d{2}[\s\-]+\d{2}\b",
+            BETWEEN_DATES_PATTERN,
             r"\b(this month|last week|last month|this year|last year)\b",
             r"\bin\s+(january|february|march|april|may|june|july|august|september|october|november|december)(?:\s+\d{4})?\b",
             r"\b(?:in|from)\s+(20\d{2}|19\d{2})\b",
