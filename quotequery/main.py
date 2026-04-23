@@ -315,19 +315,25 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
             return None
         if not isinstance(to_date_raw, str) and to_date_raw is not None:
             return None
-        if month_raw is not None and not isinstance(month_raw, (int, str)):
+        if month_raw is not None and (isinstance(month_raw, bool) or not isinstance(month_raw, (int, str))):
             return None
 
         client_name = trim_noise_tokens((client_name_raw or "").strip())
         product_name = trim_noise_tokens((product_name_raw or "").strip())
         from_date = (from_date_raw or "").strip()
         to_date = (to_date_raw or "").strip()
-        month = 0
+        month: Optional[int] = None
         if month_raw is not None:
-            month_candidate = str(month_raw).strip()
-            if not month_candidate.isdigit():
-                return None
-            month = int(month_candidate)
+            if isinstance(month_raw, int):
+                month = month_raw
+            else:
+                month_candidate = month_raw.strip()
+                if not month_candidate:
+                    return None
+                try:
+                    month = int(month_candidate)
+                except ValueError:
+                    return None
             if month < 1 or month > 12:
                 return None
 
@@ -337,7 +343,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
             return None
         if from_date and to_date and from_date > to_date:
             return None
-        if not client_name and not product_name and not from_date and not to_date and not month:
+        if not client_name and not product_name and not from_date and not to_date and month is None:
             return None
         resolved_params.update(
             {
@@ -345,16 +351,27 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
                 "product_name": normalize_search_text(product_name),
                 "from_date": from_date,
                 "to_date": to_date,
-                "month": month,
                 "limit": 10,
                 "client_resolution_mode": "none",
                 "matched_alias": None,
                 "raw_client_term": client_name,
             }
         )
+        if month is not None:
+            resolved_params["month"] = month
         if client_name:
             client_res = canonicalize_client_filter(client_name)
             if client_res["status"] == "clarify":
+                clarification_filters = {
+                    "client_name": client_name,
+                    "product_name": normalize_search_text(product_name),
+                    "from_date": from_date,
+                    "to_date": to_date,
+                    "limit": 10,
+                    "client_resolution_mode": "ambiguous",
+                }
+                if month is not None:
+                    clarification_filters["month"] = month
                 return {
                     "intent": "quote_search",
                     "params": {
@@ -362,15 +379,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
                         "clarification": True,
                         "clarification_for": "client_name",
                         "candidate_names": [c["name"] for c in client_res["candidates"][:5]],
-                        "filters": {
-                            "client_name": client_name,
-                            "product_name": normalize_search_text(product_name),
-                            "from_date": from_date,
-                            "to_date": to_date,
-                            "month": month,
-                            "limit": 10,
-                            "client_resolution_mode": "ambiguous",
-                        },
+                        "filters": clarification_filters,
                         "route_source": "llm",
                     },
                 }
