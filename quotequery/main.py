@@ -276,6 +276,11 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
 
     resolved_params: Dict[str, Any] = {"route_source": "llm"}
     if intent in {"month_summary", "inactive_clients", "top_clients", "top_products", "recent_quotes"}:
+        limit_val = params.get("limit")
+        if isinstance(limit_val, (int, float)):
+            resolved_params["limit"] = int(limit_val)
+        elif isinstance(limit_val, str) and limit_val.isdigit():
+            resolved_params["limit"] = int(limit_val)
         return {"intent": intent, "params": resolved_params}
 
     if intent == "last_quote_client":
@@ -394,6 +399,7 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
         "quote_search, last_quote_client, month_summary, inactive_clients, top_clients, top_products, recent_quotes. "
         "If unsupported, output {\"intent\":\"unsupported\",\"params\":{}}. "
         "For quote_search params may include client_name, product_name, from_date, to_date, month. "
+        "For top_clients, top_products, recent_quotes, inactive_clients extract a numeric limit if requested (e.g. \"top 3\" -> {\"limit\": 3}). "
         "Dates must be YYYY-MM-DD. "
         "Month must be an integer from 1 to 12. "
         "For last_quote_client include client_name."
@@ -783,7 +789,7 @@ def run_quote_search(params: dict) -> dict:
     product_clause = ""
 
     if filters["client_name"]:
-        where.append("q.client_name = ?")
+        where.append("LOWER(q.client_name) = LOWER(?)")
         values.append(filters["client_name"])
 
     if filters["from_date"]:
@@ -800,7 +806,19 @@ def run_quote_search(params: dict) -> dict:
 
     if filters["product_name"]:
         product_clause = "AND qi.product_name LIKE ?"
-        values.append(f"%{filters['product_name']}%")
+        # Strip trailing 's' or 'es' for naive singularization in LIKE queries
+        prod_term = filters["product_name"]
+        if prod_term.endswith("ies"):
+            prod_term = prod_term[:-3] + "y"
+        elif prod_term.endswith("es") and not prod_term.endswith("nes"):
+            prod_term = prod_term[:-2]
+        elif prod_term.endswith("s") and not prod_term.endswith("ss") and not prod_term.endswith("us"):
+            prod_term = prod_term[:-1]
+        
+        # Split by space and use the most significant word to be safer, or just use the cleaned term
+        # Let's replace spaces with % to allow fuzzy matching (e.g., "badminton net" -> "%badminton%net%")
+        prod_term = prod_term.replace(" ", "%")
+        values.append(f"%{prod_term}%")
 
     where_clause = " AND ".join(where) if where else "1=1"
 
@@ -859,10 +877,21 @@ def extract_quote_search_params(normalized_text: str) -> Optional[dict]:
     client_candidate = ""
     product_candidate = ""
 
-    cp_match = re.search(r"\bquotes?\s+(?:for|to)\s+(.+?)\s+(?:for|with)\s+(.+)$", cleaned)
+    cp_match = re.search(r"\bquotes?\s+(?:for|to)\s+(.+?)\s+(?:for|with|to)\s+(.+)$", cleaned)
     if cp_match:
-        client_candidate = trim_noise_tokens(cp_match.group(1))
-        product_candidate = trim_noise_tokens(cp_match.group(2).replace("quotes", "").strip())
+        part1 = trim_noise_tokens(cp_match.group(1))
+        part2 = trim_noise_tokens(cp_match.group(2).replace("quotes", "").strip())
+        
+        # Check which one is the client
+        c1 = canonicalize_client_filter(part1)
+        c2 = canonicalize_client_filter(part2)
+        
+        if c2["status"] in ["resolved", "clarify"] and c1["status"] == "unresolved":
+            client_candidate = part2
+            product_candidate = part1
+        else:
+            client_candidate = part1
+            product_candidate = part2
     else:
         for_to_match = re.search(r"\bquotes?\s+(?:for|to)\s+(.+)$", cleaned)
         trailing_quote_match = re.search(r"^(.+?)\s+quotes?$", cleaned)
@@ -1176,7 +1205,8 @@ def handle_month_summary(params: dict) -> dict:
 
 
 def handle_inactive_clients(params: dict) -> dict:
-    days = params.get("days", 60)
+    days = int(params.get("days", 60))
+    limit = max(1, min(int(params.get("limit", 5)), 25))
     cutoff = (datetime.now() - timedelta(days=days)).strftime("%Y-%m-%d")
     with get_db() as conn:
         query = """
@@ -1185,16 +1215,16 @@ def handle_inactive_clients(params: dict) -> dict:
             GROUP BY client_name
             HAVING last_quote_date < ?
             ORDER BY last_quote_date DESC
-            LIMIT 5
+            LIMIT ?
         """
-        rows = conn.execute(query, [cutoff]).fetchall()
+        rows = conn.execute(query, [cutoff, limit]).fetchall()
         items = [{"label": r["client_name"], "meta": f"Last quote: {r['last_quote_date']}", "value": None} for r in rows]
 
         return build_response(
             ok=True,
             intent="inactive_clients",
             answer_type="ranked_list",
-            title=f"Quiet Clients (> {days} days)",
+            title=f"Quiet Clients (> {days} days) - Top {limit}",
             summary="These clients haven't received a quote recently.",
             items=items,
             proof={
@@ -1207,9 +1237,10 @@ def handle_inactive_clients(params: dict) -> dict:
 
 
 def handle_top_clients(params: dict) -> dict:
+    limit = max(1, min(int(params.get("limit", 5)), 25))
     with get_db() as conn:
         rows = conn.execute(
-            "SELECT client_name, COUNT(*) as quote_count, SUM(grand_total) as total_value FROM quotes GROUP BY client_name ORDER BY total_value DESC LIMIT 5"
+            "SELECT client_name, COUNT(*) as quote_count, SUM(grand_total) as total_value FROM quotes GROUP BY client_name ORDER BY total_value DESC LIMIT ?", [limit]
         ).fetchall()
         items = [{"label": r["client_name"], "meta": f"{r['quote_count']} quotes", "value": r["total_value"]} for r in rows]
 
@@ -1230,8 +1261,9 @@ def handle_top_clients(params: dict) -> dict:
 
 
 def handle_top_products(params: dict) -> dict:
+    limit = max(1, min(int(params.get("limit", 5)), 25))
     with get_db() as conn:
-        rows = conn.execute("SELECT product_name, COUNT(*) as freq FROM quote_items GROUP BY product_name ORDER BY freq DESC LIMIT 5").fetchall()
+        rows = conn.execute("SELECT product_name, COUNT(*) as freq FROM quote_items GROUP BY product_name ORDER BY freq DESC LIMIT ?", [limit]).fetchall()
         items = [{"label": r["product_name"], "meta": f"Quoted {r['freq']} times", "value": None} for r in rows]
 
         return build_response(
@@ -1251,8 +1283,9 @@ def handle_top_products(params: dict) -> dict:
 
 
 def handle_recent_quotes(params: dict) -> dict:
+    limit = max(1, min(int(params.get("limit", 5)), 25))
     with get_db() as conn:
-        rows = conn.execute("SELECT id, client_name, quote_date, grand_total FROM quotes ORDER BY quote_date DESC, id DESC LIMIT 5").fetchall()
+        rows = conn.execute("SELECT id, client_name, quote_date, grand_total FROM quotes ORDER BY quote_date DESC, id DESC LIMIT ?", [limit]).fetchall()
         items = [{"label": r["client_name"], "meta": r["quote_date"], "value": r["grand_total"]} for r in rows]
 
         return build_response(
@@ -1320,7 +1353,7 @@ INTENT_REGISTRY = [
     },
     {
         "intent": "recent_quotes",
-        "patterns": [r"recent", r"latest quotes?"],
+        "patterns": [r"\brecent quotes?\b", r"\blatest quotes?\b"],
         "handler": handle_recent_quotes,
         "extract": lambda m, text=None: {},
     },
