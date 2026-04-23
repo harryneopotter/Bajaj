@@ -305,6 +305,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
         product_name_raw = params.get("product_name")
         from_date_raw = params.get("from_date")
         to_date_raw = params.get("to_date")
+        month_raw = params.get("month")
 
         if not isinstance(client_name_raw, str) and client_name_raw is not None:
             return None
@@ -314,11 +315,21 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
             return None
         if not isinstance(to_date_raw, str) and to_date_raw is not None:
             return None
+        if month_raw is not None and not isinstance(month_raw, (int, str)):
+            return None
 
         client_name = trim_noise_tokens((client_name_raw or "").strip())
         product_name = trim_noise_tokens((product_name_raw or "").strip())
         from_date = (from_date_raw or "").strip()
         to_date = (to_date_raw or "").strip()
+        month = 0
+        if month_raw is not None:
+            month_candidate = str(month_raw).strip()
+            if not month_candidate.isdigit():
+                return None
+            month = int(month_candidate)
+            if month < 1 or month > 12:
+                return None
 
         if from_date and not is_iso_date(from_date):
             return None
@@ -326,7 +337,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
             return None
         if from_date and to_date and from_date > to_date:
             return None
-        if not client_name and not product_name and not (from_date and to_date):
+        if not client_name and not product_name and not from_date and not to_date and not month:
             return None
         resolved_params.update(
             {
@@ -334,6 +345,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
                 "product_name": normalize_search_text(product_name),
                 "from_date": from_date,
                 "to_date": to_date,
+                "month": month,
                 "limit": 10,
                 "client_resolution_mode": "none",
                 "matched_alias": None,
@@ -355,6 +367,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
                             "product_name": normalize_search_text(product_name),
                             "from_date": from_date,
                             "to_date": to_date,
+                            "month": month,
                             "limit": 10,
                             "client_resolution_mode": "ambiguous",
                         },
@@ -383,8 +396,9 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
         "Map input to one supported intent exactly: "
         "quote_search, last_quote_client, month_summary, inactive_clients, top_clients, top_products, recent_quotes. "
         "If unsupported, output {\"intent\":\"unsupported\",\"params\":{}}. "
-        "For quote_search params may include client_name, product_name, from_date, to_date. "
+        "For quote_search params may include client_name, product_name, from_date, to_date, month. "
         "Dates must be YYYY-MM-DD. "
+        "Month must be an integer from 1 to 12. "
         "For last_quote_client include client_name."
     )
 

@@ -172,6 +172,7 @@ The LLM resolver may only:
   - `product_name`
   - `from_date`
   - `to_date`
+  - `month` (`1` to `12`)
 
 The LLM resolver may **not**:
 - act as truth source
