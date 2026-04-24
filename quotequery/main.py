@@ -281,7 +281,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
             resolved_params["limit"] = int(limit_val)
         elif isinstance(limit_val, str) and limit_val.isdigit():
             resolved_params["limit"] = int(limit_val)
-        return {"intent": intent, "params": resolved_params}
+        return {"intent": intent, "params": resolved_params, "reasoning": payload.get("reasoning", "")}
 
     if intent == "last_quote_client":
         client_name_raw = params.get("client_name")
@@ -291,7 +291,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
         if not client_name:
             return None
         resolved_params["client_name"] = client_name
-        return {"intent": intent, "params": resolved_params}
+        return {"intent": intent, "params": resolved_params, "reasoning": payload.get("reasoning", "")}
 
     if intent == "quote_search":
         client_name_raw = params.get("client_name")
@@ -381,7 +381,7 @@ def validate_llm_resolver_output(payload: dict) -> Optional[dict]:
                 resolved_params["client_resolution_mode"] = client_res.get("resolution_mode", "direct")
                 resolved_params["matched_alias"] = client_res.get("matched_alias")
                 resolved_params["raw_client_term"] = client_name
-        return {"intent": intent, "params": resolved_params}
+        return {"intent": intent, "params": resolved_params, "reasoning": payload.get("reasoning", "")}
 
     return None
 
@@ -398,6 +398,7 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
         "Map input to one supported intent exactly: "
         "quote_search, last_quote_client, month_summary, inactive_clients, top_clients, top_products, recent_quotes. "
         "If unsupported, output {\"intent\":\"unsupported\",\"params\":{}}. "
+        "Always include a \"reasoning\" string field explaining how you parsed the intent. "
         "For quote_search params may include client_name, product_name, from_date, to_date, month. "
         "For top_clients, top_products, recent_quotes, inactive_clients extract a numeric limit if requested (e.g. \"top 3\" -> {\"limit\": 3}). "
         "Dates must be YYYY-MM-DD. "
@@ -444,7 +445,7 @@ async def resolve_with_llm_parser(normalized_text: str) -> dict:
     if not validated:
         return {"status": "unsupported_or_invalid", "error": "Unsupported or invalid intent/params"}
 
-    return {"status": "success", "intent": validated["intent"], "params": validated["params"]}
+    return {"status": "success", "intent": validated["intent"], "params": validated["params"], "reasoning": validated.get("reasoning", "")}
 
 
 def init_metadata_db():
@@ -476,6 +477,8 @@ def init_metadata_db():
     }
     if "matched_pattern" not in existing_columns:
         conn.execute("ALTER TABLE qq_query_log ADD COLUMN matched_pattern TEXT")
+    if "llm_reasoning" not in existing_columns:
+        conn.execute("ALTER TABLE qq_query_log ADD COLUMN llm_reasoning TEXT")
 
     conn.execute(
         """
@@ -519,8 +522,8 @@ def log_query(log_data: dict):
         conn.execute(
             """
             INSERT INTO qq_query_log
-            (created_at, raw_text, normalized_text, resolved_intent, params_json, route_source, answer_type, success, clarification_required, candidate_count, latency_ms, proof_present, matched_pattern, error_text)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (created_at, raw_text, normalized_text, resolved_intent, params_json, route_source, answer_type, success, clarification_required, candidate_count, latency_ms, proof_present, matched_pattern, llm_reasoning, error_text)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
             (
                 datetime.now().isoformat(),
@@ -536,6 +539,7 @@ def log_query(log_data: dict):
                 log_data.get("latency_ms", 0.0),
                 log_data.get("proof_present", False),
                 log_data.get("matched_pattern", ""),
+            log_data.get("llm_reasoning", ""),
                 log_data.get("error_text", ""),
             ),
         )
@@ -1473,8 +1477,9 @@ async def process_query(request: Request):
                         title="Error",
                         summary="Something went wrong fetching that data.",
                     )
-                break
-        if response:
+                if response and response.get("ok"):
+                    break
+        if response and response.get("ok"):
             break
 
     # 2. LLM Fallback (Feature Flagged, parser-only)
@@ -1483,6 +1488,7 @@ async def process_query(request: Request):
         llm_status = llm_resolution.get("status")
         if llm_status == "success":
             resolved_intent = llm_resolution["intent"]
+
             params = llm_resolution["params"]
             route = next((r for r in INTENT_REGISTRY if r["intent"] == resolved_intent), None)
             if route:
@@ -1490,6 +1496,7 @@ async def process_query(request: Request):
                 log_record["params"] = params
                 log_record["route_source"] = "llm"
                 log_record["matched_pattern"] = "llm_resolver"
+                log_record["llm_reasoning"] = llm_result.get("reasoning", "")
                 try:
                     response = route["handler"](params)
                     log_record["success"] = response.get("ok", False)
@@ -1503,19 +1510,22 @@ async def process_query(request: Request):
             else:
                 log_record["route_source"] = "llm"
                 log_record["error_text"] = "llm_intent_not_registered"
-        elif llm_status in {"provider_failure", "malformed_provider_output", "unsupported_or_invalid"}:
-            log_record["route_source"] = "llm"
-            log_record["error_text"] = f"llm_{llm_status}: {llm_resolution.get('error', '')}"
-
-    # 3. Unsupported Fallback
-    if not response:
-        response = unsupported_fallback_response()
-
-    log_record["latency_ms"] = (datetime.now() - start_time).total_seconds() * 1000
-    log_query(log_record)
-
     return response
 
+
+
+from fastapi.responses import FileResponse
+
+@app.get("/api/logs")
+async def get_logs(limit: int = 100):
+    with sqlite3.connect(META_DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute("SELECT * FROM qq_query_log ORDER BY id DESC LIMIT ?", [limit]).fetchall()
+        return [dict(r) for r in rows]
+
+@app.get("/admin/logs")
+async def admin_logs_page():
+    return FileResponse(BASE_DIR / "static" / "logs.html")
 
 app.mount("/", StaticFiles(directory=BASE_DIR / "static", html=True), name="static")
 

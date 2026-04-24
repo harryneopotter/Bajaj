@@ -1,88 +1,91 @@
-# Bajaj Sports - Retail Quote Automation & Vault
+# Bajaj Sports — Quotation Intelligence MVP
 
-This project digitizes 70+ years of legacy business history for Bajaj Sports, converting physical and digital PDF archives into a searchable digital twin and an automated quotation generator.
+## 1) Original Problem
+Bajaj Sports needed a practical quote-generation workflow that could be demonstrated quickly, but their historical data lived in messy PDFs and inconsistent records.
+
+### Core pain points
+- Quotation creation was manual and slow.
+- Historical pricing was hard to trust or retrieve quickly.
+- OCR outputs from complex invoices/quotes often broke table structure (multi-line rows, column drift).
+- Client and product data had noise (IRNs, GST fragments, address leakage into names).
+- Team needed a **demo-ready system** without risking production data integrity.
+
+## 2) Proposed Solution
+Build an MVP that combines:
+1. **Data extraction + verification pipeline** for historical documents.
+2. **Clean, queryable pricing memory** (client/product history).
+3. **Fast quote-generation UI/API** with intelligent suggestions.
+4. **Auditability and safety** (verify-first workflow, production data freeze).
+
+### Solution principles
+- **Data Truth first**: verify extracted data before using it for quoting.
+- **Human-usable speed**: autocomplete and pricing hints at quote time.
+- **Low-risk rollout**: keep production dataset read-only during pre-demo phase.
+
+## 3) Implementation
+
+### A) System architecture
+- **Pipeline (agentic):** `Classify -> Extract -> Verify -> Merge`
+- **Runtime stack:** FastAPI + SQLite + HTML/JS frontend
+- **Operational posture:** pre-demo freeze with controlled candidate cleaned dataset
+
+### B) Document intelligence and extraction
+- Migrated OCR workflow to **Sarvam AI Vision (VLM)** for better structural fidelity.
+- Added reliability tooling around extraction:
+  - provider orchestration/fallback pattern
+  - validation before acceptance
+  - provenance/logging mindset for traceability
+
+### C) Data cleanup and quality controls
+- Processed historical source PDFs into a structured purchase history layer.
+- Applied cleaning logic to remove non-name artifacts from client fields.
+- Consolidated and curated client/product records for usable autocomplete + price references.
+
+### D) Quote generator MVP
+Implemented a quotation MVP with:
+- Client autocomplete from history
+- Product search/autocomplete
+- Suggested pricing logic:
+  - show last sold price for same client (+ recency context)
+  - otherwise show broader historical range/reference
+- GST/totals computation
+- Quote persistence in SQLite
+- PDF generation path for shareable quotes
+
+### E) Audit and reporting surfaces
+- Main app endpoint: `/bajaj`
+- Data cleanup report endpoint: `/bajaj/cleanup-report`
+- Audit-style verification workflow for checking extracted values against source docs
+
+## 4) Current Status
+- **State:** ❄️ Frozen / on hold (pre-demo)
+- **Why frozen:** waiting on client-side availability for MVP demo/review
+- **Data policy:** production file remains read-only until approval to promote cleaned candidate data
+
+## 5) Verified Live Data Snapshot (checked on 2026-02-25)
+> These numbers were validated directly from project files/DB, not memory notes.
+
+### A) Production-safe snapshot (demo-safe references)
+- `analysis/customer_purchases.json`: **134** customer records
+- `quotegen/quotes.db` (UI quote store): tables `quotes`, `quote_items`
+  - current rows: **2 quotes**, **3 quote_items**
+
+### B) Candidate / working snapshot (in-progress, not yet promoted)
+- `analysis/customer_purchases_cleaned.json`: **134** cleaned customer records
+- Total purchase rows in cleaned history: **1,686**
+- Unique products from purchase history: **956**
+- `analysis/clean_catalog.json`: **1,250** catalog rows (**956** unique products)
+- PDFs currently present under `data/`: **491** (`data/Bills/`: **103**)
+
+## 6) Key Lessons Learned
+- “**Verify First**” is non-negotiable for document-heavy workflows.
+- Extraction quality alone is not enough; verification + cleanup determine business trust.
+- A focused MVP (autocomplete + pricing intelligence + PDF output) delivers immediate operational value.
 
 ---
 
-## 🏗️ System Architecture
-
-The system consists of two primary layers:
-1.  **The Brain (Data Engine):** A pipeline that converts raw PDFs into structured business intelligence (Clients, Products, Pricing History).
-2.  **The Tool (Quotation Generator):** A web interface for the staff to build, save, and share professional quotes using the "Brain's" historical data.
-
----
-
-## ⚙️ The Data Pipeline Process
-
-### Step 1: PDF to Structured HTML (OCR via Sarvam AI)
-*   **Script:** `batch_sarvam.py` or `sarvam_parse.py`
-*   **Action:** Source PDFs are uploaded to the **Sarvam AI Vision API (VLM)**.
-*   **Return:** A ZIP archive containing a high-fidelity `document.html` and page-level metadata.
-*   **Storage:** The HTML files are extracted to `/home/sachin/work/bajaj/extracted/sarvam/`.
-
-### Step 2: HTML to JSON (Information Extraction)
-*   **Script:** `parse_html.py`
-*   **Action:** Uses BeautifulSoup to surgically extract:
-    *   **Entity:** Client Name, full address, and phone numbers.
-    *   **Context:** Date of quotation/invoice and Invoice Numbers.
-    *   **Items:** Detailed product names, brands, technical specs, and unit prices.
-*   **Storage:** Data is merged into `analysis/customer_purchases.json` and `analysis/clean_catalog.json`.
-
-### Step 3: Cleaning & Deduping (Surgical Scrubbing)
-*   **Script:** `final_production_scrub.py`
-*   **Action:** Uses high-reasoning logic and regex to:
-    *   Vaporize "Junk" entries (IRNs, GST numbers, header fragments).
-    *   Clean designations (e.g., converts "The Principal, ABC School" to "ABC School").
-    *   Deduplicate clients with varying names into single, clean records.
-*   **Partitioning:** `partition_data.py` separates remaining "noise" into `noise_catalog.json` to keep the production UI clean.
-
-### Step 4: Visual Audit & Verification
-*   **Interface:** `https://ltn0nharv1-1.tailb8a9a6.ts.net/bajaj/audit`
-*   **Action:** A side-by-side view allows a VLM agent or human user to verify the extracted JSON data against a PNG image of the original PDF page.
-
----
-
-## 📂 Directory & File Inventory
-
-### 🧠 Data & Analysis
-| Path | Purpose |
-| :--- | :--- |
-| `data/pdf/` | Storage for the original 285+ source PDF documents. |
-| `extracted/sarvam/` | High-fidelity HTML reconstructions from Sarvam AI. |
-| `analysis/customer_purchases.json` | **Master Client List** (62 verified institutional clients). |
-| `analysis/clean_catalog.json` | **Master Product Catalog** (2,400+ historical price points). |
-| `analysis/pdf_client_mapping.json` | Audit file linking every PDF to its extracted type and fidelity. |
-
-### 🚀 Application (FastAPI)
-| Path | Purpose |
-| :--- | :--- |
-| `quotegen/` | Main application folder. |
-| `quotegen/main.py` | The core server (UI, APIs, PDF & Image generation). |
-| `quotegen/quotes.db` | SQLite database storing all **newly created** quotes. |
-| `quotegen/static/logo.png` | Production logo for Bajaj & Company. |
-
-### 🛠️ Key Scripts
-| Script | Usage |
-| :--- | :--- |
-| `batch_sarvam.py` | Runs bulk PDF-to-HTML conversion via Sarvam AI. |
-| `parse_html.py` | Extracts structured data from Sarvam HTML files. |
-| `final_production_scrub.py` | Performs the final cleaning pass on the client list. |
-| `generate_mapping.py` | Generates the metadata for the Audit tool. |
-
----
-
-## 🌐 Endpoints (Production)
-
-*   **Main Generator:** `https://ltn0nharv1-1.tailb8a9a6.ts.net/bajaj`
-*   **Client Directory:** `https://ltn0nharv1-1.tailb8a9a6.ts.net/bajaj/directory`
-*   **Audit Tool:** `https://ltn0nharv1-1.tailb8a9a6.ts.net/bajaj/audit`
-
----
-
-## 🏗️ Setup & Ingestion
-
-To ingest a new batch of PDFs:
-1.  Place PDFs in `data/pdf/`.
-2.  Run `batch_sarvam.py` (Ensure `SARVAM_API_KEY` is set in `.env`).
-3.  Run `parse_html.py` to sync the new data to the catalog.
-4.  Run `final_production_scrub.py` to clean the new entries.
+If needed, this README can be expanded into:
+- setup/deployment instructions,
+- API reference,
+- schema docs,
+- post-demo promotion checklist (`candidate -> production`).

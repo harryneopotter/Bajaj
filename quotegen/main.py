@@ -99,7 +99,7 @@ for c in CUSTOMERS:
 
 app = FastAPI(title="Bajaj Sports Quote Generator")
 
-ALLOWED_IPS = {"100.84.92.33", "100.119.13.60"}
+ALLOWED_IPS = {"100.82.161.113", "100.91.37.16", "100.84.92.33", "100.119.13.60"}
 import fastapi
 @app.middleware("http")
 async def ip_whitelist_middleware(request: fastapi.Request, call_next):
@@ -1203,6 +1203,9 @@ async def search_clients(q: str = ""):
     return matches
 
 @app.get("/api/products")
+async def search_products(q: str = "", client: str = ""):
+    return await search_products(q=q, client=client)
+
 
 @app.get("/api/images/{product_name}")
 async def get_product_images(product_name: str):
@@ -1309,6 +1312,7 @@ async def search_products(q: str = "", client: str = ""):
                 break
     
     return matches
+
 
 @app.get("/api/quotes")
 async def list_quotes(limit: int = 20):
@@ -1731,6 +1735,43 @@ async def generate_pdf(request: Request):
         })
 
 @app.get("/api/quotes/{quote_id}/pdf")
+
+
+@app.post("/api/webhook/tally")
+async def tally_webhook(request: Request):
+    """Receive invoice data from Tally webhook."""
+    try:
+        data = await request.json()
+    except:
+        data = {}
+    
+    # Log the webhook payload
+    print(f"[TALLY_WEBHOOK] Received: {data.keys()}")
+    
+    # Extract common Tally fields
+    invoice_no = data.get("VoucherNumber") or data.get("invoice_number") or data.get("reference")
+    client_name = data.get("PartyLedger") or data.get("party") or data.get("customer")
+    amount = data.get("TotalValue") or data.get("amount") or data.get("grand_total")
+    date = data.get("Date") or data.get("invoice_date") or data.get("created_at")
+    
+    # Store in database
+    with db() as conn:
+        conn.execute("""
+            INSERT INTO tally_invoices (invoice_no, client_name, amount, invoice_date, raw_data)
+            VALUES (?, ?, ?, ?, ?)
+        """, (invoice_no, client_name, amount, date, json.dumps(data)))
+        conn.commit()
+    
+    return {"status": "ok", "message": "Invoice received"}
+
+
+@app.get("/api/webhook/tally")
+async def tally_webhook_status():
+    """Check webhook status."""
+    with db() as conn:
+        rows = conn.execute("SELECT * FROM tally_invoices ORDER BY id DESC LIMIT 10").fetchall()
+    return {"invoices": [dict(r) for r in rows]}
+
 async def get_quote_pdf(quote_id: int):
     """Get PDF for a saved quote."""
     with db() as conn:
